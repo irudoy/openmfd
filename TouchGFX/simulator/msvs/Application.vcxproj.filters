@@ -237,9 +237,6 @@
     <ClCompile Include="..\..\generated\gui_generated\src\screen1_screen\Screen1ViewBase.cpp">
       <Filter>Source Files\generated\gui_generated\screen1_screen</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\gui\src\containers\gauge.cpp">
-      <Filter>Source Files\gui\containers</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\gui\src\containers\SingleGauge.cpp">
       <Filter>Source Files\gui\containers</Filter>
     </ClCompile>
@@ -696,9 +693,6 @@
     </ClInclude>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\screen1_screen\Screen1ViewBase.hpp">
       <Filter>Header Files\generated\gui_generated\screen1_screen</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\gui\include\gui\containers\gauge.hpp">
-      <Filter>Header Files\gui\containers</Filter>
     </ClInclude>
     <ClInclude Include="..\..\gui\include\gui\containers\SingleGauge.hpp">
       <Filter>Header Files\gui\containers</Filter>

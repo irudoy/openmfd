@@ -10,7 +10,7 @@
       </Text>
     </TextGroup>
     <TextGroup Id="Unsorted">
-      <Text Id="__SingleUse_ME5Z" Alignment="Left" TypographyId="Default">
+      <Text Id="__SingleUse_ME5Z" Alignment="Right" TypographyId="Default">
         <Translation Language="GB">&lt;value&gt;</Translation>
       </Text>
       <Text Id="__SingleUse_828X" Alignment="Left" TypographyId="Small">
