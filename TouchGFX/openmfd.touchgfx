@@ -1,0 +1,212 @@
+{
+  "Application": {
+    "Screens": [
+      {
+        "Name": "Screen1",
+        "CanvasBufferSize": 4800,
+        "Components": [
+          {
+            "Type": "Gauge",
+            "Name": "gauge_arc",
+            "X": 101,
+            "Y": 61,
+            "Width": 114,
+            "Height": 114,
+            "RotationCenterX": 57,
+            "RotationCenterY": 57,
+            "StartAngle": -180,
+            "EndAngle": 90,
+            "RangeMax": 100,
+            "UseAnimation": true,
+            "Easing": "Quad",
+            "EasingOption": "InOut",
+            "NeedleMovingRenderingAlgorithm": "Bilinear Interpolation",
+            "NeedleSteadyRenderingAlgorithm": "Bilinear Interpolation",
+            "UseArc": true,
+            "FileNameArc": "value.png",
+            "ArcColor": {
+              "Red": 20,
+              "Green": 151,
+              "Blue": 197
+            },
+            "ArcRadius": 57,
+            "ArcCapStyle": "Butt"
+          },
+          {
+            "Type": "Image",
+            "Name": "image1",
+            "X": 103,
+            "Y": 63,
+            "Width": 118,
+            "Height": 138,
+            "RelativeFilename": "meter-unit.png"
+          },
+          {
+            "Type": "Gauge",
+            "Name": "gauge_peak",
+            "X": 101,
+            "Y": 61,
+            "Width": 114,
+            "Height": 114,
+            "BackgroundOffsetX": 20,
+            "BackgroundOffsetY": 10,
+            "RotationCenterX": 57,
+            "RotationCenterY": 57,
+            "EndAngle": 270,
+            "RangeMax": 100,
+            "UseAnimation": true,
+            "Easing": "Quad",
+            "EasingOption": "InOut",
+            "FileNameNeedle": "arrow-peak.png",
+            "NeedleRotationCenterX": 1,
+            "NeedleMovingRenderingAlgorithm": "Bilinear Interpolation",
+            "NeedleSteadyRenderingAlgorithm": "Bilinear Interpolation",
+            "FileNameArc": "value.png",
+            "ArcColor": {
+              "Red": 95,
+              "Green": 175,
+              "Blue": 80
+            },
+            "ArcRadius": 70,
+            "ArcCapStyle": "Butt"
+          },
+          {
+            "Type": "Gauge",
+            "Name": "gauge_value",
+            "X": 101,
+            "Y": 61,
+            "Width": 114,
+            "Height": 114,
+            "BackgroundOffsetX": 20,
+            "BackgroundOffsetY": 10,
+            "RotationCenterX": 57,
+            "RotationCenterY": 57,
+            "EndAngle": 270,
+            "RangeMax": 100,
+            "UseAnimation": true,
+            "Easing": "Quad",
+            "EasingOption": "InOut",
+            "FileNameNeedle": "arrow.png",
+            "NeedleRotationCenterX": 1,
+            "NeedleMovingRenderingAlgorithm": "Bilinear Interpolation",
+            "NeedleSteadyRenderingAlgorithm": "Bilinear Interpolation",
+            "FileNameArc": "value.png",
+            "ArcColor": {
+              "Red": 95,
+              "Green": 175,
+              "Blue": 80
+            },
+            "ArcRadius": 70,
+            "ArcCapStyle": "Butt"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "peak_caption",
+            "X": 172,
+            "Y": 169,
+            "Width": 34,
+            "Height": 14,
+            "TextId": "__SingleUse_2VQ2",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "peak_value",
+            "X": 172,
+            "Y": 153,
+            "Width": 43,
+            "Height": 15,
+            "TextId": "__SingleUse_NAV3",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Wildcard1": {
+              "TextId": "peakval"
+            }
+          },
+          {
+            "Type": "Image",
+            "Name": "image2",
+            "X": 176,
+            "Y": 125,
+            "Width": 25,
+            "Height": 20,
+            "RelativeFilename": "turbo-icon.png"
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "Interaction1",
+            "Trigger": {
+              "Type": "TriggerClicked"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "handleBtnClick"
+            }
+          }
+        ]
+      }
+    ],
+    "CustomContainerDefinitions": [],
+    "Name": "MyApplication",
+    "Resolution": {
+      "Width": 320,
+      "Height": 240
+    },
+    "SelectedColorDepth": 16,
+    "StartupScreenName": "Screen1",
+    "SelectedStartupLanguage": "GB",
+    "Skin": "Blue",
+    "TouchGfxPath": "../Middlewares/ST/touchgfx",
+    "UIPath": ".",
+    "AvailableColorDepths": [
+      16
+    ],
+    "AvailableLCDs": {
+      "16": "LCD16bpp"
+    },
+    "AvailableSections": [
+      "ExtFlashSection",
+      "IntFlashSection"
+    ],
+    "AvailableResolutions": [
+      {
+        "Width": 320,
+        "Height": 240
+      }
+    ],
+    "PhysicalButtons": [],
+    "FrameworkFeatures": {
+      "LCD16bpp": {
+        "Id": "LCD16bpp",
+        "IsEnabled": true
+      }
+    },
+    "GenerateAssetsCommand": "make -f simulator/gcc/Makefile assets -j8",
+    "PostGenerateCommand": "touchgfx update_project --project-file=simulator/msvs/Application.vcxproj",
+    "PostGenerateTargetCommand": "touchgfx update_project",
+    "CompileSimulatorCommand": "make -f simulator/gcc/Makefile -j8",
+    "RunSimulatorCommand": "build\\bin\\simulator.exe",
+    "LandscapeSkinX": 0,
+    "LandscapeSkinY": 0,
+    "PortraitSkinX": 0,
+    "PortraitSkinY": 0,
+    "DisplayOrientation": "Landscape",
+    "Family": "STM32F4",
+    "Platform": "m4",
+    "ProjectFile": "../openmfd.ioc",
+    "OptionalComponentsRoot": "../Middlewares/ST/touchgfx_components",
+    "OptionalComponents": []
+  },
+  "Version": "4.19.1"
+}
