@@ -21,7 +21,7 @@ struct Typography
 struct TypographyFontIndex
 {
     static const touchgfx::FontId DEFAULT = 0; // arialbi_14_4bpp
-    static const touchgfx::FontId LARGE = 1;   // verdana_40_4bpp
+    static const touchgfx::FontId LARGE = 1;   // arialbi_40_4bpp
     static const touchgfx::FontId SMALL = 2;   // arialbi_12_4bpp
     static const uint16_t NUMBER_OF_FONTS = 3;
 };
