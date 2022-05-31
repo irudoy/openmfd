@@ -10,14 +10,14 @@
       </Text>
     </TextGroup>
     <TextGroup Id="Unsorted">
-      <Text Id="peakval" Alignment="Left" TypographyId="Default">
-        <Translation Language="GB">0123456789</Translation>
-      </Text>
-      <Text Id="__SingleUse_NAV3" Alignment="Right" TypographyId="Default">
+      <Text Id="__SingleUse_ME5Z" Alignment="Left" TypographyId="Default">
         <Translation Language="GB">&lt;value&gt;</Translation>
       </Text>
-      <Text Id="__SingleUse_2VQ2" Alignment="Center" TypographyId="Small">
+      <Text Id="__SingleUse_828X" Alignment="Left" TypographyId="Small">
         <Translation Language="GB">PEAK</Translation>
+      </Text>
+      <Text Id="peakval" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">0123456789</Translation>
       </Text>
     </TextGroup>
   </Texts>

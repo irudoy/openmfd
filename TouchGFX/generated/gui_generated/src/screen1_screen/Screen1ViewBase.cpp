@@ -3,8 +3,6 @@
 /*********************************************************************************/
 #include <gui_generated/screen1_screen/Screen1ViewBase.hpp>
 #include <touchgfx/Color.hpp>
-#include <BitmapDatabase.hpp>
-#include <texts/TextKeysAndLanguages.hpp>
 #include <touchgfx/canvas_widget_renderer/CanvasWidgetRenderer.hpp>
 
 
@@ -16,66 +14,17 @@ Screen1ViewBase::Screen1ViewBase()
     __background.setPosition(0, 0, 320, 240);
     __background.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
 
-    gauge_arc.setPosition(101, 61, 114, 114);
-    gauge_arc.setCenter(57, 57);
-    gauge_arc.setStartEndAngle(-180, 90);
-    gauge_arc.setRange(0, 100);
-    gauge_arc.setValue(0);
-    gauge_arc.setEasingEquation(touchgfx::EasingEquations::quadEaseInOut);
-    gauge_arc.setArcVisible();
-    gauge_arcPainter.setBitmap(touchgfx::Bitmap(BITMAP_VALUE_ID));
-    gauge_arc.getArc().setPainter(gauge_arcPainter);
-    gauge_arc.getArc().setRadius(57);
-    gauge_arc.getArc().setLineWidth(0);
+    gauge2.setXY(0, 34);
 
-    image1.setXY(103, 63);
-    image1.setBitmap(touchgfx::Bitmap(BITMAP_METER_UNIT_ID));
-
-    gauge_peak.setPosition(101, 61, 114, 114);
-    gauge_peak.setCenter(57, 57);
-    gauge_peak.setStartEndAngle(0, 270);
-    gauge_peak.setRange(0, 100);
-    gauge_peak.setValue(0);
-    gauge_peak.setEasingEquation(touchgfx::EasingEquations::quadEaseInOut);
-    gauge_peak.setNeedle(BITMAP_ARROW_PEAK_ID, 1, 0);
-    gauge_peak.setMovingNeedleRenderingAlgorithm(touchgfx::TextureMapper::BILINEAR_INTERPOLATION);
-    gauge_peak.setSteadyNeedleRenderingAlgorithm(touchgfx::TextureMapper::BILINEAR_INTERPOLATION);
-
-    gauge_value.setPosition(101, 61, 114, 114);
-    gauge_value.setCenter(57, 57);
-    gauge_value.setStartEndAngle(0, 270);
-    gauge_value.setRange(0, 100);
-    gauge_value.setValue(0);
-    gauge_value.setEasingEquation(touchgfx::EasingEquations::quadEaseInOut);
-    gauge_value.setNeedle(BITMAP_ARROW_ID, 1, 0);
-    gauge_value.setMovingNeedleRenderingAlgorithm(touchgfx::TextureMapper::BILINEAR_INTERPOLATION);
-    gauge_value.setSteadyNeedleRenderingAlgorithm(touchgfx::TextureMapper::BILINEAR_INTERPOLATION);
-
-    peak_caption.setXY(172, 169);
-    peak_caption.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
-    peak_caption.setLinespacing(0);
-    peak_caption.setTypedText(touchgfx::TypedText(T___SINGLEUSE_2VQ2));
-
-    peak_value.setPosition(172, 153, 43, 15);
-    peak_value.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
-    peak_value.setLinespacing(0);
-    peak_value.setWildcard(touchgfx::TypedText(T_PEAKVAL).getText());
-    peak_value.setTypedText(touchgfx::TypedText(T___SINGLEUSE_NAV3));
-
-    image2.setXY(176, 125);
-    image2.setBitmap(touchgfx::Bitmap(BITMAP_TURBO_ICON_ID));
+    gauge1.setXY(160, 34);
 
     add(__background);
-    add(gauge_arc);
-    add(image1);
-    add(gauge_peak);
-    add(gauge_value);
-    add(peak_caption);
-    add(peak_value);
-    add(image2);
+    add(gauge2);
+    add(gauge1);
 }
 
 void Screen1ViewBase::setupScreen()
 {
-
+    gauge2.initialize();
+    gauge1.initialize();
 }

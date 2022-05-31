@@ -6,7 +6,6 @@ extern RNG_HandleTypeDef hrng;
 
 Screen1View::Screen1View() {
   modifier = 1;
-  peakValue = 0;
   tickCounter = 0;
   useRandom = true;
 }
@@ -28,28 +27,27 @@ void Screen1View::handleTickEvent() {
 
   int minValue;
   int maxValue;
-  gauge_value.getRange(minValue, maxValue);
+  gauge1.getRange(minValue, maxValue);
 
-  int currentValue = gauge_value.getValue();
+  int currentValue = gauge1.getValue();
 
   if (currentValue == minValue || currentValue == maxValue) {
     modifier *= -1;
   }
 
-  int transitionTime = useRandom ? 30 : 0;
+  if (tickCounter >= 1000) {
+    tickCounter = 0;
+    useRandom = !useRandom;
+  }
 
   if (tickCounter % 30 == 0 || !useRandom) {
-    int newValue = useRandom ? HAL_RNG_GetRandomNumber(&hrng) % 100 : gauge_value.getValue() + modifier;
-
-    if (currentValue <= 10) peakValue = 0;
-    if (newValue >= peakValue) peakValue = newValue;
-
-    gauge_value.updateValue(newValue, transitionTime);
-    gauge_arc.updateValue(newValue, transitionTime);
-    gauge_peak.updateValue(peakValue, transitionTime);
-
-    Unicode::snprintf(peakValueBuffer, 10, "%d", peakValue);
-    peak_value.setWildcard(peakValueBuffer);
-    peak_value.invalidate();
+    gauge1.updateValue(
+      useRandom ? HAL_RNG_GetRandomNumber(&hrng) % 100 : gauge1.getValue() + modifier,
+      useRandom ? 30 : 0
+    );
+    gauge2.updateValue(
+      useRandom ? HAL_RNG_GetRandomNumber(&hrng) % 100 : gauge2.getValue() + modifier,
+      useRandom ? 30 : 0
+    );
   }
 }

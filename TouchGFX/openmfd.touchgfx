@@ -6,10 +6,48 @@
         "CanvasBufferSize": 4800,
         "Components": [
           {
+            "Type": "CustomContainerInstance",
+            "Name": "gauge2",
+            "Y": 34,
+            "Width": 160,
+            "Height": 173,
+            "CustomContainerDefinitionName": "SingleGauge"
+          },
+          {
+            "Type": "CustomContainerInstance",
+            "Name": "gauge1",
+            "X": 160,
+            "Y": 34,
+            "Width": 160,
+            "Height": 173,
+            "CustomContainerDefinitionName": "SingleGauge"
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "Interaction1",
+            "Trigger": {
+              "Type": "TriggerClicked"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "handleBtnClick"
+            }
+          }
+        ]
+      }
+    ],
+    "CustomContainerDefinitions": [
+      {
+        "Name": "SingleGauge",
+        "Width": 160,
+        "Height": 173,
+        "Components": [
+          {
             "Type": "Gauge",
             "Name": "gauge_arc",
-            "X": 101,
-            "Y": 61,
+            "X": 20,
+            "Y": 18,
             "Width": 114,
             "Height": 114,
             "RotationCenterX": 57,
@@ -35,8 +73,8 @@
           {
             "Type": "Image",
             "Name": "image1",
-            "X": 103,
-            "Y": 63,
+            "X": 22,
+            "Y": 20,
             "Width": 118,
             "Height": 138,
             "RelativeFilename": "meter-unit.png"
@@ -44,8 +82,8 @@
           {
             "Type": "Gauge",
             "Name": "gauge_peak",
-            "X": 101,
-            "Y": 61,
+            "X": 20,
+            "Y": 18,
             "Width": 114,
             "Height": 114,
             "BackgroundOffsetX": 20,
@@ -73,8 +111,8 @@
           {
             "Type": "Gauge",
             "Name": "gauge_value",
-            "X": 101,
-            "Y": 61,
+            "X": 20,
+            "Y": 18,
             "Width": 114,
             "Height": 114,
             "BackgroundOffsetX": 20,
@@ -102,11 +140,11 @@
           {
             "Type": "TextArea",
             "Name": "peak_caption",
-            "X": 172,
-            "Y": 169,
+            "X": 91,
+            "Y": 126,
             "Width": 34,
             "Height": 14,
-            "TextId": "__SingleUse_2VQ2",
+            "TextId": "__SingleUse_828X",
             "TextRotation": "0",
             "Color": {
               "Red": 255,
@@ -118,11 +156,11 @@
           {
             "Type": "TextArea",
             "Name": "peak_value",
-            "X": 172,
-            "Y": 153,
+            "X": 91,
+            "Y": 110,
             "Width": 43,
             "Height": 15,
-            "TextId": "__SingleUse_NAV3",
+            "TextId": "__SingleUse_ME5Z",
             "TextRotation": "0",
             "Color": {
               "Red": 255,
@@ -136,28 +174,16 @@
           {
             "Type": "Image",
             "Name": "image2",
-            "X": 176,
-            "Y": 125,
+            "X": 95,
+            "Y": 82,
             "Width": 25,
             "Height": 20,
             "RelativeFilename": "turbo-icon.png"
           }
         ],
-        "Interactions": [
-          {
-            "InteractionName": "Interaction1",
-            "Trigger": {
-              "Type": "TriggerClicked"
-            },
-            "Action": {
-              "Type": "ActionCustom",
-              "FunctionName": "handleBtnClick"
-            }
-          }
-        ]
+        "Interactions": []
       }
     ],
-    "CustomContainerDefinitions": [],
     "Name": "MyApplication",
     "Resolution": {
       "Width": 320,

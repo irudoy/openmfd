@@ -8,11 +8,7 @@
 #include <mvp/View.hpp>
 #include <gui/screen1_screen/Screen1Presenter.hpp>
 #include <touchgfx/widgets/Box.hpp>
-#include <touchgfx/widgets/Gauge.hpp>
-#include <touchgfx/widgets/canvas/PainterRGB565Bitmap.hpp>
-#include <touchgfx/widgets/Image.hpp>
-#include <touchgfx/widgets/TextArea.hpp>
-#include <touchgfx/widgets/TextAreaWithWildcard.hpp>
+#include <gui/containers/SingleGauge.hpp>
 
 class Screen1ViewBase : public touchgfx::View<Screen1Presenter>
 {
@@ -30,14 +26,8 @@ protected:
      * Member Declarations
      */
     touchgfx::Box __background;
-    touchgfx::Gauge gauge_arc;
-    touchgfx::PainterRGB565Bitmap gauge_arcPainter;
-    touchgfx::Image image1;
-    touchgfx::Gauge gauge_peak;
-    touchgfx::Gauge gauge_value;
-    touchgfx::TextArea peak_caption;
-    touchgfx::TextAreaWithOneWildcard peak_value;
-    touchgfx::Image image2;
+    SingleGauge gauge2;
+    SingleGauge gauge1;
 
 private:
 
