@@ -4,25 +4,30 @@
 
 extern RNG_HandleTypeDef hrng;
 
-Screen1View::Screen1View() {
+Screen1View::Screen1View()
+{
   modifier = 1;
   tickCounter = 0;
   useRandom = true;
 }
 
-void Screen1View::handleBtnClick() {
+void Screen1View::handleBtnClick()
+{
   useRandom = !useRandom;
 }
 
-void Screen1View::setupScreen() {
+void Screen1View::setupScreen()
+{
   Screen1ViewBase::setupScreen();
 }
 
-void Screen1View::tearDownScreen() {
+void Screen1View::tearDownScreen()
+{
   Screen1ViewBase::tearDownScreen();
 }
 
-void Screen1View::handleTickEvent() {
+void Screen1View::handleTickEvent()
+{
   tickCounter++;
 
   int minValue;
