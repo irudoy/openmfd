@@ -1,5 +1,15 @@
 #include <ili9341-mod.h>
 
+/**
+ * https://gist.github.com/postmodern/ed6e670999f456ad9f13
+ * https://github.com/afiskon/stm32-ili9341
+ * https://github.com/martnak/STM32-ILI9341
+ * https://stackoverflow.com/questions/39869871/set-orientation-of-ili-9325-tft-diaplay
+ * https://cdn-shop.adafruit.com/datasheets/ILI9341.pdf
+ * https://github.com/ardnew/ILI9341-STM32-HAL
+ * https://github.com/juj/fbcp-ili9341
+ */
+
 #define SELECT()      HAL_GPIO_WritePin(GPIOC, GPIO_PIN_2, GPIO_PIN_RESET)
 #define DESELECT()    HAL_GPIO_WritePin(GPIOC, GPIO_PIN_2, GPIO_PIN_SET)
 #define COMMAND()     HAL_GPIO_WritePin(GPIOD, GPIO_PIN_13, GPIO_PIN_RESET)
