@@ -2,6 +2,7 @@
 #define MODELLISTENER_HPP
 
 #include <gui/model/Model.hpp>
+#include <cstdint>
 
 class ModelListener
 {
@@ -10,10 +11,14 @@ public:
     
     virtual ~ModelListener() {}
 
+    // bind to presenter
+    virtual void toggleState(void) {}
+
     void bind(Model* m)
     {
         model = m;
     }
+
 protected:
     Model* model;
 };

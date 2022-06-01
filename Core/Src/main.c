@@ -23,7 +23,8 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "ili9341-mod.h"
+#include "ili9341/ili9341.h"
+#include "debug_screen.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -92,8 +93,12 @@ const osThreadAttr_t touchGFXTask_attributes = {
   .stack_size = 8192 * 4,
   .priority = (osPriority_t) osPriorityNormal,
 };
+/* Definitions for DataQueue */
+osMessageQueueId_t DataQueueHandle;
+const osMessageQueueAttr_t DataQueue_attributes = {
+  .name = "DataQueue"
+};
 /* USER CODE BEGIN PV */
-
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -114,35 +119,22 @@ void StartTGFXTask(void *argument);
 /* USER CODE BEGIN PFP */
 static void BSP_SDRAM_Initialization_Sequence(SDRAM_HandleTypeDef *hsdram, FMC_SDRAM_CommandTypeDef *Command);
 
-static uint8_t            I2C3_ReadData(uint8_t Addr, uint8_t Reg);
-static void               I2C3_WriteData(uint8_t Addr, uint8_t Reg, uint8_t Value);
-static uint8_t            I2C3_ReadBuffer(uint8_t Addr, uint8_t Reg, uint8_t *pBuffer, uint16_t Length);
-
-/* SPIx bus function */
-static void               SPI5_Write(uint16_t Value);
-static uint32_t           SPI5_Read(uint8_t ReadSize);
-static void               SPI5_Error(void);
-
-/* Link function for LCD peripheral */
-void                      LCD_IO_Init(void);
-void                      LCD_IO_WriteData(uint16_t RegValue);
-void                      LCD_IO_WriteReg(uint8_t Reg);
-uint32_t                  LCD_IO_ReadData(uint16_t RegValue, uint8_t ReadSize);
-void                      LCD_Delay(uint32_t delay);
+static uint8_t I2C3_ReadData(uint8_t Addr, uint8_t Reg);
+static void I2C3_WriteData(uint8_t Addr, uint8_t Reg, uint8_t Value);
+static uint8_t I2C3_ReadBuffer(uint8_t Addr, uint8_t Reg, uint8_t *pBuffer, uint16_t Length);
 
 /* IOExpander IO functions */
-void                      IOE_Init(void);
-void                      IOE_ITConfig(void);
-void                      IOE_Delay(uint32_t Delay);
-void                      IOE_Write(uint8_t Addr, uint8_t Reg, uint8_t Value);
-uint8_t                   IOE_Read(uint8_t Addr, uint8_t Reg);
-uint16_t                  IOE_ReadMultiple(uint8_t Addr, uint8_t Reg, uint8_t *pBuffer, uint16_t Length);
+void IOE_Init(void);
+void IOE_ITConfig(void);
+void IOE_Delay(uint32_t Delay);
+void IOE_Write(uint8_t Addr, uint8_t Reg, uint8_t Value);
+uint8_t IOE_Read(uint8_t Addr, uint8_t Reg);
+uint16_t IOE_ReadMultiple(uint8_t Addr, uint8_t Reg, uint8_t *pBuffer, uint16_t Length);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 uint32_t I2c3Timeout = I2C3_TIMEOUT_MAX; /*<! Value of Timeout when I2C communication fails */
-uint32_t Spi5Timeout = SPI5_TIMEOUT_MAX; /*<! Value of Timeout when SPI communication fails */
 /* USER CODE END 0 */
 
 /**
@@ -184,7 +176,7 @@ int main(void)
   MX_RNG_Init();
   MX_TouchGFX_Init();
   /* USER CODE BEGIN 2 */
-  ILI9341_init(&hspi5);
+  DBGS_init();
   /* USER CODE END 2 */
 
   /* Init scheduler */
@@ -201,6 +193,10 @@ int main(void)
   /* USER CODE BEGIN RTOS_TIMERS */
   /* start timers, add new ones, ... */
   /* USER CODE END RTOS_TIMERS */
+
+  /* Create the queue(s) */
+  /* creation of DataQueue */
+  DataQueueHandle = osMessageQueueNew (16, sizeof(uint8_t), &DataQueue_attributes);
 
   /* USER CODE BEGIN RTOS_QUEUES */
   /* add queues, ... */
@@ -754,9 +750,19 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 
+void DBGS_handleClick_btn1(void) {
+  uint8_t val = 0b10000001;
+  if (osMessageQueueGetCount(DataQueueHandle) == 0) {
+    osMessageQueuePut(DataQueueHandle, &val, 0U, 0);
+  }
+}
+
+/**
+ * Handle Blue Button Push
+ */
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
-  // Push Button
+  // TODO
 }
 
 /**
@@ -825,8 +831,8 @@ static void BSP_SDRAM_Initialization_Sequence(SDRAM_HandleTypeDef *hsdram, FMC_S
   */
 void IOE_Init(void)
 {
-  //Dummy function called when initializing to stmpe811 to setup the i2c.
-  //This is done with cubmx and is therfore not done here.
+  // Dummy function called when initializing to stmpe811 to setup the i2c.
+  // This is done with cubemx and is therfore not done here.
 }
 
 /**
@@ -834,8 +840,8 @@ void IOE_Init(void)
   */
 void IOE_ITConfig(void)
 {
-  //Dummy function called when initializing to stmpe811 to setup interupt for the i2c.
-  //The interupt is not used in our case, therefore nothing is done here.
+  // Dummy function called when initializing to stmpe811 to setup interupt for the i2c.
+  // The interupt is not used in our case, therefore nothing is done here.
 }
 
 /**
@@ -952,135 +958,6 @@ static uint8_t I2C3_ReadBuffer(uint8_t Addr, uint8_t Reg, uint8_t *pBuffer, uint
     return 1;
   }
 }
-
-/**
-  * @brief  Reads 4 bytes from device.
-  * @param  ReadSize: Number of bytes to read (max 4 bytes)
-  * @retval Value read on the SPI
-  */
-static uint32_t SPI5_Read(uint8_t ReadSize)
-{
-  HAL_StatusTypeDef status = HAL_OK;
-  uint32_t readvalue;
-
-  status = HAL_SPI_Receive(&hspi5, (uint8_t*) &readvalue, ReadSize, Spi5Timeout);
-
-  /* Check the communication status */
-  if(status != HAL_OK)
-  {
-    /* Re-Initialize the BUS */
-    SPI5_Error();
-  }
-
-  return readvalue;
-}
-
-/**
-  * @brief  Writes a byte to device.
-  * @param  Value: value to be written
-  */
-static void SPI5_Write(uint16_t Value)
-{
-  HAL_StatusTypeDef status = HAL_OK;
-
-  status = HAL_SPI_Transmit(&hspi5, (uint8_t*) &Value, 1, Spi5Timeout);
-
-  /* Check the communication status */
-  if(status != HAL_OK)
-  {
-    /* Re-Initialize the BUS */
-    SPI5_Error();
-  }
-}
-
-/**
-  * @brief  SPI5 error treatment function.
-  */
-static void SPI5_Error(void)
-{
-  /* De-initialize the SPI communication BUS */
-  //HAL_SPI_DeInit(&SpiHandle);
-
-  /* Re- Initialize the SPI communication BUS */
-  //SPIx_Init();
-}
-
-void LCD_IO_Init(void)
-{
-  /* Set or Reset the control line */
-  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_2, GPIO_PIN_RESET);
-  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_2, GPIO_PIN_SET);
-}
-
-/**
-  * @brief  Writes register value.
-  */
-void LCD_IO_WriteData(uint16_t RegValue)
-{
-  /* Set WRX to send data */
-  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_13, GPIO_PIN_SET);
-
-  /* Reset LCD control line(/CS) and Send data */
-  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_2, GPIO_PIN_RESET);
-  SPI5_Write(RegValue);
-
-  /* Deselect: Chip Select high */
-  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_2, GPIO_PIN_SET);
-}
-
-/**
-  * @brief  Writes register address.
-  */
-void LCD_IO_WriteReg(uint8_t Reg)
-{
-  /* Reset WRX to send command */
-  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_13, GPIO_PIN_RESET);
-
-  /* Reset LCD control line(/CS) and Send command */
-  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_2, GPIO_PIN_RESET);
-  SPI5_Write(Reg);
-
-  /* Deselect: Chip Select high */
-  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_2, GPIO_PIN_SET);
-}
-
-/**
-  * @brief  Reads register value.
-  * @param  RegValue Address of the register to read
-  * @param  ReadSize Number of bytes to read
-  * @retval Content of the register value
-  */
-uint32_t LCD_IO_ReadData(uint16_t RegValue, uint8_t ReadSize)
-{
-  uint32_t readvalue = 0;
-
-  /* Select: Chip Select low */
-  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_2, GPIO_PIN_RESET);
-
-  /* Reset WRX to send command */
-  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_13, GPIO_PIN_RESET);
-
-  SPI5_Write(RegValue);
-
-  readvalue = SPI5_Read(ReadSize);
-
-  /* Set WRX to send data */
-  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_13, GPIO_PIN_SET);
-
-  /* Deselect: Chip Select high */
-  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_2, GPIO_PIN_SET);
-
-  return readvalue;
-}
-
-/**
-  * @brief  Wait for loop in ms.
-  * @param  Delay in ms.
-  */
-void LCD_Delay(uint32_t Delay)
-{
-  HAL_Delay(Delay);
-}
 /* USER CODE END 4 */
 
 /* USER CODE BEGIN Header_StartHardwareTask */
@@ -1096,7 +973,8 @@ void StartHardwareTask(void *argument)
   /* Infinite loop */
   for(;;)
   {
-    osDelay(1);
+    DBGS_tick();
+    osDelay(50);
   }
   /* USER CODE END 5 */
 }

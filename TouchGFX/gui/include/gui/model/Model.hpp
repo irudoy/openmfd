@@ -16,6 +16,12 @@ public:
     void tick();
 protected:
     ModelListener* modelListener;
+private:
+    bool useRandom;
+    int tickCounter;
+    int modifier;
+    int peakValue;
+    int value;
 };
 
 #endif // MODEL_HPP

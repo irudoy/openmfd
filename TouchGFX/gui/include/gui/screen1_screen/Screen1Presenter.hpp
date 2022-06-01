@@ -3,6 +3,7 @@
 
 #include <gui/model/ModelListener.hpp>
 #include <mvp/Presenter.hpp>
+#include <cstdint>
 
 using namespace touchgfx;
 
@@ -26,6 +27,9 @@ public:
     virtual void deactivate();
 
     virtual ~Screen1Presenter() {};
+
+    // from model
+    virtual void toggleState(void);
 
 private:
     Screen1Presenter();
