@@ -21,3 +21,4 @@ class Screen1View : public Screen1ViewBase {
 };
 
 #endif // SCREEN1VIEW_HPP
+

@@ -40,11 +40,6 @@ void Screen1View::handleTickEvent()
     modifier *= -1;
   }
 
-//  if (tickCounter >= 1000) {
-//    tickCounter = 0;
-//    useRandom = !useRandom;
-//  }
-
   if (tickCounter % 30 == 0 || !useRandom) {
     gauge1.updateValue(
       useRandom ? HAL_RNG_GetRandomNumber(&hrng) % 100 : gauge1.getValue() + modifier,
