@@ -102,10 +102,6 @@ void Error_Handler(void);
 #define G2_GPIO_Port GPIOA
 #define ACP_RST_Pin GPIO_PIN_7
 #define ACP_RST_GPIO_Port GPIOA
-#define OTG_FS_PSO_Pin GPIO_PIN_4
-#define OTG_FS_PSO_GPIO_Port GPIOC
-#define OTG_FS_OC_Pin GPIO_PIN_5
-#define OTG_FS_OC_GPIO_Port GPIOC
 #define R3_Pin GPIO_PIN_0
 #define R3_GPIO_Port GPIOB
 #define R6_Pin GPIO_PIN_1
@@ -148,6 +144,10 @@ void Error_Handler(void);
 #define G4_GPIO_Port GPIOB
 #define G5_Pin GPIO_PIN_11
 #define G5_GPIO_Port GPIOB
+#define CAN_RX_Pin GPIO_PIN_12
+#define CAN_RX_GPIO_Port GPIOB
+#define CAN_TX_Pin GPIO_PIN_13
+#define CAN_TX_GPIO_Port GPIOB
 #define D13_Pin GPIO_PIN_8
 #define D13_GPIO_Port GPIOD
 #define D14_Pin GPIO_PIN_9

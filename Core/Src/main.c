@@ -135,6 +135,15 @@ uint16_t IOE_ReadMultiple(uint8_t Addr, uint8_t Reg, uint8_t *pBuffer, uint16_t 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 uint32_t I2c3Timeout = I2C3_TIMEOUT_MAX; /*<! Value of Timeout when I2C communication fails */
+
+CAN_RxHeaderTypeDef RxHeader;
+CAN_TxHeaderTypeDef TxHeader;
+
+uint8_t TxData[8];
+uint8_t RxData[8];
+
+uint32_t TxMailbox;
+
 /* USER CODE END 0 */
 
 /**
@@ -177,6 +186,15 @@ int main(void)
   MX_TouchGFX_Init();
   /* USER CODE BEGIN 2 */
   DBGS_init();
+
+  HAL_CAN_Start(&hcan2);
+  HAL_CAN_ActivateNotification(&hcan2, CAN_IT_RX_FIFO0_MSG_PENDING);
+
+  TxHeader.DLC = 8;
+  TxHeader.IDE = CAN_ID_STD;
+  TxHeader.RTR = CAN_RTR_DATA;
+  TxHeader.StdId = 0x666;
+
   /* USER CODE END 2 */
 
   /* Init scheduler */
@@ -196,7 +214,7 @@ int main(void)
 
   /* Create the queue(s) */
   /* creation of DataQueue */
-  DataQueueHandle = osMessageQueueNew (16, sizeof(uint8_t), &DataQueue_attributes);
+  DataQueueHandle = osMessageQueueNew (16, sizeof(uint16_t), &DataQueue_attributes);
 
   /* USER CODE BEGIN RTOS_QUEUES */
   /* add queues, ... */
@@ -300,11 +318,11 @@ static void MX_CAN2_Init(void)
 
   /* USER CODE END CAN2_Init 1 */
   hcan2.Instance = CAN2;
-  hcan2.Init.Prescaler = 16;
+  hcan2.Init.Prescaler = 5;
   hcan2.Init.Mode = CAN_MODE_NORMAL;
   hcan2.Init.SyncJumpWidth = CAN_SJW_1TQ;
-  hcan2.Init.TimeSeg1 = CAN_BS1_1TQ;
-  hcan2.Init.TimeSeg2 = CAN_BS2_1TQ;
+  hcan2.Init.TimeSeg1 = CAN_BS1_15TQ;
+  hcan2.Init.TimeSeg2 = CAN_BS2_2TQ;
   hcan2.Init.TimeTriggeredMode = DISABLE;
   hcan2.Init.AutoBusOff = DISABLE;
   hcan2.Init.AutoWakeUp = DISABLE;
@@ -316,6 +334,22 @@ static void MX_CAN2_Init(void)
     Error_Handler();
   }
   /* USER CODE BEGIN CAN2_Init 2 */
+
+  CAN_FilterTypeDef canFilterConfig;
+  canFilterConfig.FilterBank = 14;
+  canFilterConfig.FilterMode = CAN_FILTERMODE_IDMASK;
+  canFilterConfig.FilterScale = CAN_FILTERSCALE_32BIT;
+  canFilterConfig.FilterIdHigh = 0x0000;
+  canFilterConfig.FilterIdLow = 0x0000;
+  canFilterConfig.FilterMaskIdHigh = 0x0000;
+  canFilterConfig.FilterMaskIdLow = 0x0000;
+  canFilterConfig.FilterFIFOAssignment = CAN_RX_FIFO0;
+  canFilterConfig.FilterActivation = ENABLE;
+
+  if (HAL_CAN_ConfigFilter(&hcan2, &canFilterConfig) != HAL_OK) {
+    /* Filter configuration Error */
+    Error_Handler();
+  }
 
   /* USER CODE END CAN2_Init 2 */
 
@@ -673,7 +707,7 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOD_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOC, NCS_MEMS_SPI_Pin|CSX_Pin|OTG_FS_PSO_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOC, NCS_MEMS_SPI_Pin|CSX_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(ACP_RST_GPIO_Port, ACP_RST_Pin, GPIO_PIN_RESET);
@@ -684,8 +718,8 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOG, LD3_Pin|LD4_Pin, GPIO_PIN_RESET);
 
-  /*Configure GPIO pins : NCS_MEMS_SPI_Pin CSX_Pin OTG_FS_PSO_Pin */
-  GPIO_InitStruct.Pin = NCS_MEMS_SPI_Pin|CSX_Pin|OTG_FS_PSO_Pin;
+  /*Configure GPIO pins : NCS_MEMS_SPI_Pin CSX_Pin */
+  GPIO_InitStruct.Pin = NCS_MEMS_SPI_Pin|CSX_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
@@ -709,12 +743,6 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(ACP_RST_GPIO_Port, &GPIO_InitStruct);
-
-  /*Configure GPIO pin : OTG_FS_OC_Pin */
-  GPIO_InitStruct.Pin = OTG_FS_OC_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_EVT_RISING;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(OTG_FS_OC_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pin : BOOT1_Pin */
   GPIO_InitStruct.Pin = BOOT1_Pin;
@@ -750,6 +778,12 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 
+void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan) {
+  HAL_CAN_GetRxMessage(hcan, CAN_RX_FIFO0, &RxHeader, RxData);
+
+  HAL_Delay(5);
+}
+
 void DBGS_handleClick_btn1(void) {
   uint8_t val = 0b10000001;
   if (osMessageQueueGetCount(DataQueueHandle) == 0) {
@@ -762,7 +796,12 @@ void DBGS_handleClick_btn1(void) {
  */
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
-  // TODO
+  TxData[0] = 0x02;
+  TxData[1] = 0x04;
+  TxData[2] = 0x06;
+  TxData[3] = 0x08;
+
+  HAL_CAN_AddTxMessage(&hcan2, &TxHeader, TxData, &TxMailbox);
 }
 
 /**

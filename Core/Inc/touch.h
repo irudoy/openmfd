@@ -1,3 +1,6 @@
+#ifndef INC_TOUCH_H_
+#define INC_TOUCH_H_
+
 #include "stmpe811.h"
 
 #define TS_I2C_ADDRESS 0x82
@@ -19,3 +22,5 @@ typedef enum
 
 uint8_t TS_Init(uint16_t XSize, uint16_t YSize);
 void TS_GetState(TS_StateTypeDef* TsState);
+
+#endif /* INC_TOUCH_H_ */
