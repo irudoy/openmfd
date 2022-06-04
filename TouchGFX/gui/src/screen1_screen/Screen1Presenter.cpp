@@ -17,7 +17,7 @@ void Screen1Presenter::deactivate()
 
 }
 
-void Screen1Presenter::toggleState(void)
-{
-  view.handleBtnClick();
-}
+// void Screen1Presenter::toggleState(void)
+// {
+//   view.handleBtnClick();
+// }

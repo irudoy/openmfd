@@ -11,13 +11,10 @@ class Screen1View : public Screen1ViewBase {
     virtual void setupScreen();
     virtual void tearDownScreen();
     void handleTickEvent();
-    virtual void handleBtnClick();
   protected:
-    int modifier;
-    int peakValue;
     int tickCounter;
-    bool useRandom;
-    Unicode::UnicodeChar peakValueBuffer[10];
+    int value1;
+    int value2;
 };
 
 #endif // SCREEN1VIEW_HPP

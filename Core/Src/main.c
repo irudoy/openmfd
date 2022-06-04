@@ -24,7 +24,9 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "ili9341/ili9341.h"
+#include "data.h"
 #include "debug_screen.h"
+#include "debug_data.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -93,6 +95,13 @@ const osThreadAttr_t touchGFXTask_attributes = {
   .stack_size = 8192 * 4,
   .priority = (osPriority_t) osPriorityNormal,
 };
+/* Definitions for lcdDebugTask */
+osThreadId_t lcdDebugTaskHandle;
+const osThreadAttr_t lcdDebugTask_attributes = {
+  .name = "lcdDebugTask",
+  .stack_size = 512 * 4,
+  .priority = (osPriority_t) osPriorityNormal,
+};
 /* Definitions for DataQueue */
 osMessageQueueId_t DataQueueHandle;
 const osMessageQueueAttr_t DataQueue_attributes = {
@@ -115,6 +124,7 @@ static void MX_CAN2_Init(void);
 static void MX_RNG_Init(void);
 void StartHardwareTask(void *argument);
 void StartTGFXTask(void *argument);
+void StartLcdDebugTask(void *argument);
 
 /* USER CODE BEGIN PFP */
 static void BSP_SDRAM_Initialization_Sequence(SDRAM_HandleTypeDef *hsdram, FMC_SDRAM_CommandTypeDef *Command);
@@ -185,8 +195,13 @@ int main(void)
   MX_RNG_Init();
   MX_TouchGFX_Init();
   /* USER CODE BEGIN 2 */
-  DBGS_init();
+  MFD_DataInit();
 
+  // DEBUG Controllers Init
+  DBGS_init();
+  DBGD_init();
+
+  // CAN Bus Init
   HAL_CAN_Start(&hcan2);
   HAL_CAN_ActivateNotification(&hcan2, CAN_IT_RX_FIFO0_MSG_PENDING);
 
@@ -226,6 +241,9 @@ int main(void)
 
   /* creation of touchGFXTask */
   touchGFXTaskHandle = osThreadNew(StartTGFXTask, NULL, &touchGFXTask_attributes);
+
+  /* creation of lcdDebugTask */
+  lcdDebugTaskHandle = osThreadNew(StartLcdDebugTask, NULL, &lcdDebugTask_attributes);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -781,14 +799,15 @@ static void MX_GPIO_Init(void)
 void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan) {
   HAL_CAN_GetRxMessage(hcan, CAN_RX_FIFO0, &RxHeader, RxData);
 
-  HAL_Delay(5);
+  // TODO parse CAN frames
 }
 
 void DBGS_handleClick_btn1(void) {
-  uint8_t val = 0b10000001;
-  if (osMessageQueueGetCount(DataQueueHandle) == 0) {
-    osMessageQueuePut(DataQueueHandle, &val, 0U, 0);
-  }
+  DBGD_toggleRandom();
+//  uint8_t val = 0b10000001;
+//  if (osMessageQueueGetCount(DataQueueHandle) == 0) {
+//    osMessageQueuePut(DataQueueHandle, &val, 0U, 0);
+//  }
 }
 
 /**
@@ -796,6 +815,10 @@ void DBGS_handleClick_btn1(void) {
  */
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
+  DBGD_resetPeak();
+
+  //
+
   TxData[0] = 0x02;
   TxData[1] = 0x04;
   TxData[2] = 0x06;
@@ -1012,8 +1035,7 @@ void StartHardwareTask(void *argument)
   /* Infinite loop */
   for(;;)
   {
-    DBGS_tick();
-    osDelay(50);
+    DBGD_tick();
   }
   /* USER CODE END 5 */
 }
@@ -1035,6 +1057,25 @@ void StartTGFXTask(void *argument)
     osDelay(1);
   }
   /* USER CODE END StartTGFXTask */
+}
+
+/* USER CODE BEGIN Header_StartLcdDebugTask */
+/**
+* @brief Function implementing the lcdDebugTask thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_StartLcdDebugTask */
+void StartLcdDebugTask(void *argument)
+{
+  /* USER CODE BEGIN StartLcdDebugTask */
+  /* Infinite loop */
+  for(;;)
+  {
+    DBGS_tick();
+    osDelay(50);
+  }
+  /* USER CODE END StartLcdDebugTask */
 }
 
 /**

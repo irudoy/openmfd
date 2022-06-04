@@ -29,7 +29,7 @@ public:
     virtual ~Screen1Presenter() {};
 
     // from model
-    virtual void toggleState(void);
+    // virtual void toggleState(void);
 
 private:
     Screen1Presenter();

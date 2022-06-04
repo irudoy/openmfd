@@ -8,11 +8,11 @@ class ModelListener
 {
 public:
     ModelListener() : model(0) {}
-    
+
     virtual ~ModelListener() {}
 
     // bind to presenter
-    virtual void toggleState(void) {}
+    // virtual void updateEngineSpeed(uint16_t value) {}
 
     void bind(Model* m)
     {

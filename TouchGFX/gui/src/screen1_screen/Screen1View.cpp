@@ -1,24 +1,21 @@
 #include <gui/screen1_screen/Screen1View.hpp>
 
-#include "main.h"
+#include "data.h"
 
-extern RNG_HandleTypeDef hrng;
+MFD_DataSourceTypeDef *boostPres = MFD_DataGetEntry(MFD_DATA_BOOST_PRESSURE);
+MFD_DataSourceTypeDef *engSpeed = MFD_DataGetEntry(MFD_DATA_ENGINE_SPEED);
 
 Screen1View::Screen1View()
 {
-  modifier = 1;
-  tickCounter = 0;
-  useRandom = true;
-}
 
-void Screen1View::handleBtnClick()
-{
-  useRandom = !useRandom;
 }
 
 void Screen1View::setupScreen()
 {
   Screen1ViewBase::setupScreen();
+
+  gauge1.setRange(boostPres->min, boostPres->max);
+  gauge2.setRange(engSpeed->min, engSpeed->max);
 }
 
 void Screen1View::tearDownScreen()
@@ -28,26 +25,9 @@ void Screen1View::tearDownScreen()
 
 void Screen1View::handleTickEvent()
 {
-  tickCounter++;
+  gauge1.updateValue(boostPres->value, 5);
+  gauge1.updatePeakValue(boostPres->peakValue, 5);
 
-  int minValue;
-  int maxValue;
-  gauge1.getRange(minValue, maxValue);
-
-  int currentValue = gauge1.getValue();
-
-  if (currentValue == minValue || currentValue == maxValue) {
-    modifier *= -1;
-  }
-
-  if (tickCounter % 30 == 0 || !useRandom) {
-    gauge1.updateValue(
-      useRandom ? HAL_RNG_GetRandomNumber(&hrng) % 100 : gauge1.getValue() + modifier,
-      useRandom ? 30 : 0
-    );
-    gauge2.updateValue(
-      useRandom ? HAL_RNG_GetRandomNumber(&hrng) % 100 : gauge2.getValue() + modifier,
-      useRandom ? 30 : 0
-    );
-  }
+  gauge2.updateValue(engSpeed->value, 5);
+  gauge2.updatePeakValue(engSpeed->peakValue, 5);
 }
