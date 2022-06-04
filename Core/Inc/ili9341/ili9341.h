@@ -3,7 +3,8 @@
 #define __ILI9341_H__
 
 #include "stm32f4xx_hal.h"
-#include <stdbool.h>
+#include "stdlib.h"
+#include "stdbool.h"
 
 #include "ili9341/fonts.h"
 
@@ -71,6 +72,10 @@ void ILI9341_Unselect();
 
 void ILI9341_Init(void);
 void ILI9341_DrawPixel(uint16_t x, uint16_t y, uint16_t color);
+void ILI9341_DrawCircle(int16_t x0, int16_t y0, int16_t r, uint16_t color);
+void ILI9341_FillCircle(int16_t x0, int16_t y0, int16_t r, uint16_t color);
+void ILI9341_FillTriangle(int16_t x0, int16_t y0, int16_t x1, int16_t y1, int16_t x2, int16_t y2, uint16_t color);
+void ILI9341_DrawLine(uint32_t x1, uint32_t y1, uint32_t x2, uint32_t y2, uint16_t color);
 void ILI9341_WriteString(uint16_t x, uint16_t y, const char* str, FontDef font, uint16_t color, uint16_t bgcolor);
 void ILI9341_FillRectangle(uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint16_t color);
 void ILI9341_FillScreen(uint16_t color);

@@ -1,6 +1,8 @@
 #include "stm32f4xx_hal.h"
 #include "ili9341/ili9341.h"
 
+#define swap(a, b) { int16_t t = a; a = b; b = t; }
+
 static void ILI9341_Select() {
   HAL_GPIO_WritePin(ILI9341_CS_GPIO_Port, ILI9341_CS_Pin, GPIO_PIN_RESET);
 }
@@ -198,15 +200,225 @@ void ILI9341_Init() {
   ILI9341_Unselect();
 }
 
+static void ILI9341_WritePixel(uint16_t x, uint16_t y, uint16_t color) {
+  ILI9341_SetAddressWindow(x, y, x + 1, y + 1);
+  uint8_t data[] = { color >> 8, color & 0xFF };
+  ILI9341_WriteData(data, sizeof(data));
+}
+
 void ILI9341_DrawPixel(uint16_t x, uint16_t y, uint16_t color) {
   if ((x >= ILI9341_WIDTH) || (y >= ILI9341_HEIGHT))
     return;
 
   ILI9341_Select();
+  ILI9341_WritePixel(x, y, color);
+  ILI9341_Unselect();
+}
 
-  ILI9341_SetAddressWindow(x, y, x + 1, y + 1);
-  uint8_t data[] = { color >> 8, color & 0xFF };
-  ILI9341_WriteData(data, sizeof(data));
+void ILI9341_WriteLine(uint32_t x1, uint32_t y1, uint32_t x2, uint32_t y2, uint16_t color) {
+  uint32_t steep = abs(y2 - y1) > abs(x2 - x1);
+  if (steep) {
+    swap(x1, y1);
+    swap(x2, y2);
+  }
+  if (x1 > x2) {
+    swap(x1, x2);
+    swap(y1, y2);
+  }
+  uint32_t dx = x2 - x1;
+  uint32_t dy = abs(y2 - y1);
+  uint32_t err = dx / 2;
+  uint32_t ystep = y1 < y2 ? 1 : -1;
+  for (; x1 <= x2; x1++) {
+    if (steep) {
+      ILI9341_WritePixel(y1, x1, color);
+    } else {
+      ILI9341_WritePixel(x1, y1, color);
+    }
+    err -= dy;
+    if (err < 0) {
+      y1 += ystep;
+      err = dx;
+    }
+  }
+}
+
+void ILI9341_DrawLine(uint32_t x1, uint32_t y1, uint32_t x2, uint32_t y2, uint16_t color) {
+  ILI9341_Select();
+  ILI9341_WriteLine(x1, y1, x2, y2, color);
+  ILI9341_Unselect();
+}
+
+void ILI9341_DrawCircle(int16_t x0, int16_t y0, int16_t r, uint16_t color) {
+  int16_t f = 1 - r;
+  int16_t ddF_x = 1;
+  int16_t ddF_y = -2 * r;
+  int16_t x = 0;
+  int16_t y = r;
+
+  ILI9341_Select();
+  ILI9341_WritePixel(x0, y0 + r, color);
+  ILI9341_WritePixel(x0, y0 - r, color);
+  ILI9341_WritePixel(x0 + r, y0, color);
+  ILI9341_WritePixel(x0 - r, y0, color);
+
+  while (x < y) {
+    if (f >= 0) {
+      y--;
+      ddF_y += 2;
+      f += ddF_y;
+    }
+    x++;
+    ddF_x += 2;
+    f += ddF_x;
+
+    ILI9341_WritePixel(x0 + x, y0 + y, color);
+    ILI9341_WritePixel(x0 - x, y0 + y, color);
+    ILI9341_WritePixel(x0 + x, y0 - y, color);
+    ILI9341_WritePixel(x0 - x, y0 - y, color);
+    ILI9341_WritePixel(x0 + y, y0 + x, color);
+    ILI9341_WritePixel(x0 - y, y0 + x, color);
+    ILI9341_WritePixel(x0 + y, y0 - x, color);
+    ILI9341_WritePixel(x0 - y, y0 - x, color);
+  }
+  ILI9341_Unselect();
+}
+
+static void ILI9341_WriteFastVLine(int16_t x, int16_t y, int16_t h, uint16_t color) {
+  ILI9341_WriteLine(x, y, x, y + h - 1, color);
+}
+
+static void ILI9341_WriteFastHLine(int16_t x, int16_t y, int16_t w, uint16_t color) {
+  ILI9341_WriteLine(x, y, x + w - 1, y, color);
+}
+
+void ILI9341_FillCircle(int16_t x0, int16_t y0, int16_t r, uint16_t color) {
+  ILI9341_Select();
+
+  ILI9341_WriteFastVLine(x0, y0 - r, 2 * r + 1, color);
+
+  uint8_t corners = 3;
+  int16_t delta = 0;
+
+  int16_t f = 1 - r;
+  int16_t ddF_x = 1;
+  int16_t ddF_y = -2 * r;
+  int16_t x = 0;
+  int16_t y = r;
+  int16_t px = x;
+  int16_t py = y;
+
+  delta++; // Avoid some +1's in the loop
+
+  while (x < y) {
+    if (f >= 0) {
+      y--;
+      ddF_y += 2;
+      f += ddF_y;
+    }
+    x++;
+    ddF_x += 2;
+    f += ddF_x;
+    // These checks avoid double-drawing certain lines, important
+    // for the SSD1306 library which has an INVERT drawing mode.
+    if (x < (y + 1)) {
+      if (corners & 1)
+        ILI9341_WriteFastVLine(x0 + x, y0 - y, 2 * y + delta, color);
+      if (corners & 2)
+        ILI9341_WriteFastVLine(x0 - x, y0 - y, 2 * y + delta, color);
+    }
+    if (y != py) {
+      if (corners & 1)
+        ILI9341_WriteFastVLine(x0 + py, y0 - px, 2 * px + delta, color);
+      if (corners & 2)
+        ILI9341_WriteFastVLine(x0 - py, y0 - px, 2 * px + delta, color);
+      py = y;
+    }
+    px = x;
+  }
+
+  ILI9341_Unselect();
+}
+
+void ILI9341_FillTriangle(int16_t x0, int16_t y0, int16_t x1, int16_t y1, int16_t x2, int16_t y2, uint16_t color) {
+  int16_t a, b, y, last;
+
+  // Sort coordinates by Y order (y2 >= y1 >= y0)
+  if (y0 > y1) {
+    swap(y0, y1);
+    swap(x0, x1);
+  }
+  if (y1 > y2) {
+    swap(y2, y1);
+    swap(x2, x1);
+  }
+  if (y0 > y1) {
+    swap(y0, y1);
+    swap(x0, x1);
+  }
+
+  ILI9341_Select();
+  if (y0 == y2) { // Handle awkward all-on-same-line case as its own thing
+    a = b = x0;
+    if (x1 < a)
+      a = x1;
+    else if (x1 > b)
+      b = x1;
+    if (x2 < a)
+      a = x2;
+    else if (x2 > b)
+      b = x2;
+    ILI9341_WriteFastHLine(a, y0, b - a + 1, color);
+    ILI9341_Unselect();
+    return;
+  }
+
+  int16_t dx01 = x1 - x0, dy01 = y1 - y0, dx02 = x2 - x0, dy02 = y2 - y0,
+          dx12 = x2 - x1, dy12 = y2 - y1;
+  int32_t sa = 0, sb = 0;
+
+  // For upper part of triangle, find scanline crossings for segments
+  // 0-1 and 0-2.  If y1=y2 (flat-bottomed triangle), the scanline y1
+  // is included here (and second loop will be skipped, avoiding a /0
+  // error there), otherwise scanline y1 is skipped here and handled
+  // in the second loop...which also avoids a /0 error here if y0=y1
+  // (flat-topped triangle).
+  if (y1 == y2)
+    last = y1; // Include y1 scanline
+  else
+    last = y1 - 1; // Skip it
+
+  for (y = y0; y <= last; y++) {
+    a = x0 + sa / dy01;
+    b = x0 + sb / dy02;
+    sa += dx01;
+    sb += dx02;
+    /* longhand:
+    a = x0 + (x1 - x0) * (y - y0) / (y1 - y0);
+    b = x0 + (x2 - x0) * (y - y0) / (y2 - y0);
+    */
+    if (a > b)
+      swap(a, b);
+    ILI9341_WriteFastHLine(a, y, b - a + 1, color);
+  }
+
+  // For lower part of triangle, find scanline crossings for segments
+  // 0-2 and 1-2.  This loop is skipped if y1=y2.
+  sa = (int32_t)dx12 * (y - y1);
+  sb = (int32_t)dx02 * (y - y0);
+  for (; y <= y2; y++) {
+    a = x1 + sa / dy12;
+    b = x0 + sb / dy02;
+    sa += dx12;
+    sb += dx02;
+    /* longhand:
+    a = x1 + (x2 - x1) * (y - y1) / (y2 - y1);
+    b = x0 + (x2 - x0) * (y - y0) / (y2 - y0);
+    */
+    if (a > b)
+      swap(a, b);
+    ILI9341_WriteFastHLine(a, y, b - a + 1, color);
+  }
 
   ILI9341_Unselect();
 }

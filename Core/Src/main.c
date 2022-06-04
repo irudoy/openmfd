@@ -23,6 +23,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "stdbool.h"
 #include "ili9341/ili9341.h"
 #include "data.h"
 #include "debug_screen.h"
@@ -802,13 +803,46 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan) {
   // TODO parse CAN frames
 }
 
-void DBGS_handleClick_btn1(void) {
-  DBGD_toggleRandom();
-//  uint8_t val = 0b10000001;
-//  if (osMessageQueueGetCount(DataQueueHandle) == 0) {
-//    osMessageQueuePut(DataQueueHandle, &val, 0U, 0);
-//  }
+void DBGS_handleClick_DISP(void) {
+
 }
+
+void DBGS_handleClick_RETURN(void) {
+  DBGD_toggleEnable();
+}
+
+void DBGS_handleClick_MENU(void) {
+
+}
+
+void DBGS_handleClick_MODE(void) {
+  DBGD_toggleRandom();
+  //  uint8_t val = 0b10000001;
+  //  if (osMessageQueueGetCount(DataQueueHandle) == 0) {
+  //    osMessageQueuePut(DataQueueHandle, &val, 0U, 0);
+  //  }
+}
+
+void DBGS_handleClick_UP(void) {
+  DBGD_stubIncDecAll(true);
+}
+
+void DBGS_handleClick_DOWN(void) {
+  DBGD_stubIncDecAll(false);
+}
+
+void DBGS_handleClick_LEFT(void) {
+
+}
+
+void DBGS_handleClick_RIGHT(void) {
+
+}
+
+void DBGS_handleClick_CENTER(void) {
+  DBGD_resetPeak();
+}
+
 
 /**
  * Handle Blue Button Push
@@ -1073,7 +1107,6 @@ void StartLcdDebugTask(void *argument)
   for(;;)
   {
     DBGS_tick();
-    osDelay(50);
   }
   /* USER CODE END StartLcdDebugTask */
 }
