@@ -24,6 +24,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "stdbool.h"
+#include "comm.h"
 #include "ili9341/ili9341.h"
 #include "data.h"
 #include "debug_screen.h"
@@ -147,14 +148,6 @@ uint16_t IOE_ReadMultiple(uint8_t Addr, uint8_t Reg, uint8_t *pBuffer, uint16_t 
 /* USER CODE BEGIN 0 */
 uint32_t I2c3Timeout = I2C3_TIMEOUT_MAX; /*<! Value of Timeout when I2C communication fails */
 
-CAN_RxHeaderTypeDef RxHeader;
-CAN_TxHeaderTypeDef TxHeader;
-
-uint8_t TxData[8];
-uint8_t RxData[8];
-
-uint32_t TxMailbox;
-
 /* USER CODE END 0 */
 
 /**
@@ -202,14 +195,7 @@ int main(void)
   DBGS_init();
   DBGD_init();
 
-  // CAN Bus Init
-  HAL_CAN_Start(&hcan2);
-  HAL_CAN_ActivateNotification(&hcan2, CAN_IT_RX_FIFO0_MSG_PENDING);
-
-  TxHeader.DLC = 8;
-  TxHeader.IDE = CAN_ID_STD;
-  TxHeader.RTR = CAN_RTR_DATA;
-  TxHeader.StdId = 0x666;
+  COMM_init();
 
   /* USER CODE END 2 */
 
@@ -354,21 +340,7 @@ static void MX_CAN2_Init(void)
   }
   /* USER CODE BEGIN CAN2_Init 2 */
 
-  CAN_FilterTypeDef canFilterConfig;
-  canFilterConfig.FilterBank = 14;
-  canFilterConfig.FilterMode = CAN_FILTERMODE_IDMASK;
-  canFilterConfig.FilterScale = CAN_FILTERSCALE_32BIT;
-  canFilterConfig.FilterIdHigh = 0x0000;
-  canFilterConfig.FilterIdLow = 0x0000;
-  canFilterConfig.FilterMaskIdHigh = 0x0000;
-  canFilterConfig.FilterMaskIdLow = 0x0000;
-  canFilterConfig.FilterFIFOAssignment = CAN_RX_FIFO0;
-  canFilterConfig.FilterActivation = ENABLE;
-
-  if (HAL_CAN_ConfigFilter(&hcan2, &canFilterConfig) != HAL_OK) {
-    /* Filter configuration Error */
-    Error_Handler();
-  }
+  COMM_setupCANFilter();
 
   /* USER CODE END CAN2_Init 2 */
 
@@ -797,12 +769,6 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 
-void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan) {
-  HAL_CAN_GetRxMessage(hcan, CAN_RX_FIFO0, &RxHeader, RxData);
-
-  // TODO parse CAN frames
-}
-
 void DBGS_handleClick_DISP(void) {
 
 }
@@ -850,15 +816,6 @@ void DBGS_handleClick_CENTER(void) {
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
   DBGD_resetPeak();
-
-  //
-
-  TxData[0] = 0x02;
-  TxData[1] = 0x04;
-  TxData[2] = 0x06;
-  TxData[3] = 0x08;
-
-  HAL_CAN_AddTxMessage(&hcan2, &TxHeader, TxData, &TxMailbox);
 }
 
 /**
