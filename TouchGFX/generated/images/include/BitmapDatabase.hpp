@@ -9,8 +9,13 @@
 const uint16_t BITMAP_ARROW_ID = 0;
 const uint16_t BITMAP_ARROW_PEAK_ID = 1;
 const uint16_t BITMAP_METER_UNIT_ID = 2;
-const uint16_t BITMAP_TURBO_ICON_ID = 3;
-const uint16_t BITMAP_VALUE_ID = 4;
+const uint16_t BITMAP_METER_UNIT_SPEC_1_ID = 3;
+const uint16_t BITMAP_SCALE_9_17_ID = 4;
+const uint16_t BITMAP_SCALES_11_21_ID = 5;
+const uint16_t BITMAP_SCALES_6_11_ID = 6;
+const uint16_t BITMAP_SCALES_SPEC_1_ID = 7;
+const uint16_t BITMAP_TURBO_ICON_ID = 8;
+const uint16_t BITMAP_VALUE_ID = 9;
 
 namespace BitmapDatabase
 {

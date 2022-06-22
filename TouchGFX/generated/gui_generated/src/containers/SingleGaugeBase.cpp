@@ -22,8 +22,37 @@ SingleGaugeBase::SingleGaugeBase()
     gauge_arc.getArc().setRadius(57);
     gauge_arc.getArc().setLineWidth(0);
 
-    image1.setXY(22, 20);
-    image1.setBitmap(touchgfx::Bitmap(BITMAP_METER_UNIT_ID));
+    bg.setPosition(22, 20, 118, 138);
+
+    gauge_bg_spec_1.setXY(0, 0);
+    gauge_bg_spec_1.setVisible(false);
+    gauge_bg_spec_1.setBitmap(touchgfx::Bitmap(BITMAP_METER_UNIT_SPEC_1_ID));
+    bg.add(gauge_bg_spec_1);
+
+    gauge_bg.setXY(0, 0);
+    gauge_bg.setBitmap(touchgfx::Bitmap(BITMAP_METER_UNIT_ID));
+    bg.add(gauge_bg);
+
+    scales.setPosition(23, 21, 110, 110);
+
+    scale_spec_1.setXY(0, 0);
+    scale_spec_1.setVisible(false);
+    scale_spec_1.setBitmap(touchgfx::Bitmap(BITMAP_SCALES_SPEC_1_ID));
+    scales.add(scale_spec_1);
+
+    scale_11_21.setXY(0, 0);
+    scale_11_21.setVisible(false);
+    scale_11_21.setBitmap(touchgfx::Bitmap(BITMAP_SCALES_11_21_ID));
+    scales.add(scale_11_21);
+
+    scale_9_17.setXY(0, 0);
+    scale_9_17.setVisible(false);
+    scale_9_17.setBitmap(touchgfx::Bitmap(BITMAP_SCALE_9_17_ID));
+    scales.add(scale_9_17);
+
+    scale_6_11.setXY(0, 0);
+    scale_6_11.setBitmap(touchgfx::Bitmap(BITMAP_SCALES_6_11_ID));
+    scales.add(scale_6_11);
 
     gauge_peak.setPosition(20, 18, 114, 114);
     gauge_peak.setCenter(57, 57);
@@ -60,7 +89,8 @@ SingleGaugeBase::SingleGaugeBase()
     image2.setBitmap(touchgfx::Bitmap(BITMAP_TURBO_ICON_ID));
 
     add(gauge_arc);
-    add(image1);
+    add(bg);
+    add(scales);
     add(gauge_peak);
     add(gauge_value);
     add(peak_caption);

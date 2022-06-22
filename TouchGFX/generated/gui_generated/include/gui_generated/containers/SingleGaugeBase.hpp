@@ -8,6 +8,7 @@
 #include <touchgfx/containers/Container.hpp>
 #include <touchgfx/widgets/Gauge.hpp>
 #include <touchgfx/widgets/canvas/PainterRGB565Bitmap.hpp>
+#include <touchgfx/containers/Container.hpp>
 #include <touchgfx/widgets/Image.hpp>
 #include <touchgfx/widgets/TextArea.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
@@ -29,7 +30,14 @@ protected:
      */
     touchgfx::Gauge gauge_arc;
     touchgfx::PainterRGB565Bitmap gauge_arcPainter;
-    touchgfx::Image image1;
+    touchgfx::Container bg;
+    touchgfx::Image gauge_bg_spec_1;
+    touchgfx::Image gauge_bg;
+    touchgfx::Container scales;
+    touchgfx::Image scale_spec_1;
+    touchgfx::Image scale_11_21;
+    touchgfx::Image scale_9_17;
+    touchgfx::Image scale_6_11;
     touchgfx::Gauge gauge_peak;
     touchgfx::Gauge gauge_value;
     touchgfx::TextArea peak_caption;

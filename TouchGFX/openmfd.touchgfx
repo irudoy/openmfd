@@ -71,13 +71,70 @@
             "ArcCapStyle": "Butt"
           },
           {
-            "Type": "Image",
-            "Name": "image1",
+            "Type": "Container",
+            "Name": "bg",
             "X": 22,
             "Y": 20,
             "Width": 118,
             "Height": 138,
-            "RelativeFilename": "meter-unit.png"
+            "Components": [
+              {
+                "Type": "Image",
+                "Name": "gauge_bg_spec_1",
+                "Width": 118,
+                "Height": 138,
+                "Visible": false,
+                "RelativeFilename": "meter-unit-spec-1.png"
+              },
+              {
+                "Type": "Image",
+                "Name": "gauge_bg",
+                "Width": 118,
+                "Height": 138,
+                "RelativeFilename": "meter-unit.png"
+              }
+            ]
+          },
+          {
+            "Type": "Container",
+            "Name": "scales",
+            "X": 23,
+            "Y": 21,
+            "Width": 110,
+            "Height": 110,
+            "Components": [
+              {
+                "Type": "Image",
+                "Name": "scale_spec_1",
+                "Width": 110,
+                "Height": 108,
+                "Visible": false,
+                "RelativeFilename": "scales-spec-1.png"
+              },
+              {
+                "Type": "Image",
+                "Name": "scale_11_21",
+                "Width": 110,
+                "Height": 110,
+                "Visible": false,
+                "RelativeFilename": "scales-11-21.png"
+              },
+              {
+                "Type": "Image",
+                "Name": "scale_9_17",
+                "Width": 108,
+                "Height": 110,
+                "Visible": false,
+                "RelativeFilename": "scale-9-17.png"
+              },
+              {
+                "Type": "Image",
+                "Name": "scale_6_11",
+                "Width": 108,
+                "Height": 110,
+                "RelativeFilename": "scales-6-11.png"
+              }
+            ]
           },
           {
             "Type": "Gauge",
