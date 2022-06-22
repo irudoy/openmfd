@@ -12,7 +12,6 @@ enum LANGUAGES
 
 enum TEXTS
 {
-    T_RESOURCEID1,
     T___SINGLEUSE_ME5Z,
     T___SINGLEUSE_828X,
     T_PEAKVAL,

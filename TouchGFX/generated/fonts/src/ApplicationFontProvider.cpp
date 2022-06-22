@@ -10,14 +10,8 @@ touchgfx::Font* ApplicationFontProvider::getFont(touchgfx::FontId typography)
     switch (typography)
     {
     case Typography::DEFAULT:
-        // arialbi_14_4bpp
+        // Inter_SemiBoldItalic_12_4bpp
         return const_cast<touchgfx::Font*>(TypedTextDatabase::getFonts()[0]);
-    case Typography::LARGE:
-        // arialbi_40_4bpp
-        return const_cast<touchgfx::Font*>(TypedTextDatabase::getFonts()[1]);
-    case Typography::SMALL:
-        // arialbi_12_4bpp
-        return const_cast<touchgfx::Font*>(TypedTextDatabase::getFonts()[2]);
     default:
         return 0;
     }

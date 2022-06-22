@@ -4,16 +4,11 @@
     <Language Id="GB" />
   </Languages>
   <Texts>
-    <TextGroup Id="Group1">
-      <Text Id="ResourceId1" Alignment="Left" TypographyId="Default">
-        <Translation Language="GB">New Text</Translation>
-      </Text>
-    </TextGroup>
     <TextGroup Id="Unsorted">
       <Text Id="__SingleUse_ME5Z" Alignment="Right" TypographyId="Default">
         <Translation Language="GB">&lt;value&gt;</Translation>
       </Text>
-      <Text Id="__SingleUse_828X" Alignment="Left" TypographyId="Small">
+      <Text Id="__SingleUse_828X" Alignment="Left" TypographyId="Default">
         <Translation Language="GB">PEAK</Translation>
       </Text>
       <Text Id="peakval" Alignment="Left" TypographyId="Default">
@@ -22,8 +17,6 @@
     </TextGroup>
   </Texts>
   <Typographies>
-    <Typography Id="Default" Font="arialbi.ttf" Size="14" Bpp="4" Direction="LTR" FallbackCharacter="?" />
-    <Typography Id="Large" Font="arialbi.ttf" Size="40" Bpp="4" Direction="LTR" FallbackCharacter="?" />
-    <Typography Id="Small" Font="arialbi.ttf" Size="12" Bpp="4" Direction="LTR" FallbackCharacter="?" />
+    <Typography Id="Default" Font="Inter-SemiBoldItalic.ttf" Size="12" Bpp="4" Direction="LTR" FallbackCharacter="?" />
   </Typographies>
 </TextDatabase>
