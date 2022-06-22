@@ -9,7 +9,8 @@ void MFD_DataInit(void) {
     .name = "BATT",
   };
   MFD_DataSourcesAll[MFD_DATA_CLT_TEMP] = (MFD_DataSourceTypeDef) {
-    .max = 255,
+    .min = 50,
+    .max = 150,
     .name = "CLT",
   };
   MFD_DataSourcesAll[MFD_DATA_IGN_TIMING] = (MFD_DataSourceTypeDef) {

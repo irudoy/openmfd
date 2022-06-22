@@ -2,13 +2,13 @@
 
 extern CAN_HandleTypeDef hcan2;
 
-CAN_RxHeaderTypeDef RxHeader;
-CAN_TxHeaderTypeDef TxHeader;
+CAN_RxHeaderTypeDef CANRxHeader;
+CAN_TxHeaderTypeDef CANTxHeader;
 
-uint8_t TxData[8];
-uint8_t RxData[8];
+uint8_t CANTxData[8];
+uint8_t CANRxData[8];
 
-uint32_t TxMailbox;
+uint32_t CANTxMailbox;
 
 //TxData[0] = 0x02;
 //TxData[1] = 0x04;
@@ -20,10 +20,10 @@ void COMM_init(void) {
   HAL_CAN_Start(&hcan2);
   HAL_CAN_ActivateNotification(&hcan2, CAN_IT_RX_FIFO0_MSG_PENDING);
 
-  TxHeader.DLC = 8;
-  TxHeader.IDE = CAN_ID_STD;
-  TxHeader.RTR = CAN_RTR_DATA;
-  TxHeader.StdId = 0x666;
+  CANTxHeader.DLC = 8;
+  CANTxHeader.IDE = CAN_ID_STD;
+  CANTxHeader.RTR = CAN_RTR_DATA;
+  CANTxHeader.StdId = 0x666;
 }
 
 void COMM_setupCANFilter(void) {
@@ -45,40 +45,28 @@ void COMM_setupCANFilter(void) {
 }
 
 void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan) {
-  HAL_CAN_GetRxMessage(hcan, CAN_RX_FIFO0, &RxHeader, RxData);
+  HAL_CAN_GetRxMessage(hcan, CAN_RX_FIFO0, &CANRxHeader, CANRxData);
 
-  //  CMD_LEFT            0x01
-  //  CMD_RIGHT           0x02
-  //  CMD_UP              0x03
-  //  CMD_DOWN            0x04
-  //  CMD_PLAY_PAUSE      0x05
-  //  CMD_1               0x06
-  //  CMD_3               0x07
-  //  CMD_4               0x08
-  //  CMD_5               0x09
-  //  CMD_REPEAT          0x10
-  //  CMD_SCAN            0x11
-
-  // TODO: filter ID 0x669
-
-  switch(RxData[0]) {
-    case 0x01:
-      DBGD_toggleRandom();
-      break;
-    case 0x02:
-      DBGD_toggleEnable();
-      break;
-    case 0x03:
-      DBGD_stubIncDecAll(true);
-      break;
-    case 0x04:
-      DBGD_stubIncDecAll(false);
-      break;
-    case 0x05:
-      DBGD_resetPeak();
-      break;
-    default:
-      break;
+  if (CANRxHeader.StdId == CBUS_ID) {
+    switch(CANRxData[0]) {
+      case CBUS_CMD_LEFT:
+        DBGD_toggleRandom();
+        break;
+      case CBUS_CMD_RIGHT:
+        DBGD_toggleEnable();
+        break;
+      case CBUS_CMD_UP:
+        DBGD_stubIncDecAll(true);
+        break;
+      case CBUS_CMD_DOWN:
+        DBGD_stubIncDecAll(false);
+        break;
+      case CBUS_CMD_PLAY_PAUSE:
+        DBGD_resetPeak();
+        break;
+      default:
+        break;
+    }
   }
 }
 
