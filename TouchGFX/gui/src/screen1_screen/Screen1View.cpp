@@ -2,8 +2,8 @@
 
 #include "data.h"
 
-MFD_DataSourceTypeDef *boostPres = MFD_DataGetEntry(MFD_DATA_BOOST_PRESSURE);
-MFD_DataSourceTypeDef *engSpeed = MFD_DataGetEntry(MFD_DATA_ENGINE_SPEED);
+MFD_GaugeTypeDef *boostPres = MFD_GetGauge(MFD_GAUGE_BOOST_PRESSURE);
+MFD_GaugeTypeDef *engSpeed = MFD_GetGauge(MFD_GAUGE_ENGINE_SPEED);
 
 Screen1View::Screen1View()
 {
@@ -14,8 +14,8 @@ void Screen1View::setupScreen()
 {
   Screen1ViewBase::setupScreen();
 
-  gauge1.setRange(boostPres->min, boostPres->max);
-  gauge2.setRange(engSpeed->min, engSpeed->max);
+  gauge1.setConfig(engSpeed);
+  gauge2.setConfig(boostPres);
 }
 
 void Screen1View::tearDownScreen()
@@ -25,9 +25,9 @@ void Screen1View::tearDownScreen()
 
 void Screen1View::handleTickEvent()
 {
-  gauge1.updateValue(boostPres->value, 5);
-  gauge1.updatePeakValue(boostPres->peakValue, 5);
+  gauge1.updateValue(engSpeed->value, 5);
+  gauge1.updatePeakValue(engSpeed->peakValue, 5);
 
-  gauge2.updateValue(engSpeed->value, 5);
-  gauge2.updatePeakValue(engSpeed->peakValue, 5);
+  gauge2.updateValue(boostPres->value, 5);
+  gauge2.updatePeakValue(boostPres->peakValue, 5);
 }

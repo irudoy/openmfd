@@ -4,7 +4,7 @@
 #define DBGD_OS_DELAY_RANDOM 500
 
 extern RNG_HandleTypeDef hrng;
-extern MFD_DataSourceTypeDef MFD_DataSourcesAll[];
+extern MFD_GaugeTypeDef MFD_GaugesAll[];
 
 uint32_t tickCounter = 0;
 bool useRandom = false;
@@ -22,12 +22,12 @@ void DBGD_toggleEnable(void) {
 }
 
 void DBGD_resetPeak(void) {
-  for (uint8_t i = 0; i < MFD_DATASOURCES_SIZE; i++) {
-    MFD_DataSourcesAll[i].peakValue = MFD_DataSourcesAll[i].value;
+  for (uint8_t i = 0; i < MFD_GAUGES_SIZE; i++) {
+    MFD_GaugesAll[i].peakValue = MFD_GaugesAll[i].value;
   }
 }
 
-static void DBGD_stubIncDecEntry(MFD_DataSourceTypeDef *entry, bool inc) {
+static void DBGD_stubIncDecEntry(MFD_GaugeTypeDef *entry, bool inc) {
   if (entry->DEBUG_modifier == 0) entry->DEBUG_modifier = 1;
   entry->value = inc ? entry->value + entry->DEBUG_modifier : entry->value - entry->DEBUG_modifier;
   if (entry->value >= entry->max) entry->value = entry->min;
@@ -36,12 +36,12 @@ static void DBGD_stubIncDecEntry(MFD_DataSourceTypeDef *entry, bool inc) {
 }
 
 void DBGD_stubIncDecAll(bool inc) {
-  for (uint8_t i = 0; i < MFD_DATASOURCES_SIZE; i++) {
-    DBGD_stubIncDecEntry(&MFD_DataSourcesAll[i], inc);
+  for (uint8_t i = 0; i < MFD_GAUGES_SIZE; i++) {
+    DBGD_stubIncDecEntry(&MFD_GaugesAll[i], inc);
   }
 }
 
-static void DBGD_stubEntry(MFD_DataSourceTypeDef *entry) {
+static void DBGD_stubEntry(MFD_GaugeTypeDef *entry) {
   if (entry->DEBUG_modifier == 0) entry->DEBUG_modifier = 1;
 
   if (useRandom) {
@@ -65,8 +65,8 @@ void DBGD_tick(void) {
   tickCounter++;
 
   if (enabled) {
-    for (uint8_t i = 0; i < MFD_DATASOURCES_SIZE; i++) {
-      DBGD_stubEntry(&MFD_DataSourcesAll[i]);
+    for (uint8_t i = 0; i < MFD_GAUGES_SIZE; i++) {
+      DBGD_stubEntry(&MFD_GaugesAll[i]);
     }
   }
 

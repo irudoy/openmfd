@@ -74,19 +74,80 @@ SingleGaugeBase::SingleGaugeBase()
     gauge_value.setMovingNeedleRenderingAlgorithm(touchgfx::TextureMapper::BILINEAR_INTERPOLATION);
     gauge_value.setSteadyNeedleRenderingAlgorithm(touchgfx::TextureMapper::BILINEAR_INTERPOLATION);
 
-    peak_caption.setXY(91, 126);
+    peak_caption.setXY(90, 125);
     peak_caption.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     peak_caption.setLinespacing(0);
-    peak_caption.setTypedText(touchgfx::TypedText(T___SINGLEUSE_828X));
+    peak_caption.setTypedText(touchgfx::TypedText(T_PEAK));
 
-    peak_value.setPosition(91, 110, 43, 15);
+    peak_value.setPosition(91, 111, 43, 15);
     peak_value.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     peak_value.setLinespacing(0);
-    peak_value.setWildcard(touchgfx::TypedText(T_PEAKVAL).getText());
-    peak_value.setTypedText(touchgfx::TypedText(T___SINGLEUSE_ME5Z));
+    Unicode::snprintf(peak_valueBuffer, PEAK_VALUE_SIZE, "%s", touchgfx::TypedText(T_PEAK_VAL).getText());
+    peak_value.setWildcard(peak_valueBuffer);
+    peak_value.setTypedText(touchgfx::TypedText(T___SINGLEUSE_3SAG));
 
-    image2.setXY(95, 82);
-    image2.setBitmap(touchgfx::Bitmap(BITMAP_TURBO_ICON_ID));
+    icon_boost.setXY(95, 82);
+    icon_boost.setBitmap(touchgfx::Bitmap(BITMAP_TURBO_ICON_ID));
+
+    values.setPosition(0, 0, 160, 173);
+
+    values_6_11.setPosition(0, 0, 160, 173);
+
+    value_6_11_5.setPosition(117, 20, 43, 15);
+    value_6_11_5.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    value_6_11_5.setLinespacing(0);
+    Unicode::snprintf(value_6_11_5Buffer, VALUE_6_11_5_SIZE, "%s", touchgfx::TypedText(T_SCALE_VAL).getText());
+    value_6_11_5.setWildcard(value_6_11_5Buffer);
+    value_6_11_5.setTypedText(touchgfx::TypedText(T___SINGLEUSE_Y1Y9));
+    values_6_11.add(value_6_11_5);
+
+    value_6_11_4.setPosition(55, 1, 43, 15);
+    value_6_11_4.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    value_6_11_4.setLinespacing(0);
+    Unicode::snprintf(value_6_11_4Buffer, VALUE_6_11_4_SIZE, "%s", touchgfx::TypedText(T_SCALE_VAL).getText());
+    value_6_11_4.setWildcard(value_6_11_4Buffer);
+    value_6_11_4.setTypedText(touchgfx::TypedText(T___SINGLEUSE_8EJH));
+    values_6_11.add(value_6_11_4);
+
+    value_6_11_3.setPosition(-10, 20, 43, 15);
+    value_6_11_3.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    value_6_11_3.setLinespacing(0);
+    Unicode::snprintf(value_6_11_3Buffer, VALUE_6_11_3_SIZE, "%s", touchgfx::TypedText(T_SCALE_VAL).getText());
+    value_6_11_3.setWildcard(value_6_11_3Buffer);
+    value_6_11_3.setTypedText(touchgfx::TypedText(T___SINGLEUSE_595N));
+    values_6_11.add(value_6_11_3);
+
+    value_6_11_2.setPosition(-27, 67, 43, 15);
+    value_6_11_2.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    value_6_11_2.setLinespacing(0);
+    Unicode::snprintf(value_6_11_2Buffer, VALUE_6_11_2_SIZE, "%s", touchgfx::TypedText(T_SCALE_VAL).getText());
+    value_6_11_2.setWildcard(value_6_11_2Buffer);
+    value_6_11_2.setTypedText(touchgfx::TypedText(T___SINGLEUSE_7E1I));
+    values_6_11.add(value_6_11_2);
+
+    value_6_11_1.setPosition(-10, 114, 43, 15);
+    value_6_11_1.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    value_6_11_1.setLinespacing(0);
+    Unicode::snprintf(value_6_11_1Buffer, VALUE_6_11_1_SIZE, "%s", touchgfx::TypedText(T_SCALE_VAL).getText());
+    value_6_11_1.setWildcard(value_6_11_1Buffer);
+    value_6_11_1.setTypedText(touchgfx::TypedText(T___SINGLEUSE_M1TV));
+    values_6_11.add(value_6_11_1);
+
+    value_6_11_0.setPosition(38, 134, 43, 15);
+    value_6_11_0.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    value_6_11_0.setLinespacing(0);
+    Unicode::snprintf(value_6_11_0Buffer, VALUE_6_11_0_SIZE, "%s", touchgfx::TypedText(T_SCALE_VAL).getText());
+    value_6_11_0.setWildcard(value_6_11_0Buffer);
+    value_6_11_0.setTypedText(touchgfx::TypedText(T___SINGLEUSE_WX44));
+    values_6_11.add(value_6_11_0);
+    values.add(values_6_11);
+
+    units_label.setPosition(4, 145, 77, 15);
+    units_label.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    units_label.setLinespacing(0);
+    Unicode::snprintf(units_labelBuffer, UNITS_LABEL_SIZE, "%s", touchgfx::TypedText(T_UNITS_LABEL).getText());
+    units_label.setWildcard(units_labelBuffer);
+    units_label.setTypedText(touchgfx::TypedText(T___SINGLEUSE_P8PJ));
 
     add(gauge_arc);
     add(bg);
@@ -95,7 +156,9 @@ SingleGaugeBase::SingleGaugeBase()
     add(gauge_value);
     add(peak_caption);
     add(peak_value);
-    add(image2);
+    add(icon_boost);
+    add(values);
+    add(units_label);
 }
 
 void SingleGaugeBase::initialize()

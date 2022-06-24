@@ -28,31 +28,32 @@ extern "C" {
  * BITMASK_VTC_SOLENOID 0b00100000
  * */
 
-#define MFD_DATASOURCES_SIZE 32
+#define MFD_GAUGES_SIZE 32
 
 // CANSult
-#define MFD_DATA_BATT_VOLTAGE              0
-#define MFD_DATA_CLT_TEMP                  1
-#define MFD_DATA_IGN_TIMING                2
-#define MFD_DATA_O2_LEFT                   3
-#define MFD_DATA_TPS                       4
-#define MFD_DATA_AAC_VALVE                 5
-#define MFD_DATA_AF_ALPHA_L                6
-#define MFD_DATA_AF_ALPHA_L_SL             7
-#define MFD_DATA_VEHICLE_SPEED             8
-#define MFD_DATA_ENGINE_SPEED              9
-#define MFD_DATA_INJ_TIME                  10
-#define MFD_DATA_LEFT_MAF                  11
-#define MFD_DATA_CANSULT_VOLTAGE           12
-#define MFD_DATA_FIRST_DTC_CODE            13
-#define MFD_DATA_NEUTRAL_SW_STATE          14
-#define MFD_DATA_START_SIGNAL_STATE        15
-#define MFD_DATA_THROTTLE_CLOSED_STATE     16
-#define MFD_DATA_FUEL_PUMP_RELAY_STATE     17
-#define MFD_DATA_VTC_SOLENOID_STATE        18
+#define MFD_GAUGE_BATT_VOLTAGE              0
+#define MFD_GAUGE_CLT_TEMP                  1
+#define MFD_GAUGE_IGN_TIMING                2
+#define MFD_GAUGE_O2_LEFT                   3
+#define MFD_GAUGE_TPS                       4
+#define MFD_GAUGE_AAC_VALVE                 5
+#define MFD_GAUGE_AF_ALPHA_L                6
+#define MFD_GAUGE_AF_ALPHA_L_SL             7
+#define MFD_GAUGE_VEHICLE_SPEED             8
+#define MFD_GAUGE_ENGINE_SPEED              9
+#define MFD_GAUGE_INJ_TIME                  10
+#define MFD_GAUGE_LEFT_MAF                  11
+#define MFD_GAUGE_CANSULT_VOLTAGE           12
 
 // Other
-#define MFD_DATA_BOOST_PRESSURE            19
+#define MFD_GAUGE_BOOST_PRESSURE            13
+
+//#define MFD_GAUGE_FIRST_DTC_CODE            13
+//#define MFD_GAUGE_NEUTRAL_SW_STATE          14
+//#define MFD_GAUGE_START_SIGNAL_STATE        15
+//#define MFD_GAUGE_THROTTLE_CLOSED_STATE     16
+//#define MFD_GAUGE_FUEL_PUMP_RELAY_STATE     17
+//#define MFD_GAUGE_VTC_SOLENOID_STATE        18
 
 typedef struct
 {
@@ -61,13 +62,15 @@ typedef struct
   int min;
   int max;
   char name[10];
+  char unitsLabel[12];
+  int8_t scaleValues[11];
   int8_t DEBUG_modifier;
-} MFD_DataSourceTypeDef;
+} MFD_GaugeTypeDef;
 
-extern MFD_DataSourceTypeDef MFD_DataSourcesAll[MFD_DATASOURCES_SIZE];
+extern MFD_GaugeTypeDef MFD_GaugesAll[MFD_GAUGES_SIZE];
 
-void MFD_DataInit(void);
-MFD_DataSourceTypeDef* MFD_DataGetEntry(uint8_t id);
+void MFD_GaugesInit(void);
+MFD_GaugeTypeDef* MFD_GetGauge(uint8_t id);
 
 #ifdef __cplusplus
 }

@@ -42,7 +42,36 @@ protected:
     touchgfx::Gauge gauge_value;
     touchgfx::TextArea peak_caption;
     touchgfx::TextAreaWithOneWildcard peak_value;
-    touchgfx::Image image2;
+    touchgfx::Image icon_boost;
+    touchgfx::Container values;
+    touchgfx::Container values_6_11;
+    touchgfx::TextAreaWithOneWildcard value_6_11_5;
+    touchgfx::TextAreaWithOneWildcard value_6_11_4;
+    touchgfx::TextAreaWithOneWildcard value_6_11_3;
+    touchgfx::TextAreaWithOneWildcard value_6_11_2;
+    touchgfx::TextAreaWithOneWildcard value_6_11_1;
+    touchgfx::TextAreaWithOneWildcard value_6_11_0;
+    touchgfx::TextAreaWithOneWildcard units_label;
+
+    /*
+     * Wildcard Buffers
+     */
+    static const uint16_t PEAK_VALUE_SIZE = 6;
+    touchgfx::Unicode::UnicodeChar peak_valueBuffer[PEAK_VALUE_SIZE];
+    static const uint16_t VALUE_6_11_5_SIZE = 5;
+    touchgfx::Unicode::UnicodeChar value_6_11_5Buffer[VALUE_6_11_5_SIZE];
+    static const uint16_t VALUE_6_11_4_SIZE = 5;
+    touchgfx::Unicode::UnicodeChar value_6_11_4Buffer[VALUE_6_11_4_SIZE];
+    static const uint16_t VALUE_6_11_3_SIZE = 5;
+    touchgfx::Unicode::UnicodeChar value_6_11_3Buffer[VALUE_6_11_3_SIZE];
+    static const uint16_t VALUE_6_11_2_SIZE = 5;
+    touchgfx::Unicode::UnicodeChar value_6_11_2Buffer[VALUE_6_11_2_SIZE];
+    static const uint16_t VALUE_6_11_1_SIZE = 5;
+    touchgfx::Unicode::UnicodeChar value_6_11_1Buffer[VALUE_6_11_1_SIZE];
+    static const uint16_t VALUE_6_11_0_SIZE = 5;
+    touchgfx::Unicode::UnicodeChar value_6_11_0Buffer[VALUE_6_11_0_SIZE];
+    static const uint16_t UNITS_LABEL_SIZE = 12;
+    touchgfx::Unicode::UnicodeChar units_labelBuffer[UNITS_LABEL_SIZE];
 
 private:
 

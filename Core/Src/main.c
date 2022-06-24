@@ -189,7 +189,7 @@ int main(void)
   MX_RNG_Init();
   MX_TouchGFX_Init();
   /* USER CODE BEGIN 2 */
-  MFD_DataInit();
+  MFD_GaugesInit();
 
   // DEBUG Controllers Init
   DBGS_init();

@@ -3,6 +3,8 @@
 
 #include <gui_generated/containers/SingleGaugeBase.hpp>
 
+#include "data.h"
+
 class SingleGauge : public SingleGaugeBase
 {
 public:
@@ -15,14 +17,11 @@ public:
 
     void updatePeakValue(int value, uint16_t duration);
 
-    void getRange(int& min, int& max);
-
-    void setRange(int min, int max, uint16_t steps = 0, uint16_t minStep = 0);
+    void setConfig(MFD_GaugeTypeDef *config);
 
 protected:
     int currentValue;
     int currentPeakValue;
-    Unicode::UnicodeChar peakValueBuffer[10];
 };
 
 #endif // SINGLEGAUGE_HPP
