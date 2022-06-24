@@ -14,9 +14,9 @@ Screen1ViewBase::Screen1ViewBase()
     __background.setPosition(0, 0, 320, 240);
     __background.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
 
-    gauge2.setXY(3, 42);
+    gauge2.setXY(5, 42);
 
-    gauge1.setXY(162, 42);
+    gauge1.setXY(164, 42);
 
     add(__background);
     add(gauge2);

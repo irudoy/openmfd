@@ -5,6 +5,90 @@
   </Languages>
   <Texts>
     <TextGroup Id="Unsorted">
+      <Text Id="__SingleUse_952A" Alignment="Right" TypographyId="Big">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_2QCY" Alignment="Right" TypographyId="Big">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_SOB8" Alignment="Right" TypographyId="Big">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_BELO" Alignment="Right" TypographyId="Big">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_V9MR" Alignment="Center" TypographyId="Big">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_71Z0" Alignment="Left" TypographyId="Big">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_AV64" Alignment="Left" TypographyId="Big">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_L25C" Alignment="Left" TypographyId="Big">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_BTP3" Alignment="Left" TypographyId="Big">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_LSVK" Alignment="Left" TypographyId="Big">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_0A8S" Alignment="Right" TypographyId="Big">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_4CD9" Alignment="Right" TypographyId="Big">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_RH51" Alignment="Right" TypographyId="Big">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_SHKV" Alignment="Right" TypographyId="Big">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_7DZC" Alignment="Right" TypographyId="Big">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_R9WX" Alignment="Right" TypographyId="Big">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_3Z9C" Alignment="Right" TypographyId="Big">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_B2SU" Alignment="Left" TypographyId="Big">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_KKGO" Alignment="Left" TypographyId="Big">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_AA5N" Alignment="Left" TypographyId="Big">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_AVRW" Alignment="Left" TypographyId="Big">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_SR5Z" Alignment="Center" TypographyId="Big">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_DUEI" Alignment="Right" TypographyId="Big">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_3S6X" Alignment="Right" TypographyId="Big">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_AWOI" Alignment="Right" TypographyId="Big">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_NMYE" Alignment="Right" TypographyId="Big">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_DN75" Alignment="Right" TypographyId="Big">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_XWQ2" Alignment="Right" TypographyId="Big">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
       <Text Id="PEAK" Alignment="Left" TypographyId="Default">
         <Translation Language="GB">PEAK</Translation>
       </Text>
@@ -14,26 +98,26 @@
       <Text Id="__SingleUse_P8PJ" Alignment="Left" TypographyId="Big">
         <Translation Language="GB">&lt;value&gt;</Translation>
       </Text>
-      <Text Id="__SingleUse_Y1Y9" Alignment="Left" TypographyId="Default">
+      <Text Id="__SingleUse_Y1Y9" Alignment="Left" TypographyId="Big">
         <Translation Language="GB">&lt;value&gt;</Translation>
       </Text>
-      <Text Id="__SingleUse_8EJH" Alignment="Center" TypographyId="Default">
+      <Text Id="__SingleUse_8EJH" Alignment="Center" TypographyId="Big">
         <Translation Language="GB">&lt;value&gt;</Translation>
       </Text>
-      <Text Id="__SingleUse_595N" Alignment="Right" TypographyId="Default">
+      <Text Id="__SingleUse_595N" Alignment="Right" TypographyId="Big">
         <Translation Language="GB">&lt;value&gt;</Translation>
       </Text>
-      <Text Id="__SingleUse_7E1I" Alignment="Right" TypographyId="Default">
+      <Text Id="__SingleUse_7E1I" Alignment="Right" TypographyId="Big">
         <Translation Language="GB">&lt;value&gt;</Translation>
       </Text>
-      <Text Id="__SingleUse_M1TV" Alignment="Right" TypographyId="Default">
+      <Text Id="__SingleUse_M1TV" Alignment="Right" TypographyId="Big">
         <Translation Language="GB">&lt;value&gt;</Translation>
       </Text>
-      <Text Id="__SingleUse_WX44" Alignment="Right" TypographyId="Default">
+      <Text Id="__SingleUse_WX44" Alignment="Right" TypographyId="Big">
         <Translation Language="GB">&lt;value&gt;</Translation>
       </Text>
       <Text Id="scale_val" Alignment="Right" TypographyId="Default">
-        <Translation Language="GB">99</Translation>
+        <Translation Language="GB">9.99</Translation>
       </Text>
       <Text Id="units_label" Alignment="Left" TypographyId="Big">
         <Translation Language="GB">[ XXX ]</Translation>

@@ -65,6 +65,7 @@ typedef struct
   int peakValue;
   int min;
   int max;
+  float scaler;
   char name[10];
   char unitsLabel[12];
   int8_t scaleValues[11];

@@ -73,18 +73,18 @@ void MFD_GaugesInit(void) {
     .max = 8000,
     .name = "RPM",
     .unitsLabel = "[x1000 RPM]",
-    .scaleType = MFD_GaugeScaleType_6_11,
+    .scaleType = MFD_GaugeScaleType_9_17,
     .scaleValues = { 0, 1, 2, 3, 4, 5, 6, 7, 8 },
   };
 
   MFD_GaugesAll[MFD_GAUGE_BOOST_PRESSURE] = (MFD_GaugeTypeDef) {
-    .max = 50,
-//    .min = 1.2,
-//    .max = -0.6,
+    .scaler = 10.0f,
+    .min = -6,
+    .max = 12,
     .name = "BOOST",
     .unitsLabel = "[x100 kPa]",
     .scaleType = MFD_GaugeScaleType_SPEC_1,
-    .scaleValues = { -0.5, 0, 0.5, 0.4, 0.6, 0.8, 1.2 },
+    .scaleValues = { -5, 0, 2, 4, 6, 8, 10, 12 },
   };
 
 //  MFD_GaugesAll[MFD_GAUGE_CANSULT_VOLTAGE] = (MFD_GaugeTypeDef) {

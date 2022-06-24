@@ -25,9 +25,9 @@ void Screen1View::tearDownScreen()
 
 void Screen1View::handleTickEvent()
 {
-  gauge1.updateValue(engSpeed->value, 5);
-  gauge1.updatePeakValue(engSpeed->peakValue, 5);
+  gauge1.updateValue();
+  gauge1.updatePeakValue();
 
-  gauge2.updateValue(boostPres->value, 5);
-  gauge2.updatePeakValue(boostPres->peakValue, 5);
+  gauge2.updateValue();
+  gauge2.updatePeakValue();
 }

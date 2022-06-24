@@ -13,15 +13,17 @@ public:
 
     virtual void initialize();
 
-    void updateValue(int value, uint16_t duration);
+    void updateValue();
 
-    void updatePeakValue(int value, uint16_t duration);
+    void updatePeakValue();
 
     void setConfig(MFD_GaugeTypeDef *config);
 
 protected:
+    int updateDuration;
     int currentValue;
     int currentPeakValue;
+    MFD_GaugeTypeDef *data;
 };
 
 #endif // SINGLEGAUGE_HPP

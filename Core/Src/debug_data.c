@@ -29,9 +29,12 @@ void DBGD_resetPeak(void) {
 
 static void DBGD_stubIncDecEntry(MFD_GaugeTypeDef *entry, bool inc) {
   if (entry->DEBUG_modifier == 0) entry->DEBUG_modifier = 1;
+
   entry->value = inc ? entry->value + entry->DEBUG_modifier : entry->value - entry->DEBUG_modifier;
-  if (entry->value >= entry->max) entry->value = entry->min;
-  if (entry->value <= entry->min) entry->value = entry->max;
+
+  if (entry->value > entry->max) entry->value = entry->min;
+  if (entry->value < entry->min) entry->value = entry->max;
+
   if (entry->value > entry->peakValue) entry->peakValue = entry->value;
 }
 
@@ -49,15 +52,16 @@ static void DBGD_stubEntry(MFD_GaugeTypeDef *entry) {
   } else {
     entry->value += entry->DEBUG_modifier;
 
-    if (entry->value <= entry->min) {
+    if (entry->value < entry->min) {
       entry->value = entry->min;
       entry->DEBUG_modifier *= -1;
     }
-    if (entry->value >= entry->max) {
+    if (entry->value > entry->max) {
       entry->value = entry->max;
       entry->DEBUG_modifier *= -1;
     }
   }
+
   if (entry->value > entry->peakValue) entry->peakValue = entry->value;
 }
 

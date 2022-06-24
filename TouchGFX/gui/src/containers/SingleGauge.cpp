@@ -14,28 +14,118 @@ void SingleGauge::initialize()
 
   Unicode::snprintf(peak_valueBuffer, PEAK_VALUE_SIZE, "%d", currentPeakValue);
   peak_value.invalidate();
+
+  updateDuration = 5;
 }
 
-void SingleGauge::setConfig(MFD_GaugeTypeDef *config)
+void SingleGauge::setConfig(MFD_GaugeTypeDef *conf)
 {
-  gauge_value.setRange(config->min, config->max, 0, 0);
-  gauge_peak.setRange(config->min, config->max, 0, 0);
-  gauge_arc.setRange(config->min, config->max, 0, 0);
+  data = conf;
 
-  Unicode::strncpy(units_labelBuffer, config->unitsLabel, UNITS_LABEL_SIZE);
+  gauge_value.setRange(data->min, data->max, 0, 0);
+  gauge_peak.setRange(data->min, data->max, 0, 0);
+  gauge_arc.setRange(data->min, data->max, 0, 0);
 
-  switch (config->scaleType) {
+  Unicode::strncpy(units_labelBuffer, data->unitsLabel, UNITS_LABEL_SIZE);
+
+  // reset all
+
+  gauge_bg_spec_1.setVisible(false);
+  gauge_bg_default.setVisible(false);
+
+  scale_6_11.setVisible(false);
+  scale_9_17.setVisible(false);
+  scale_11_21.setVisible(false);
+  scale_spec_1.setVisible(false);
+
+  values_6_11.setVisible(false);
+  values_9_17.setVisible(false);
+  values_11_21.setVisible(false);
+  values_spec_1.setVisible(false);
+
+  switch (data->scaleType) {
     case MFD_GaugeScaleType_6_11: {
       gauge_value.setStartEndAngle(gauge_value.getStartAngle(), 225);
       gauge_peak.setStartEndAngle(gauge_peak.getStartAngle(), 225);
       gauge_arc.setStartEndAngle(gauge_arc.getStartAngle(), 45);
 
-      Unicode::snprintf(value_6_11_0Buffer, VALUE_6_11_0_SIZE, "%d", config->scaleValues[0]);
-      Unicode::snprintf(value_6_11_1Buffer, VALUE_6_11_1_SIZE, "%d", config->scaleValues[1]);
-      Unicode::snprintf(value_6_11_2Buffer, VALUE_6_11_2_SIZE, "%d", config->scaleValues[2]);
-      Unicode::snprintf(value_6_11_3Buffer, VALUE_6_11_3_SIZE, "%d", config->scaleValues[3]);
-      Unicode::snprintf(value_6_11_4Buffer, VALUE_6_11_4_SIZE, "%d", config->scaleValues[4]);
-      Unicode::snprintf(value_6_11_5Buffer, VALUE_6_11_5_SIZE, "%d", config->scaleValues[5]);
+      gauge_bg_default.setVisible(true);
+      scale_6_11.setVisible(true);
+      values_6_11.setVisible(true);
+
+      Unicode::snprintf(value_6_11_0Buffer, VALUE_6_11_0_SIZE, "%d", data->scaleValues[0]);
+      Unicode::snprintf(value_6_11_1Buffer, VALUE_6_11_1_SIZE, "%d", data->scaleValues[1]);
+      Unicode::snprintf(value_6_11_2Buffer, VALUE_6_11_2_SIZE, "%d", data->scaleValues[2]);
+      Unicode::snprintf(value_6_11_3Buffer, VALUE_6_11_3_SIZE, "%d", data->scaleValues[3]);
+      Unicode::snprintf(value_6_11_4Buffer, VALUE_6_11_4_SIZE, "%d", data->scaleValues[4]);
+      Unicode::snprintf(value_6_11_5Buffer, VALUE_6_11_5_SIZE, "%d", data->scaleValues[5]);
+
+      break;
+    }
+    case MFD_GaugeScaleType_9_17: {
+      gauge_value.setStartEndAngle(gauge_value.getStartAngle(), 240);
+      gauge_peak.setStartEndAngle(gauge_peak.getStartAngle(), 240);
+      gauge_arc.setStartEndAngle(gauge_arc.getStartAngle(), 60);
+
+      gauge_bg_default.setVisible(true);
+      scale_9_17.setVisible(true);
+      values_9_17.setVisible(true);
+
+      Unicode::snprintf(value_9_17_0Buffer, VALUE_9_17_0_SIZE, "%d", data->scaleValues[0]);
+      Unicode::snprintf(value_9_17_1Buffer, VALUE_9_17_1_SIZE, "%d", data->scaleValues[1]);
+      Unicode::snprintf(value_9_17_2Buffer, VALUE_9_17_2_SIZE, "%d", data->scaleValues[2]);
+      Unicode::snprintf(value_9_17_3Buffer, VALUE_9_17_3_SIZE, "%d", data->scaleValues[3]);
+      Unicode::snprintf(value_9_17_4Buffer, VALUE_9_17_4_SIZE, "%d", data->scaleValues[4]);
+      Unicode::snprintf(value_9_17_5Buffer, VALUE_9_17_5_SIZE, "%d", data->scaleValues[5]);
+      Unicode::snprintf(value_9_17_6Buffer, VALUE_9_17_6_SIZE, "%d", data->scaleValues[6]);
+      Unicode::snprintf(value_9_17_7Buffer, VALUE_9_17_7_SIZE, "%d", data->scaleValues[7]);
+      Unicode::snprintf(value_9_17_8Buffer, VALUE_9_17_8_SIZE, "%d", data->scaleValues[8]);
+
+      break;
+    }
+    case MFD_GaugeScaleType_11_21: {
+      gauge_value.setStartEndAngle(gauge_value.getStartAngle(), 270);
+      gauge_peak.setStartEndAngle(gauge_peak.getStartAngle(), 270);
+      gauge_arc.setStartEndAngle(gauge_arc.getStartAngle(), 90);
+
+      gauge_bg_default.setVisible(true);
+      scale_11_21.setVisible(true);
+      values_11_21.setVisible(true);
+
+      Unicode::snprintf(value_11_21_0Buffer, VALUE_11_21_0_SIZE, "%d", data->scaleValues[0]);
+      Unicode::snprintf(value_11_21_1Buffer, VALUE_11_21_1_SIZE, "%d", data->scaleValues[1]);
+      Unicode::snprintf(value_11_21_2Buffer, VALUE_11_21_2_SIZE, "%d", data->scaleValues[2]);
+      Unicode::snprintf(value_11_21_3Buffer, VALUE_11_21_3_SIZE, "%d", data->scaleValues[3]);
+      Unicode::snprintf(value_11_21_4Buffer, VALUE_11_21_4_SIZE, "%d", data->scaleValues[4]);
+      Unicode::snprintf(value_11_21_5Buffer, VALUE_11_21_5_SIZE, "%d", data->scaleValues[5]);
+      Unicode::snprintf(value_11_21_5Buffer, VALUE_11_21_6_SIZE, "%d", data->scaleValues[6]);
+      Unicode::snprintf(value_11_21_5Buffer, VALUE_11_21_7_SIZE, "%d", data->scaleValues[7]);
+      Unicode::snprintf(value_11_21_5Buffer, VALUE_11_21_8_SIZE, "%d", data->scaleValues[8]);
+      Unicode::snprintf(value_11_21_5Buffer, VALUE_11_21_8_SIZE, "%d", data->scaleValues[9]);
+      Unicode::snprintf(value_11_21_5Buffer, VALUE_11_21_8_SIZE, "%d", data->scaleValues[10]);
+
+      break;
+    }
+    case MFD_GaugeScaleType_SPEC_1: {
+      gauge_value.setStartEndAngle(gauge_value.getStartAngle(), 270);
+      gauge_peak.setStartEndAngle(gauge_peak.getStartAngle(), 270);
+      gauge_arc.setStartEndAngle(gauge_arc.getStartAngle(), 90);
+
+      gauge_bg_spec_1.setVisible(true);
+      scale_spec_1.setVisible(true);
+      values_spec_1.setVisible(true);
+
+      Unicode::snprintfFloat(value_spec_0Buffer, VALUE_SPEC_0_SIZE, "%2.1f", data->scaleValues[0] / data->scaler);
+
+      Unicode::snprintf(value_spec_1Buffer, VALUE_SPEC_1_SIZE, "%d", data->scaleValues[1]);
+
+      Unicode::snprintfFloat(value_spec_2Buffer, VALUE_SPEC_2_SIZE, "%2.1f", data->scaleValues[2] / data->scaler);
+      Unicode::snprintfFloat(value_spec_3Buffer, VALUE_SPEC_3_SIZE, "%2.1f", data->scaleValues[3] / data->scaler);
+      Unicode::snprintfFloat(value_spec_4Buffer, VALUE_SPEC_4_SIZE, "%2.1f", data->scaleValues[4] / data->scaler);
+      Unicode::snprintfFloat(value_spec_5Buffer, VALUE_SPEC_5_SIZE, "%2.1f", data->scaleValues[5] / data->scaler);
+      Unicode::snprintfFloat(value_spec_6Buffer, VALUE_SPEC_6_SIZE, "%2.1f", data->scaleValues[6] / data->scaler);
+      Unicode::snprintfFloat(value_spec_7Buffer, VALUE_SPEC_7_SIZE, "%2.1f", data->scaleValues[7] / data->scaler);
+
       break;
     }
     default:
@@ -43,24 +133,28 @@ void SingleGauge::setConfig(MFD_GaugeTypeDef *config)
   }
 }
 
-void SingleGauge::updateValue(int value, uint16_t duration)
+void SingleGauge::updateValue()
 {
-  if (value != currentValue) {
-    gauge_value.updateValue(value, duration);
-    gauge_arc.updateValue(value, duration);
+  if (data->value != currentValue) {
+    gauge_value.updateValue(data->value, updateDuration);
+    gauge_arc.updateValue(data->value, updateDuration);
 
-    currentValue = value;
+    currentValue = data->value;
   }
 }
 
-void SingleGauge::updatePeakValue(int value, uint16_t duration)
+void SingleGauge::updatePeakValue()
 {
-  if (value != currentPeakValue) {
-    gauge_peak.updateValue(value, duration);
+  if (data->peakValue != currentPeakValue) {
+    gauge_peak.updateValue(data->peakValue, updateDuration);
 
-    Unicode::snprintf(peak_valueBuffer, PEAK_VALUE_SIZE, "%d", value);
+    if (data->scaler > 0) {
+      Unicode::snprintfFloat(peak_valueBuffer, PEAK_VALUE_SIZE, "%2.1f", data->peakValue / data->scaler);
+    } else {
+      Unicode::snprintf(peak_valueBuffer, PEAK_VALUE_SIZE, "%d", data->peakValue);
+    }
     peak_value.invalidate();
 
-    currentPeakValue = value;
+    currentPeakValue = data->peakValue;
   }
 }
