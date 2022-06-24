@@ -19,22 +19,28 @@ void SingleGauge::initialize()
 void SingleGauge::setConfig(MFD_GaugeTypeDef *config)
 {
   gauge_value.setRange(config->min, config->max, 0, 0);
-  gauge_value.setStartEndAngle(gauge_value.getStartAngle(), 225); // 225 for 6_11 type
-
   gauge_peak.setRange(config->min, config->max, 0, 0);
-  gauge_peak.setStartEndAngle(gauge_peak.getStartAngle(), 225); // 225 for 6_11 type
-
   gauge_arc.setRange(config->min, config->max, 0, 0);
-  gauge_arc.setStartEndAngle(gauge_arc.getStartAngle(), 45); // 45 for 6_11 type
 
   Unicode::strncpy(units_labelBuffer, config->unitsLabel, UNITS_LABEL_SIZE);
 
-  Unicode::snprintf(value_6_11_0Buffer, VALUE_6_11_0_SIZE, "%d", config->scaleValues[0]);
-  Unicode::snprintf(value_6_11_1Buffer, VALUE_6_11_1_SIZE, "%d", config->scaleValues[1]);
-  Unicode::snprintf(value_6_11_2Buffer, VALUE_6_11_2_SIZE, "%d", config->scaleValues[2]);
-  Unicode::snprintf(value_6_11_3Buffer, VALUE_6_11_3_SIZE, "%d", config->scaleValues[3]);
-  Unicode::snprintf(value_6_11_4Buffer, VALUE_6_11_4_SIZE, "%d", config->scaleValues[4]);
-  Unicode::snprintf(value_6_11_5Buffer, VALUE_6_11_5_SIZE, "%d", config->scaleValues[5]);
+  switch (config->scaleType) {
+    case MFD_GaugeScaleType_6_11: {
+      gauge_value.setStartEndAngle(gauge_value.getStartAngle(), 225);
+      gauge_peak.setStartEndAngle(gauge_peak.getStartAngle(), 225);
+      gauge_arc.setStartEndAngle(gauge_arc.getStartAngle(), 45);
+
+      Unicode::snprintf(value_6_11_0Buffer, VALUE_6_11_0_SIZE, "%d", config->scaleValues[0]);
+      Unicode::snprintf(value_6_11_1Buffer, VALUE_6_11_1_SIZE, "%d", config->scaleValues[1]);
+      Unicode::snprintf(value_6_11_2Buffer, VALUE_6_11_2_SIZE, "%d", config->scaleValues[2]);
+      Unicode::snprintf(value_6_11_3Buffer, VALUE_6_11_3_SIZE, "%d", config->scaleValues[3]);
+      Unicode::snprintf(value_6_11_4Buffer, VALUE_6_11_4_SIZE, "%d", config->scaleValues[4]);
+      Unicode::snprintf(value_6_11_5Buffer, VALUE_6_11_5_SIZE, "%d", config->scaleValues[5]);
+      break;
+    }
+    default:
+      break;
+  }
 }
 
 void SingleGauge::updateValue(int value, uint16_t duration)

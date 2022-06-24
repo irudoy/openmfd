@@ -30,7 +30,6 @@ extern "C" {
 
 #define MFD_GAUGES_SIZE 32
 
-// CANSult
 #define MFD_GAUGE_BATT_VOLTAGE              0
 #define MFD_GAUGE_CLT_TEMP                  1
 #define MFD_GAUGE_IGN_TIMING                2
@@ -44,8 +43,6 @@ extern "C" {
 #define MFD_GAUGE_INJ_TIME                  10
 #define MFD_GAUGE_LEFT_MAF                  11
 #define MFD_GAUGE_CANSULT_VOLTAGE           12
-
-// Other
 #define MFD_GAUGE_BOOST_PRESSURE            13
 
 //#define MFD_GAUGE_FIRST_DTC_CODE            13
@@ -54,6 +51,13 @@ extern "C" {
 //#define MFD_GAUGE_THROTTLE_CLOSED_STATE     16
 //#define MFD_GAUGE_FUEL_PUMP_RELAY_STATE     17
 //#define MFD_GAUGE_VTC_SOLENOID_STATE        18
+
+typedef enum {
+  MFD_GaugeScaleType_6_11,
+  MFD_GaugeScaleType_9_17,
+  MFD_GaugeScaleType_11_21,
+  MFD_GaugeScaleType_SPEC_1,
+} MFD_GaugeScaleType;
 
 typedef struct
 {
@@ -64,6 +68,8 @@ typedef struct
   char name[10];
   char unitsLabel[12];
   int8_t scaleValues[11];
+  MFD_GaugeScaleType scaleType;
+
   int8_t DEBUG_modifier;
 } MFD_GaugeTypeDef;
 
