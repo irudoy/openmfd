@@ -33,8 +33,6 @@ protected:
     touchgfx::PainterRGB565Bitmap gauge_arcPainter;
     touchgfx::Gauge gauge_arc_red;
     touchgfx::PainterRGB565Bitmap gauge_arc_redPainter;
-    touchgfx::Gauge gauge_arc_blue;
-    touchgfx::PainterRGB565Bitmap gauge_arc_bluePainter;
     touchgfx::Container bg;
     touchgfx::Image gauge_bg_spec_1;
     touchgfx::Image gauge_bg_default;

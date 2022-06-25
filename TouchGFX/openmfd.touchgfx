@@ -102,35 +102,6 @@
             "ArcCapStyle": "Butt"
           },
           {
-            "Type": "Gauge",
-            "Name": "gauge_arc_blue",
-            "X": 20,
-            "Y": 18,
-            "Width": 114,
-            "Height": 114,
-            "Visible": false,
-            "LockPosition": true,
-            "RotationCenterX": 57,
-            "RotationCenterY": 57,
-            "StartAngle": -180,
-            "EndAngle": 90,
-            "RangeMax": 100,
-            "UseAnimation": true,
-            "Easing": "Quad",
-            "EasingOption": "InOut",
-            "NeedleMovingRenderingAlgorithm": "Bilinear Interpolation",
-            "NeedleSteadyRenderingAlgorithm": "Bilinear Interpolation",
-            "UseArc": true,
-            "FileNameArc": "value-blue.png",
-            "ArcColor": {
-              "Red": 20,
-              "Green": 151,
-              "Blue": 197
-            },
-            "ArcRadius": 57,
-            "ArcCapStyle": "Butt"
-          },
-          {
             "Type": "Container",
             "Name": "bg",
             "X": 22,

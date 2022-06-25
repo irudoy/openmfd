@@ -43,9 +43,10 @@ void SingleGauge::setConfig(MFD_GaugeDataTypeDef *conf)
   data = conf;
 
   gauge_value.updateValue(currentValue, 0);
+
   gauge_arc.updateValue(currentValue, 0);
   gauge_arc_red.updateValue(currentValue, 0);
-  gauge_arc_blue.updateValue(currentValue, 0);
+
   gauge_peak.updateValue(currentPeakValue, 0);
   gauge_redzone.updateValue(0, 0);
 
@@ -54,9 +55,9 @@ void SingleGauge::setConfig(MFD_GaugeDataTypeDef *conf)
 
   gauge_value.setRange(data->min, data->max, 0, 0);
   gauge_peak.setRange(data->min, data->max, 0, 0);
+
   gauge_arc.setRange(data->min, data->max, 0, 0);
   gauge_arc_red.setRange(data->min, data->max, 0, 0);
-  gauge_arc_blue.setRange(data->min, data->max, 0, 0);
 
   Unicode::strncpy(units_labelBuffer, data->unitsLabel, UNITS_LABEL_SIZE);
 
@@ -201,7 +202,6 @@ void SingleGauge::update(bool instant)
 
     gauge_arc.invalidate();
     gauge_arc_red.invalidate();
-
 
     if (!shouldShowPeak) {
       if (data->scaler > 0) {

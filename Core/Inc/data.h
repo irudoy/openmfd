@@ -31,6 +31,7 @@ extern "C" {
 #define MFD_GAUGES_SIZE 32
 
 typedef enum {
+  MFD_Gauge_AFR,
   MFD_Gauge_BattVoltage,
   MFD_Gauge_CltTemp,
   MFD_Gauge_IgnTiming,

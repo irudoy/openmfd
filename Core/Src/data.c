@@ -6,8 +6,8 @@ MFD_AppStateTypeDef MFD_AppState = {
   .currentScreen = MFD_Screen_Summary,
   .peakCurState = MFD_PeakCur_Peak,
 
-  .twinsGauge1 = MFD_Gauge_BattVoltage,
-  .twinsGauge2 = MFD_Gauge_CltTemp,
+  .twinsGauge1 = 0,
+  .twinsGauge2 = 1,
 
   .graphGauge = MFD_Gauge_BoostPressure,
 };
@@ -104,6 +104,18 @@ void MFD_DataInit(void) {
     .unitsLabel = "[x100 kPa]",
     .scaleType = MFD_GaugeScaleType_SPEC_1,
     .scaleValues = { -5, 0, 2, 4, 6, 8, 10, 12 },
+  };
+
+  MFD_GaugesAll[MFD_Gauge_AFR] = (MFD_GaugeDataTypeDef) {
+    .scaler = 10.0f,
+    .min = 80,
+    .max = 160,
+    .redZoneFrom = 145,
+    .redZoneTo = 160,
+    .name = "AFR",
+    .unitsLabel = "[ A:F ]",
+    .scaleType = MFD_GaugeScaleType_9_17,
+    .scaleValues = { 8, 9, 10, 11, 12, 13, 14, 15, 16 },
   };
 
 //  MFD_GaugesAll[MFD_GAUGE_CANSULT_VOLTAGE] = (MFD_GaugeTypeDef) {

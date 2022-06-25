@@ -35,19 +35,6 @@ SingleGaugeBase::SingleGaugeBase()
     gauge_arc_red.getArc().setLineWidth(0);
     gauge_arc_red.setVisible(false);
 
-    gauge_arc_blue.setPosition(20, 18, 114, 114);
-    gauge_arc_blue.setCenter(57, 57);
-    gauge_arc_blue.setStartEndAngle(-180, 90);
-    gauge_arc_blue.setRange(0, 100);
-    gauge_arc_blue.setValue(0);
-    gauge_arc_blue.setEasingEquation(touchgfx::EasingEquations::quadEaseInOut);
-    gauge_arc_blue.setArcVisible();
-    gauge_arc_bluePainter.setBitmap(touchgfx::Bitmap(BITMAP_VALUE_BLUE_ID));
-    gauge_arc_blue.getArc().setPainter(gauge_arc_bluePainter);
-    gauge_arc_blue.getArc().setRadius(57);
-    gauge_arc_blue.getArc().setLineWidth(0);
-    gauge_arc_blue.setVisible(false);
-
     bg.setPosition(22, 20, 118, 138);
 
     gauge_bg_spec_1.setXY(0, 0);
@@ -441,7 +428,6 @@ SingleGaugeBase::SingleGaugeBase()
 
     add(gauge_arc);
     add(gauge_arc_red);
-    add(gauge_arc_blue);
     add(bg);
     add(gauge_redzone);
     add(scales);
