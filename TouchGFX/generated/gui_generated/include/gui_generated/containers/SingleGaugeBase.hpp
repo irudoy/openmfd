@@ -10,6 +10,7 @@
 #include <touchgfx/widgets/canvas/PainterRGB565Bitmap.hpp>
 #include <touchgfx/containers/Container.hpp>
 #include <touchgfx/widgets/Image.hpp>
+#include <touchgfx/widgets/canvas/PainterRGB565.hpp>
 #include <touchgfx/widgets/TextArea.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 
@@ -30,9 +31,15 @@ protected:
      */
     touchgfx::Gauge gauge_arc;
     touchgfx::PainterRGB565Bitmap gauge_arcPainter;
+    touchgfx::Gauge gauge_arc_red;
+    touchgfx::PainterRGB565Bitmap gauge_arc_redPainter;
+    touchgfx::Gauge gauge_arc_blue;
+    touchgfx::PainterRGB565Bitmap gauge_arc_bluePainter;
     touchgfx::Container bg;
     touchgfx::Image gauge_bg_spec_1;
     touchgfx::Image gauge_bg_default;
+    touchgfx::Gauge gauge_redzone;
+    touchgfx::PainterRGB565 gauge_redzonePainter;
     touchgfx::Container scales;
     touchgfx::Image scale_spec_1;
     touchgfx::Image scale_11_21;

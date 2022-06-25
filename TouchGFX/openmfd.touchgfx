@@ -51,6 +51,7 @@
             "Y": 18,
             "Width": 114,
             "Height": 114,
+            "LockPosition": true,
             "RotationCenterX": 57,
             "RotationCenterY": 57,
             "StartAngle": -180,
@@ -72,12 +73,71 @@
             "ArcCapStyle": "Butt"
           },
           {
+            "Type": "Gauge",
+            "Name": "gauge_arc_red",
+            "X": 20,
+            "Y": 18,
+            "Width": 114,
+            "Height": 114,
+            "Visible": false,
+            "LockPosition": true,
+            "RotationCenterX": 57,
+            "RotationCenterY": 57,
+            "StartAngle": -180,
+            "EndAngle": 90,
+            "RangeMax": 100,
+            "UseAnimation": true,
+            "Easing": "Quad",
+            "EasingOption": "InOut",
+            "NeedleMovingRenderingAlgorithm": "Bilinear Interpolation",
+            "NeedleSteadyRenderingAlgorithm": "Bilinear Interpolation",
+            "UseArc": true,
+            "FileNameArc": "value-red.png",
+            "ArcColor": {
+              "Red": 20,
+              "Green": 151,
+              "Blue": 197
+            },
+            "ArcRadius": 57,
+            "ArcCapStyle": "Butt"
+          },
+          {
+            "Type": "Gauge",
+            "Name": "gauge_arc_blue",
+            "X": 20,
+            "Y": 18,
+            "Width": 114,
+            "Height": 114,
+            "Visible": false,
+            "LockPosition": true,
+            "RotationCenterX": 57,
+            "RotationCenterY": 57,
+            "StartAngle": -180,
+            "EndAngle": 90,
+            "RangeMax": 100,
+            "UseAnimation": true,
+            "Easing": "Quad",
+            "EasingOption": "InOut",
+            "NeedleMovingRenderingAlgorithm": "Bilinear Interpolation",
+            "NeedleSteadyRenderingAlgorithm": "Bilinear Interpolation",
+            "UseArc": true,
+            "FileNameArc": "value-blue.png",
+            "ArcColor": {
+              "Red": 20,
+              "Green": 151,
+              "Blue": 197
+            },
+            "ArcRadius": 57,
+            "ArcCapStyle": "Butt"
+          },
+          {
             "Type": "Container",
             "Name": "bg",
             "X": 22,
             "Y": 20,
             "Width": 118,
             "Height": 138,
+            "LockPosition": true,
             "Components": [
               {
                 "Type": "Image",
@@ -85,6 +145,7 @@
                 "Width": 118,
                 "Height": 138,
                 "Visible": false,
+                "LockPosition": true,
                 "RelativeFilename": "meter-unit-spec-1.png"
               },
               {
@@ -92,9 +153,37 @@
                 "Name": "gauge_bg_default",
                 "Width": 118,
                 "Height": 138,
+                "LockPosition": true,
                 "RelativeFilename": "meter-unit.png"
               }
             ]
+          },
+          {
+            "Type": "Gauge",
+            "Name": "gauge_redzone",
+            "X": 25,
+            "Y": 23,
+            "Width": 104,
+            "Height": 104,
+            "LockPosition": true,
+            "RotationCenterX": 52,
+            "RotationCenterY": 52,
+            "EndAngle": 45,
+            "RangeMax": 100,
+            "InitialValue": 100,
+            "Easing": "Quad",
+            "EasingOption": "InOut",
+            "NeedleMovingRenderingAlgorithm": "Bilinear Interpolation",
+            "NeedleSteadyRenderingAlgorithm": "Bilinear Interpolation",
+            "UseArc": true,
+            "ArcColor": {
+              "Red": 197,
+              "Green": 94,
+              "Blue": 94
+            },
+            "ArcRadius": 49,
+            "ArcLineWidth": 6,
+            "ArcCapStyle": "Butt"
           },
           {
             "Type": "Container",
@@ -103,6 +192,7 @@
             "Y": 21,
             "Width": 110,
             "Height": 110,
+            "LockPosition": true,
             "Components": [
               {
                 "Type": "Image",
@@ -110,6 +200,7 @@
                 "Width": 110,
                 "Height": 108,
                 "Visible": false,
+                "LockPosition": true,
                 "RelativeFilename": "scales-spec-1.png"
               },
               {
@@ -118,6 +209,7 @@
                 "Width": 110,
                 "Height": 110,
                 "Visible": false,
+                "LockPosition": true,
                 "RelativeFilename": "scales-11-21.png"
               },
               {
@@ -126,6 +218,7 @@
                 "Width": 108,
                 "Height": 110,
                 "Visible": false,
+                "LockPosition": true,
                 "RelativeFilename": "scale-9-17.png"
               },
               {
@@ -133,6 +226,7 @@
                 "Name": "scale_6_11",
                 "Width": 108,
                 "Height": 110,
+                "LockPosition": true,
                 "RelativeFilename": "scales-6-11.png"
               }
             ]
@@ -144,6 +238,7 @@
             "Y": 17,
             "Width": 114,
             "Height": 114,
+            "LockPosition": true,
             "BackgroundOffsetX": 20,
             "BackgroundOffsetY": 10,
             "RotationCenterX": 57,
@@ -173,6 +268,7 @@
             "Y": 17,
             "Width": 114,
             "Height": 114,
+            "LockPosition": true,
             "BackgroundOffsetX": 20,
             "BackgroundOffsetY": 10,
             "RotationCenterX": 57,
@@ -202,6 +298,7 @@
             "Y": 125,
             "Width": 32,
             "Height": 14,
+            "LockPosition": true,
             "TextId": "PEAK",
             "TextRotation": "0",
             "Color": {
@@ -218,6 +315,7 @@
             "Y": 111,
             "Width": 43,
             "Height": 15,
+            "LockPosition": true,
             "TextId": "__SingleUse_3SAG",
             "TextRotation": "0",
             "Color": {
@@ -239,6 +337,7 @@
             "Width": 47,
             "Height": 18,
             "Visible": false,
+            "LockPosition": true,
             "TextId": "__SingleUse_6TVI",
             "TextRotation": "0",
             "Color": {
@@ -260,6 +359,7 @@
             "Width": 25,
             "Height": 20,
             "Visible": false,
+            "LockPosition": true,
             "RelativeFilename": "turbo-icon.png"
           },
           {
@@ -267,6 +367,7 @@
             "Name": "values",
             "Width": 160,
             "Height": 173,
+            "LockPosition": true,
             "Components": [
               {
                 "Type": "Container",
@@ -274,6 +375,7 @@
                 "Width": 160,
                 "Height": 173,
                 "Visible": false,
+                "LockPosition": true,
                 "Components": [
                   {
                     "Type": "TextArea",
@@ -443,6 +545,7 @@
                 "Width": 160,
                 "Height": 173,
                 "Visible": false,
+                "LockPosition": true,
                 "Components": [
                   {
                     "Type": "TextArea",
@@ -671,6 +774,7 @@
                 "Width": 160,
                 "Height": 173,
                 "Visible": false,
+                "LockPosition": true,
                 "Components": [
                   {
                     "Type": "TextArea",
@@ -859,6 +963,7 @@
                 "Name": "values_6_11",
                 "Width": 160,
                 "Height": 173,
+                "LockPosition": true,
                 "Components": [
                   {
                     "Type": "TextArea",
@@ -991,6 +1096,7 @@
             "Y": 149,
             "Width": 107,
             "Height": 24,
+            "LockPosition": true,
             "TextId": "__SingleUse_P8PJ",
             "TextRotation": "0",
             "Color": {
@@ -1011,6 +1117,7 @@
             "Y": 85,
             "Width": 43,
             "Height": 15,
+            "LockPosition": true,
             "TextId": "__SingleUse_CQ0F",
             "TextRotation": "0",
             "Color": {

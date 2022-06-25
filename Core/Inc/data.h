@@ -68,6 +68,8 @@ typedef struct
   int peakValue;
   int min;
   int max;
+  int redZoneFrom;
+  int redZoneTo;
   float scaler;
   char name[10];
   char unitsLabel[12];

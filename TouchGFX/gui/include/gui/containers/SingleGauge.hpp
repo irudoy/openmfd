@@ -20,6 +20,8 @@ public:
     void showPeak();
     void showCurrent();
 
+    static bool inRedZone(MFD_GaugeDataTypeDef *gauge);
+
 protected:
     bool shouldShowPeak;
     int updateDuration;

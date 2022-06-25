@@ -3,8 +3,8 @@
 /*********************************************************************************/
 #include <gui_generated/containers/SingleGaugeBase.hpp>
 #include <BitmapDatabase.hpp>
-#include <texts/TextKeysAndLanguages.hpp>
 #include <touchgfx/Color.hpp>
+#include <texts/TextKeysAndLanguages.hpp>
 
 SingleGaugeBase::SingleGaugeBase()
 {
@@ -22,6 +22,32 @@ SingleGaugeBase::SingleGaugeBase()
     gauge_arc.getArc().setRadius(57);
     gauge_arc.getArc().setLineWidth(0);
 
+    gauge_arc_red.setPosition(20, 18, 114, 114);
+    gauge_arc_red.setCenter(57, 57);
+    gauge_arc_red.setStartEndAngle(-180, 90);
+    gauge_arc_red.setRange(0, 100);
+    gauge_arc_red.setValue(0);
+    gauge_arc_red.setEasingEquation(touchgfx::EasingEquations::quadEaseInOut);
+    gauge_arc_red.setArcVisible();
+    gauge_arc_redPainter.setBitmap(touchgfx::Bitmap(BITMAP_VALUE_RED_ID));
+    gauge_arc_red.getArc().setPainter(gauge_arc_redPainter);
+    gauge_arc_red.getArc().setRadius(57);
+    gauge_arc_red.getArc().setLineWidth(0);
+    gauge_arc_red.setVisible(false);
+
+    gauge_arc_blue.setPosition(20, 18, 114, 114);
+    gauge_arc_blue.setCenter(57, 57);
+    gauge_arc_blue.setStartEndAngle(-180, 90);
+    gauge_arc_blue.setRange(0, 100);
+    gauge_arc_blue.setValue(0);
+    gauge_arc_blue.setEasingEquation(touchgfx::EasingEquations::quadEaseInOut);
+    gauge_arc_blue.setArcVisible();
+    gauge_arc_bluePainter.setBitmap(touchgfx::Bitmap(BITMAP_VALUE_BLUE_ID));
+    gauge_arc_blue.getArc().setPainter(gauge_arc_bluePainter);
+    gauge_arc_blue.getArc().setRadius(57);
+    gauge_arc_blue.getArc().setLineWidth(0);
+    gauge_arc_blue.setVisible(false);
+
     bg.setPosition(22, 20, 118, 138);
 
     gauge_bg_spec_1.setXY(0, 0);
@@ -32,6 +58,18 @@ SingleGaugeBase::SingleGaugeBase()
     gauge_bg_default.setXY(0, 0);
     gauge_bg_default.setBitmap(touchgfx::Bitmap(BITMAP_METER_UNIT_ID));
     bg.add(gauge_bg_default);
+
+    gauge_redzone.setPosition(25, 23, 104, 104);
+    gauge_redzone.setCenter(52, 52);
+    gauge_redzone.setStartEndAngle(0, 45);
+    gauge_redzone.setRange(0, 100);
+    gauge_redzone.setValue(100);
+    gauge_redzone.setArcVisible();
+    gauge_redzonePainter.setColor(touchgfx::Color::getColorFromRGB(197, 94, 94));
+    gauge_redzone.getArc().setPainter(gauge_redzonePainter);
+    gauge_redzone.getArc().setRadius(49);
+    gauge_redzone.getArc().setLineWidth(6);
+    gauge_redzone.getArc().setCapPrecision(180);
 
     scales.setPosition(23, 21, 110, 110);
 
@@ -402,7 +440,10 @@ SingleGaugeBase::SingleGaugeBase()
     name.setTypedText(touchgfx::TypedText(T___SINGLEUSE_CQ0F));
 
     add(gauge_arc);
+    add(gauge_arc_red);
+    add(gauge_arc_blue);
     add(bg);
+    add(gauge_redzone);
     add(scales);
     add(gauge_peak);
     add(gauge_value);
