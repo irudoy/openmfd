@@ -86,7 +86,7 @@ SingleGaugeBase::SingleGaugeBase()
     peak_value.setWildcard(peak_valueBuffer);
     peak_value.setTypedText(touchgfx::TypedText(T___SINGLEUSE_3SAG));
 
-    current_value.setPosition(92, 119, 47, 18);
+    current_value.setPosition(87, 120, 47, 18);
     current_value.setVisible(false);
     current_value.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     current_value.setLinespacing(0);
