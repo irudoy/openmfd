@@ -189,7 +189,7 @@ int main(void)
   MX_RNG_Init();
   MX_TouchGFX_Init();
   /* USER CODE BEGIN 2 */
-  MFD_GaugesInit();
+  MFD_DataInit();
 
   // DEBUG Controllers Init
   DBGS_init();
@@ -768,55 +768,6 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
-
-void DBGS_handleClick_DISP(void) {
-
-}
-
-void DBGS_handleClick_RETURN(void) {
-  DBGD_toggleEnable();
-}
-
-void DBGS_handleClick_MENU(void) {
-
-}
-
-void DBGS_handleClick_MODE(void) {
-  DBGD_toggleRandom();
-  //  uint8_t val = 0b10000001;
-  //  if (osMessageQueueGetCount(DataQueueHandle) == 0) {
-  //    osMessageQueuePut(DataQueueHandle, &val, 0U, 0);
-  //  }
-}
-
-void DBGS_handleClick_UP(void) {
-  DBGD_stubIncDecAll(true);
-}
-
-void DBGS_handleClick_DOWN(void) {
-  DBGD_stubIncDecAll(false);
-}
-
-void DBGS_handleClick_LEFT(void) {
-
-}
-
-void DBGS_handleClick_RIGHT(void) {
-
-}
-
-void DBGS_handleClick_CENTER(void) {
-  DBGD_resetPeak();
-}
-
-
-/**
- * Handle Blue Button Push
- */
-void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
-{
-  DBGD_resetPeak();
-}
 
 /**
   * @brief  Perform the SDRAM external memory initialization sequence

@@ -30,21 +30,24 @@ extern "C" {
 
 #define MFD_GAUGES_SIZE 32
 
-#define MFD_GAUGE_BATT_VOLTAGE              0
-#define MFD_GAUGE_CLT_TEMP                  1
-#define MFD_GAUGE_IGN_TIMING                2
-#define MFD_GAUGE_O2_LEFT                   3
-#define MFD_GAUGE_TPS                       4
-#define MFD_GAUGE_AAC_VALVE                 5
-#define MFD_GAUGE_AF_ALPHA_L                6
-#define MFD_GAUGE_AF_ALPHA_L_SL             7
-#define MFD_GAUGE_VEHICLE_SPEED             8
-#define MFD_GAUGE_ENGINE_SPEED              9
-#define MFD_GAUGE_INJ_TIME                  10
-#define MFD_GAUGE_LEFT_MAF                  11
-#define MFD_GAUGE_CANSULT_VOLTAGE           12
-#define MFD_GAUGE_BOOST_PRESSURE            13
+typedef enum {
+  MFD_Gauge_BattVoltage,
+  MFD_Gauge_CltTemp,
+  MFD_Gauge_IgnTiming,
+  MFD_Gauge_AACValve,
+  MFD_Gauge_AFAlphaL,
+  MFD_Gauge_AFAlphaL_SL,
+  MFD_Gauge_VehicleSpeed,
+  MFD_Gauge_EngineSpeed,
+  MFD_Gauge_BoostPressure,
 
+  MFD_Gauge__SIZE,
+} MFD_GaugeType;
+
+//MFD_Gauge_InjTime,
+//MFD_Gauge_LeftMAF,
+//MFD_Gauge_CansultVoltage,
+//MFD_Gauge_O2Left,
 //#define MFD_GAUGE_FIRST_DTC_CODE            13
 //#define MFD_GAUGE_NEUTRAL_SW_STATE          14
 //#define MFD_GAUGE_START_SIGNAL_STATE        15
@@ -68,16 +71,39 @@ typedef struct
   float scaler;
   char name[10];
   char unitsLabel[12];
-  int8_t scaleValues[11];
+  int16_t scaleValues[11];
   MFD_GaugeScaleType scaleType;
 
   int8_t DEBUG_modifier;
-} MFD_GaugeTypeDef;
+} MFD_GaugeDataTypeDef;
 
-extern MFD_GaugeTypeDef MFD_GaugesAll[MFD_GAUGES_SIZE];
+typedef enum {
+  MFD_Screen_Summary,
+  MFD_Screen_Twin,
+  MFD_Screen_Graph,
+} MFD_ScreenType;
 
-void MFD_GaugesInit(void);
-MFD_GaugeTypeDef* MFD_GetGauge(uint8_t id);
+typedef enum {
+  MFD_PeakCur_Peak,
+  MFD_PeakCur_Current,
+} MFD_PeakCurType;
+
+typedef struct
+{
+  MFD_ScreenType currentScreen;
+  MFD_PeakCurType peakCurState;
+
+  MFD_GaugeType twinsGauge1;
+  MFD_GaugeType twinsGauge2;
+
+  MFD_GaugeType graphGauge;
+} MFD_AppStateTypeDef;
+
+extern MFD_AppStateTypeDef MFD_AppState;
+extern MFD_GaugeDataTypeDef MFD_GaugesAll[MFD_GAUGES_SIZE];
+
+void MFD_DataInit(void);
+MFD_GaugeDataTypeDef* MFD_GetGauge(MFD_GaugeType id);
 
 #ifdef __cplusplus
 }

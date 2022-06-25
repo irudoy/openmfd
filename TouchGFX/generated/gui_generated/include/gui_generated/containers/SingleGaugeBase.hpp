@@ -83,6 +83,7 @@ protected:
     touchgfx::TextAreaWithOneWildcard value_6_11_1;
     touchgfx::TextAreaWithOneWildcard value_6_11_0;
     touchgfx::TextAreaWithOneWildcard units_label;
+    touchgfx::TextAreaWithOneWildcard name;
 
     /*
      * Wildcard Buffers
@@ -159,6 +160,8 @@ protected:
     touchgfx::Unicode::UnicodeChar value_6_11_0Buffer[VALUE_6_11_0_SIZE];
     static const uint16_t UNITS_LABEL_SIZE = 12;
     touchgfx::Unicode::UnicodeChar units_labelBuffer[UNITS_LABEL_SIZE];
+    static const uint16_t NAME_SIZE = 8;
+    touchgfx::Unicode::UnicodeChar nameBuffer[NAME_SIZE];
 
 private:
 

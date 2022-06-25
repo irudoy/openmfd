@@ -4,7 +4,7 @@
 #define DBGD_OS_DELAY_RANDOM 500
 
 extern RNG_HandleTypeDef hrng;
-extern MFD_GaugeTypeDef MFD_GaugesAll[];
+extern MFD_GaugeDataTypeDef MFD_GaugesAll[];
 
 uint32_t tickCounter = 0;
 bool useRandom = false;
@@ -27,7 +27,7 @@ void DBGD_resetPeak(void) {
   }
 }
 
-static void DBGD_stubIncDecEntry(MFD_GaugeTypeDef *entry, bool inc) {
+static void DBGD_stubIncDecEntry(MFD_GaugeDataTypeDef *entry, bool inc) {
   if (entry->DEBUG_modifier == 0) entry->DEBUG_modifier = 1;
 
   entry->value = inc ? entry->value + entry->DEBUG_modifier : entry->value - entry->DEBUG_modifier;
@@ -44,7 +44,7 @@ void DBGD_stubIncDecAll(bool inc) {
   }
 }
 
-static void DBGD_stubEntry(MFD_GaugeTypeDef *entry) {
+static void DBGD_stubEntry(MFD_GaugeDataTypeDef *entry) {
   if (entry->DEBUG_modifier == 0) entry->DEBUG_modifier = 1;
 
   if (useRandom) {

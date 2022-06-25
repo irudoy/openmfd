@@ -5,6 +5,12 @@
   </Languages>
   <Texts>
     <TextGroup Id="Unsorted">
+      <Text Id="name_val" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">XXX</Translation>
+      </Text>
+      <Text Id="__SingleUse_CQ0F" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
       <Text Id="__SingleUse_952A" Alignment="Right" TypographyId="Big">
         <Translation Language="GB">&lt;value&gt;</Translation>
       </Text>
@@ -128,7 +134,7 @@
     </TextGroup>
   </Texts>
   <Typographies>
-    <Typography Id="Default" Font="Inter-SemiBoldItalic.ttf" Size="12" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="- .[]" WildcardCharacterRanges="0-9,A-Z,a-z" />
-    <Typography Id="Big" Font="Inter-SemiBoldItalic.ttf" Size="14" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="- .[]" WildcardCharacterRanges="0-9,A-Z,a-z" />
+    <Typography Id="Default" Font="Inter-SemiBoldItalic.ttf" Size="12" Bpp="4" Direction="LTR" FallbackCharacter="skip" WildcardCharacters="- .[]/%°" WildcardCharacterRanges="0-9,A-Z,a-z" />
+    <Typography Id="Big" Font="Inter-SemiBoldItalic.ttf" Size="14" Bpp="4" Direction="LTR" FallbackCharacter="skip" WildcardCharacters="- .[]/%°" WildcardCharacterRanges="0-9,A-Z,a-z" />
   </Typographies>
 </TextDatabase>

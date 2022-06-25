@@ -12,9 +12,7 @@ class Screen1View : public Screen1ViewBase {
     virtual void tearDownScreen();
     void handleTickEvent();
   protected:
-    int tickCounter;
-    int value1;
-    int value2;
+
 };
 
 #endif // SCREEN1VIEW_HPP

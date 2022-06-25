@@ -1,18 +1,29 @@
 #include "data.h"
 
-MFD_GaugeTypeDef MFD_GaugesAll[] = {};
+MFD_GaugeDataTypeDef MFD_GaugesAll[] = {};
 
-void MFD_GaugesInit(void) {
-  // CANSult
-  MFD_GaugesAll[MFD_GAUGE_BATT_VOLTAGE] = (MFD_GaugeTypeDef) {
-    .max = 255,
+MFD_AppStateTypeDef MFD_AppState = {
+  .currentScreen = MFD_Screen_Summary,
+  .peakCurState = MFD_PeakCur_Peak,
+
+  .twinsGauge1 = MFD_Gauge_BattVoltage,
+  .twinsGauge2 = MFD_Gauge_CltTemp,
+
+  .graphGauge = MFD_Gauge_BoostPressure,
+};
+
+void MFD_DataInit(void) {
+  MFD_GaugesAll[MFD_Gauge_BattVoltage] = (MFD_GaugeDataTypeDef) {
+    .scaler = 10.0f,
+    .min = 80,
+    .max = 160,
     .name = "BATT",
     .unitsLabel = "[ V ]",
     .scaleType = MFD_GaugeScaleType_9_17,
     .scaleValues = { 8, 9, 10, 11, 12, 13, 14, 15, 16 },
   };
 
-  MFD_GaugesAll[MFD_GAUGE_CLT_TEMP] = (MFD_GaugeTypeDef) {
+  MFD_GaugesAll[MFD_Gauge_CltTemp] = (MFD_GaugeDataTypeDef) {
     .min = 50,
     .max = 150,
     .name = "CLT",
@@ -21,7 +32,7 @@ void MFD_GaugesInit(void) {
     .scaleValues = { 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150 },
   };
 
-  MFD_GaugesAll[MFD_GAUGE_IGN_TIMING] = (MFD_GaugeTypeDef) {
+  MFD_GaugesAll[MFD_Gauge_IgnTiming] = (MFD_GaugeDataTypeDef) {
     .min = 0,
     .max = 50,
     .name = "IGN",
@@ -30,7 +41,7 @@ void MFD_GaugesInit(void) {
     .scaleValues = { 0, 10, 20, 30, 40, 50 },
   };
 
-  MFD_GaugesAll[MFD_GAUGE_AAC_VALVE] = (MFD_GaugeTypeDef) {
+  MFD_GaugesAll[MFD_Gauge_AACValve] = (MFD_GaugeDataTypeDef) {
     .min = 0,
     .max = 100,
     .name = "AAC",
@@ -39,7 +50,7 @@ void MFD_GaugesInit(void) {
     .scaleValues = { 0, 20, 40, 60, 80, 100 },
   };
 
-  MFD_GaugesAll[MFD_GAUGE_AF_ALPHA_L] = (MFD_GaugeTypeDef) {
+  MFD_GaugesAll[MFD_Gauge_AFAlphaL] = (MFD_GaugeDataTypeDef) {
     .min = 0,
     .max = 100,
     .name = "AF L",
@@ -48,7 +59,7 @@ void MFD_GaugesInit(void) {
     .scaleValues = { 0, 20, 40, 60, 80, 100 },
   };
 
-  MFD_GaugesAll[MFD_GAUGE_AF_ALPHA_L_SL] = (MFD_GaugeTypeDef) {
+  MFD_GaugesAll[MFD_Gauge_AFAlphaL_SL] = (MFD_GaugeDataTypeDef) {
     .min = 0,
     .max = 100,
     .name = "AF L SL",
@@ -57,7 +68,7 @@ void MFD_GaugesInit(void) {
     .scaleValues = { 0, 20, 40, 60, 80, 100 },
   };
 
-  MFD_GaugesAll[MFD_GAUGE_VEHICLE_SPEED] = (MFD_GaugeTypeDef) {
+  MFD_GaugesAll[MFD_Gauge_VehicleSpeed] = (MFD_GaugeDataTypeDef) {
     .min = 0,
     .max = 200,
     .name = "SPEED",
@@ -66,7 +77,7 @@ void MFD_GaugesInit(void) {
     .scaleValues = { 0, 20, 40, 60, 80, 100, 120, 140, 160, 180, 200 },
   };
 
-  MFD_GaugesAll[MFD_GAUGE_ENGINE_SPEED] = (MFD_GaugeTypeDef) {
+  MFD_GaugesAll[MFD_Gauge_EngineSpeed] = (MFD_GaugeDataTypeDef) {
     .DEBUG_modifier = 50,
 
     .min = 0,
@@ -77,7 +88,7 @@ void MFD_GaugesInit(void) {
     .scaleValues = { 0, 1, 2, 3, 4, 5, 6, 7, 8 },
   };
 
-  MFD_GaugesAll[MFD_GAUGE_BOOST_PRESSURE] = (MFD_GaugeTypeDef) {
+  MFD_GaugesAll[MFD_Gauge_BoostPressure] = (MFD_GaugeDataTypeDef) {
     .scaler = 10.0f,
     .min = -6,
     .max = 12,
@@ -115,6 +126,6 @@ void MFD_GaugesInit(void) {
 //  };
 }
 
-MFD_GaugeTypeDef* MFD_GetGauge(uint8_t id) {
+MFD_GaugeDataTypeDef* MFD_GetGauge(MFD_GaugeType id) {
   return &MFD_GaugesAll[id];
 }

@@ -25,6 +25,18 @@ extern "C" {
 void COMM_init(void);
 void COMM_setupCANFilter(void);
 
+void DBGS_handleClick_DISP(void);
+void DBGS_handleClick_RETURN(void);
+void DBGS_handleClick_MENU(void);
+void DBGS_handleClick_MODE(void);
+void DBGS_handleClick_UP(void);
+void DBGS_handleClick_DOWN(void);
+void DBGS_handleClick_LEFT(void);
+void DBGS_handleClick_RIGHT(void);
+void DBGS_handleClick_CENTER(void);
+
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin);
+
 #ifdef __cplusplus
 }
 #endif

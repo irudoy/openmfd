@@ -18,7 +18,7 @@ void SingleGauge::initialize()
   updateDuration = 5;
 }
 
-void SingleGauge::setConfig(MFD_GaugeTypeDef *conf)
+void SingleGauge::setConfig(MFD_GaugeDataTypeDef *conf)
 {
   data = conf;
 
@@ -27,6 +27,9 @@ void SingleGauge::setConfig(MFD_GaugeTypeDef *conf)
   gauge_arc.setRange(data->min, data->max, 0, 0);
 
   Unicode::strncpy(units_labelBuffer, data->unitsLabel, UNITS_LABEL_SIZE);
+
+  // remove when icons done
+  Unicode::strncpy(nameBuffer, data->name, NAME_SIZE);
 
   // reset all
 
@@ -98,11 +101,11 @@ void SingleGauge::setConfig(MFD_GaugeTypeDef *conf)
       Unicode::snprintf(value_11_21_3Buffer, VALUE_11_21_3_SIZE, "%d", data->scaleValues[3]);
       Unicode::snprintf(value_11_21_4Buffer, VALUE_11_21_4_SIZE, "%d", data->scaleValues[4]);
       Unicode::snprintf(value_11_21_5Buffer, VALUE_11_21_5_SIZE, "%d", data->scaleValues[5]);
-      Unicode::snprintf(value_11_21_5Buffer, VALUE_11_21_6_SIZE, "%d", data->scaleValues[6]);
-      Unicode::snprintf(value_11_21_5Buffer, VALUE_11_21_7_SIZE, "%d", data->scaleValues[7]);
-      Unicode::snprintf(value_11_21_5Buffer, VALUE_11_21_8_SIZE, "%d", data->scaleValues[8]);
-      Unicode::snprintf(value_11_21_5Buffer, VALUE_11_21_8_SIZE, "%d", data->scaleValues[9]);
-      Unicode::snprintf(value_11_21_5Buffer, VALUE_11_21_8_SIZE, "%d", data->scaleValues[10]);
+      Unicode::snprintf(value_11_21_6Buffer, VALUE_11_21_6_SIZE, "%d", data->scaleValues[6]);
+      Unicode::snprintf(value_11_21_7Buffer, VALUE_11_21_7_SIZE, "%d", data->scaleValues[7]);
+      Unicode::snprintf(value_11_21_8Buffer, VALUE_11_21_8_SIZE, "%d", data->scaleValues[8]);
+      Unicode::snprintf(value_11_21_9Buffer, VALUE_11_21_9_SIZE, "%d", data->scaleValues[9]);
+      Unicode::snprintf(value_11_21_10Buffer, VALUE_11_21_10_SIZE, "%d", data->scaleValues[10]);
 
       break;
     }
@@ -131,22 +134,20 @@ void SingleGauge::setConfig(MFD_GaugeTypeDef *conf)
     default:
       break;
   }
+
+  invalidate();
 }
 
-void SingleGauge::updateValue()
+void SingleGauge::update(bool instant)
 {
   if (data->value != currentValue) {
-    gauge_value.updateValue(data->value, updateDuration);
-    gauge_arc.updateValue(data->value, updateDuration);
+    gauge_value.updateValue(data->value, instant ? updateDuration : 0);
+    gauge_arc.updateValue(data->value, instant ? updateDuration : 0);
 
     currentValue = data->value;
   }
-}
-
-void SingleGauge::updatePeakValue()
-{
   if (data->peakValue != currentPeakValue) {
-    gauge_peak.updateValue(data->peakValue, updateDuration);
+    gauge_peak.updateValue(data->peakValue, instant ? updateDuration : 0);
 
     if (data->scaler > 0) {
       Unicode::snprintfFloat(peak_valueBuffer, PEAK_VALUE_SIZE, "%2.1f", data->peakValue / data->scaler);

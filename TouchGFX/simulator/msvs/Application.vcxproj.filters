@@ -172,17 +172,8 @@
     <Filter Include="Header Files\generated\simulator\include\simulator\video">
       <UniqueIdentifier>40286B9D-E12E-B6E5-49AE-247D70EB64D8</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\gui\screen1_screen">
-      <UniqueIdentifier>B560D3A9-183E-3E01-5B7E-ACDCB60F9FD6</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\gui\screen1_screen">
       <UniqueIdentifier>30713399-AD61-A85C-B879-ED3B92244EF3</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\generated\gui_generated\screen1_screen">
-      <UniqueIdentifier>EB131969-0F46-C6BA-7FEF-6280C00F75F9</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\generated\gui_generated\screen1_screen">
-      <UniqueIdentifier>BD36C305-F722-EA9F-4CC5-04E468EA14A6</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\gui\containers">
       <UniqueIdentifier>0FB578E0-52C2-4F0F-2F20-5920510A0C09</UniqueIdentifier>
@@ -195,6 +186,18 @@
     </Filter>
     <Filter Include="Source Files\generated\gui_generated\containers">
       <UniqueIdentifier>F1A68CA2-5243-26BA-A8AA-210594DAF7F9</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\gui\twinsscreen_screen">
+      <UniqueIdentifier>02103E36-E34C-64DE-32C9-AB53F40C23F2</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gui\twinsscreen_screen">
+      <UniqueIdentifier>AD902210-D533-0FD3-36A2-740897D2C263</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\generated\gui_generated\twinsscreen_screen">
+      <UniqueIdentifier>E51D3935-DD4A-14E2-0AB1-3B349EF9E684</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\generated\gui_generated\twinsscreen_screen">
+      <UniqueIdentifier>21937D1C-AE69-E684-B52B-A7A1655A13F0</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -228,20 +231,20 @@
     <ClCompile Include="..\..\generated\simulator\src\video\SoftwareMJPEGDecoder.cpp">
       <Filter>Source Files\generated\simulator\video</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\gui\src\screen1_screen\Screen1Presenter.cpp">
-      <Filter>Source Files\gui\screen1_screen</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\gui\src\screen1_screen\Screen1View.cpp">
-      <Filter>Source Files\gui\screen1_screen</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\generated\gui_generated\src\screen1_screen\Screen1ViewBase.cpp">
-      <Filter>Source Files\generated\gui_generated\screen1_screen</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\gui\src\containers\SingleGauge.cpp">
       <Filter>Source Files\gui\containers</Filter>
     </ClCompile>
     <ClCompile Include="..\..\generated\gui_generated\src\containers\SingleGaugeBase.cpp">
       <Filter>Source Files\generated\gui_generated\containers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\twinsscreen_screen\TwinsScreenPresenter.cpp">
+      <Filter>Source Files\gui\twinsscreen_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\twinsscreen_screen\TwinsScreenView.cpp">
+      <Filter>Source Files\gui\twinsscreen_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\twinsscreen_screen\TwinsScreenViewBase.cpp">
+      <Filter>Source Files\generated\gui_generated\twinsscreen_screen</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -691,14 +694,20 @@
     <ClInclude Include="..\..\gui\include\gui\screen1_screen\Screen1View.hpp">
       <Filter>Header Files\gui\screen1_screen</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\screen1_screen\Screen1ViewBase.hpp">
-      <Filter>Header Files\generated\gui_generated\screen1_screen</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\gui\include\gui\containers\SingleGauge.hpp">
       <Filter>Header Files\gui\containers</Filter>
     </ClInclude>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\SingleGaugeBase.hpp">
       <Filter>Header Files\generated\gui_generated\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\twinsscreen_screen\TwinsScreenPresenter.hpp">
+      <Filter>Header Files\gui\twinsscreen_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\twinsscreen_screen\TwinsScreenView.hpp">
+      <Filter>Header Files\gui\twinsscreen_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\twinsscreen_screen\TwinsScreenViewBase.hpp">
+      <Filter>Header Files\generated\gui_generated\twinsscreen_screen</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

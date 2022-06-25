@@ -2,13 +2,13 @@
   "Application": {
     "Screens": [
       {
-        "Name": "Screen1",
+        "Name": "TwinsScreen",
         "CanvasBufferSize": 4800,
         "Components": [
           {
             "Type": "CustomContainerInstance",
             "Name": "gauge2",
-            "X": 5,
+            "X": 164,
             "Y": 42,
             "Width": 160,
             "Height": 173,
@@ -17,7 +17,7 @@
           {
             "Type": "CustomContainerInstance",
             "Name": "gauge1",
-            "X": 164,
+            "X": 5,
             "Y": 42,
             "Width": 160,
             "Height": 173,
@@ -238,6 +238,7 @@
             "Y": 82,
             "Width": 25,
             "Height": 20,
+            "Visible": false,
             "RelativeFilename": "turbo-icon.png"
           },
           {
@@ -981,6 +982,26 @@
               "UseBuffer": true,
               "BufferSize": 12
             }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "name",
+            "X": 91,
+            "Y": 85,
+            "Width": 43,
+            "Height": 15,
+            "TextId": "__SingleUse_CQ0F",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Wildcard1": {
+              "TextId": "name_val",
+              "UseBuffer": true,
+              "BufferSize": 8
+            }
           }
         ],
         "Interactions": []
@@ -992,7 +1013,7 @@
       "Height": 240
     },
     "SelectedColorDepth": 16,
-    "StartupScreenName": "Screen1",
+    "StartupScreenName": "TwinsScreen",
     "SelectedStartupLanguage": "GB",
     "Skin": "Blue",
     "TouchGfxPath": "../Middlewares/ST/touchgfx",

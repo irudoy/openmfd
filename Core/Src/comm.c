@@ -50,10 +50,26 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan) {
   if (CANRxHeader.StdId == CBUS_ID) {
     switch(CANRxData[0]) {
       case CBUS_CMD_LEFT:
-        DBGD_toggleRandom();
+        if (MFD_AppState.twinsGauge1 == 0) {
+          MFD_AppState.twinsGauge1 = MFD_Gauge__SIZE - 1;
+        } else {
+          MFD_AppState.twinsGauge1--;
+        }
+        if (MFD_AppState.twinsGauge2 == 0) {
+          MFD_AppState.twinsGauge2 = MFD_Gauge__SIZE - 1;
+        } else {
+          MFD_AppState.twinsGauge2--;
+        }
         break;
       case CBUS_CMD_RIGHT:
-        DBGD_toggleEnable();
+        MFD_AppState.twinsGauge1++;
+        MFD_AppState.twinsGauge2++;
+        if (MFD_AppState.twinsGauge1 >= MFD_Gauge__SIZE) {
+          MFD_AppState.twinsGauge1 = 0;
+        }
+        if (MFD_AppState.twinsGauge2 >= MFD_Gauge__SIZE) {
+          MFD_AppState.twinsGauge2 = 0;
+        }
         break;
       case CBUS_CMD_UP:
         DBGD_stubIncDecAll(true);
@@ -64,9 +80,62 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan) {
       case CBUS_CMD_PLAY_PAUSE:
         DBGD_resetPeak();
         break;
+      case CBUS_CMD_1:
+        DBGD_toggleEnable();
+        break;
+      case CBUS_CMD_3:
+        DBGD_toggleRandom();
+        break;
       default:
         break;
     }
   }
 }
 
+void DBGS_handleClick_DISP(void) {
+
+}
+
+void DBGS_handleClick_RETURN(void) {
+  DBGD_toggleEnable();
+}
+
+void DBGS_handleClick_MENU(void) {
+
+}
+
+void DBGS_handleClick_MODE(void) {
+  DBGD_toggleRandom();
+  //  uint8_t val = 0b10000001;
+  //  if (osMessageQueueGetCount(DataQueueHandle) == 0) {
+  //    osMessageQueuePut(DataQueueHandle, &val, 0U, 0);
+  //  }
+}
+
+void DBGS_handleClick_UP(void) {
+  DBGD_stubIncDecAll(true);
+}
+
+void DBGS_handleClick_DOWN(void) {
+  DBGD_stubIncDecAll(false);
+}
+
+void DBGS_handleClick_LEFT(void) {
+
+}
+
+void DBGS_handleClick_RIGHT(void) {
+
+}
+
+void DBGS_handleClick_CENTER(void) {
+  DBGD_resetPeak();
+}
+
+/**
+ * Handle Blue Button Push
+ */
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+{
+  DBGD_resetPeak();
+}
