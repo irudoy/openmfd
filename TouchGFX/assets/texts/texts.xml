@@ -5,6 +5,15 @@
   </Languages>
   <Texts>
     <TextGroup Id="Unsorted">
+      <Text Id="__SingleUse_6TVI" Alignment="Left" TypographyId="Big">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="curr_val" Alignment="Left" TypographyId="Big">
+        <Translation Language="GB">66666</Translation>
+      </Text>
+      <Text Id="current_value" Alignment="Left" TypographyId="Big">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
       <Text Id="name_val" Alignment="Left" TypographyId="Default">
         <Translation Language="GB">XXX</Translation>
       </Text>

@@ -15,6 +15,7 @@ public:
     virtual void tearDownScreen();
     void handleTickEvent();
 protected:
+    MFD_PeakCurType peakCurState;
     MFD_GaugeType gaugeType1;
     MFD_GaugeType gaugeType2;
     MFD_GaugeDataTypeDef *gaugeData1;

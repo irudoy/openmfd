@@ -38,6 +38,17 @@ void TwinsScreenView::handleTickEvent()
     gauge2.update(true);
   }
 
+  if (peakCurState != MFD_AppState.peakCurState) {
+    peakCurState = MFD_AppState.peakCurState;
+    if (peakCurState == MFD_PeakCur_Current) {
+      gauge1.showCurrent();
+      gauge2.showCurrent();
+    } else {
+      gauge1.showPeak();
+      gauge2.showPeak();
+    }
+  }
+
   gauge1.update(false);
   gauge2.update(false);
 }

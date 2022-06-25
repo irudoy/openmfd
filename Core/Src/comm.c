@@ -86,6 +86,9 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan) {
       case CBUS_CMD_3:
         DBGD_toggleRandom();
         break;
+      case CBUS_CMD_4:
+        MFD_AppState.peakCurState = MFD_AppState.peakCurState == MFD_PeakCur_Peak ? MFD_PeakCur_Current : MFD_PeakCur_Peak;
+        break;
       default:
         break;
     }

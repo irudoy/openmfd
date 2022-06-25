@@ -16,6 +16,29 @@ void SingleGauge::initialize()
   peak_value.invalidate();
 
   updateDuration = 5;
+  shouldShowPeak = true;
+}
+
+void SingleGauge::showPeak()
+{
+  peak_caption.setVisible(true);
+  peak_caption.invalidate();
+  peak_value.setVisible(true);
+  peak_value.invalidate();
+  current_value.setVisible(false);
+  current_value.invalidate();
+  shouldShowPeak = true;
+}
+
+void SingleGauge::showCurrent()
+{
+  peak_caption.setVisible(false);
+  peak_caption.invalidate();
+  peak_value.setVisible(false);
+  peak_value.invalidate();
+  current_value.setVisible(true);
+  current_value.invalidate();
+  shouldShowPeak = false;
 }
 
 void SingleGauge::setConfig(MFD_GaugeDataTypeDef *conf)
@@ -144,17 +167,29 @@ void SingleGauge::update(bool instant)
     gauge_value.updateValue(data->value, instant ? updateDuration : 0);
     gauge_arc.updateValue(data->value, instant ? updateDuration : 0);
 
+    if (!shouldShowPeak) {
+      if (data->scaler > 0) {
+        Unicode::snprintfFloat(current_valueBuffer, CURRENT_VALUE_SIZE, "%2.1f", data->value / data->scaler);
+      } else {
+        Unicode::snprintf(current_valueBuffer, CURRENT_VALUE_SIZE, "%d", data->value);
+      }
+      current_value.invalidate();
+    }
+
     currentValue = data->value;
   }
+
   if (data->peakValue != currentPeakValue) {
     gauge_peak.updateValue(data->peakValue, instant ? updateDuration : 0);
 
-    if (data->scaler > 0) {
-      Unicode::snprintfFloat(peak_valueBuffer, PEAK_VALUE_SIZE, "%2.1f", data->peakValue / data->scaler);
-    } else {
-      Unicode::snprintf(peak_valueBuffer, PEAK_VALUE_SIZE, "%d", data->peakValue);
+    if (shouldShowPeak) {
+      if (data->scaler > 0) {
+        Unicode::snprintfFloat(peak_valueBuffer, PEAK_VALUE_SIZE, "%2.1f", data->peakValue / data->scaler);
+      } else {
+        Unicode::snprintf(peak_valueBuffer, PEAK_VALUE_SIZE, "%d", data->peakValue);
+      }
+      peak_value.invalidate();
     }
-    peak_value.invalidate();
 
     currentPeakValue = data->peakValue;
   }

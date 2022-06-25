@@ -42,6 +42,7 @@ protected:
     touchgfx::Gauge gauge_value;
     touchgfx::TextArea peak_caption;
     touchgfx::TextAreaWithOneWildcard peak_value;
+    touchgfx::TextAreaWithOneWildcard current_value;
     touchgfx::Image icon_boost;
     touchgfx::Container values;
     touchgfx::Container values_spec_1;
@@ -90,6 +91,8 @@ protected:
      */
     static const uint16_t PEAK_VALUE_SIZE = 6;
     touchgfx::Unicode::UnicodeChar peak_valueBuffer[PEAK_VALUE_SIZE];
+    static const uint16_t CURRENT_VALUE_SIZE = 5;
+    touchgfx::Unicode::UnicodeChar current_valueBuffer[CURRENT_VALUE_SIZE];
     static const uint16_t VALUE_SPEC_7_SIZE = 5;
     touchgfx::Unicode::UnicodeChar value_spec_7Buffer[VALUE_SPEC_7_SIZE];
     static const uint16_t VALUE_SPEC_6_SIZE = 5;

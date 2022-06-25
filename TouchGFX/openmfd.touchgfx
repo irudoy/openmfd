@@ -232,6 +232,27 @@
             }
           },
           {
+            "Type": "TextArea",
+            "Name": "current_value",
+            "X": 92,
+            "Y": 119,
+            "Width": 47,
+            "Height": 18,
+            "Visible": false,
+            "TextId": "__SingleUse_6TVI",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Wildcard1": {
+              "TextId": "curr_val",
+              "UseBuffer": true,
+              "BufferSize": 5
+            }
+          },
+          {
             "Type": "Image",
             "Name": "icon_boost",
             "X": 95,

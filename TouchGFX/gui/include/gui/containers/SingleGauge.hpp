@@ -17,7 +17,11 @@ public:
 
     void setConfig(MFD_GaugeDataTypeDef *config);
 
+    void showPeak();
+    void showCurrent();
+
 protected:
+    bool shouldShowPeak;
     int updateDuration;
     int currentValue;
     int currentPeakValue;

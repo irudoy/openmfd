@@ -86,6 +86,14 @@ SingleGaugeBase::SingleGaugeBase()
     peak_value.setWildcard(peak_valueBuffer);
     peak_value.setTypedText(touchgfx::TypedText(T___SINGLEUSE_3SAG));
 
+    current_value.setPosition(92, 119, 47, 18);
+    current_value.setVisible(false);
+    current_value.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    current_value.setLinespacing(0);
+    Unicode::snprintf(current_valueBuffer, CURRENT_VALUE_SIZE, "%s", touchgfx::TypedText(T_CURR_VAL).getText());
+    current_value.setWildcard(current_valueBuffer);
+    current_value.setTypedText(touchgfx::TypedText(T___SINGLEUSE_6TVI));
+
     icon_boost.setXY(95, 82);
     icon_boost.setVisible(false);
     icon_boost.setBitmap(touchgfx::Bitmap(BITMAP_TURBO_ICON_ID));
@@ -400,6 +408,7 @@ SingleGaugeBase::SingleGaugeBase()
     add(gauge_value);
     add(peak_caption);
     add(peak_value);
+    add(current_value);
     add(icon_boost);
     add(values);
     add(units_label);
