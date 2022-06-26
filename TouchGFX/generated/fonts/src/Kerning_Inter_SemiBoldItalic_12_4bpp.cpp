@@ -2,6 +2,17 @@
 
 FONT_KERNING_LOCATION_FLASH_PRAGMA
 KEEP extern const touchgfx::KerningNode kerning_Inter_SemiBoldItalic_12_4bpp[] FONT_KERNING_LOCATION_FLASH_ATTRIBUTE = {
+    { 0x0037, -1 },  // (First char = [0x0037, uni0037], Second char = [0x002C, uni002C], Kerning dist = -1)
+    { 0x0044, -1 },  // (First char = [0x0044, uni0044], Second char = [0x002C, uni002C], Kerning dist = -1)
+    { 0x004F, -1 },  // (First char = [0x004F, uni004F], Second char = [0x002C, uni002C], Kerning dist = -1)
+    { 0x0051, -1 },  // (First char = [0x0051, uni0051], Second char = [0x002C, uni002C], Kerning dist = -1)
+    { 0x0056, -1 },  // (First char = [0x0056, uni0056], Second char = [0x002C, uni002C], Kerning dist = -1)
+    { 0x0057, -1 },  // (First char = [0x0057, uni0057], Second char = [0x002C, uni002C], Kerning dist = -1)
+    { 0x0059, -1 },  // (First char = [0x0059, uni0059], Second char = [0x002C, uni002C], Kerning dist = -1)
+    { 0x0066, -1 },  // (First char = [0x0066, uni0066], Second char = [0x002C, uni002C], Kerning dist = -1)
+    { 0x0072, -1 },  // (First char = [0x0072, uni0072], Second char = [0x002C, uni002C], Kerning dist = -1)
+    { 0x0077, -1 },  // (First char = [0x0077, uni0077], Second char = [0x002C, uni002C], Kerning dist = -1)
+    { 0x00B0, -2 },  // (First char = [0x00B0, uni00B0], Second char = [0x002C, uni002C], Kerning dist = -2)
     { 0x004B, -1 },  // (First char = [0x004B, uni004B], Second char = [0x002D, uni002D], Kerning dist = -1)
     { 0x004C, -1 },  // (First char = [0x004C, uni004C], Second char = [0x002D, uni002D], Kerning dist = -1)
     { 0x0054, -1 },  // (First char = [0x0054, uni0054], Second char = [0x002D, uni002D], Kerning dist = -1)
@@ -25,6 +36,7 @@ KEEP extern const touchgfx::KerningNode kerning_Inter_SemiBoldItalic_12_4bpp[] F
     { 0x0056, -1 },  // (First char = [0x0056, uni0056], Second char = [0x002F, uni002F], Kerning dist = -1)
     { 0x0076, -1 },  // (First char = [0x0076, uni0076], Second char = [0x002F, uni002F], Kerning dist = -1)
     { 0x0079, -1 },  // (First char = [0x0079, uni0079], Second char = [0x002F, uni002F], Kerning dist = -1)
+    { 0x002C, -1 },  // (First char = [0x002C, uni002C], Second char = [0x0031, uni0031], Kerning dist = -1)
     { 0x002E, -1 },  // (First char = [0x002E, uni002E], Second char = [0x0031, uni0031], Kerning dist = -1)
     { 0x004C, -1 },  // (First char = [0x004C, uni004C], Second char = [0x0031, uni0031], Kerning dist = -1)
     { 0x0037, -1 },  // (First char = [0x0037, uni0037], Second char = [0x0034, uni0034], Kerning dist = -1)
@@ -100,6 +112,7 @@ KEEP extern const touchgfx::KerningNode kerning_Inter_SemiBoldItalic_12_4bpp[] F
     { 0x0070, -1 },  // (First char = [0x0070, uni0070], Second char = [0x0057, uni0057], Kerning dist = -1)
     { 0x0071, -1 },  // (First char = [0x0071, uni0071], Second char = [0x0057, uni0057], Kerning dist = -1)
     { 0x002D, -1 },  // (First char = [0x002D, uni002D], Second char = [0x0058, uni0058], Kerning dist = -1)
+    { 0x002C, -1 },  // (First char = [0x002C, uni002C], Second char = [0x0059, uni0059], Kerning dist = -1)
     { 0x002D, -1 },  // (First char = [0x002D, uni002D], Second char = [0x0059, uni0059], Kerning dist = -1)
     { 0x002E, -1 },  // (First char = [0x002E, uni002E], Second char = [0x0059, uni0059], Kerning dist = -1)
     { 0x0041, -1 },  // (First char = [0x0041, uni0041], Second char = [0x0059, uni0059], Kerning dist = -1)

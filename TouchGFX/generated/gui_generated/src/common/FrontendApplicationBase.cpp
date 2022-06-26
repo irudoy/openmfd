@@ -11,6 +11,8 @@
 #include <platform/driver/lcd/LCD16bpp.hpp>
 #include <gui/twinsscreen_screen/TwinsScreenView.hpp>
 #include <gui/twinsscreen_screen/TwinsScreenPresenter.hpp>
+#include <gui/graphscreen_screen/GraphScreenView.hpp>
+#include <gui/graphscreen_screen/GraphScreenPresenter.hpp>
 
 using namespace touchgfx;
 
@@ -29,15 +31,15 @@ FrontendApplicationBase::FrontendApplicationBase(Model& m, FrontendHeap& heap)
  * Screen Transition Declarations
  */
 
-// TwinsScreen
+// GraphScreen
 
-void FrontendApplicationBase::gotoTwinsScreenScreenNoTransition()
+void FrontendApplicationBase::gotoGraphScreenScreenNoTransition()
 {
-    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoTwinsScreenScreenNoTransitionImpl);
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoGraphScreenScreenNoTransitionImpl);
     pendingScreenTransitionCallback = &transitionCallback;
 }
 
-void FrontendApplicationBase::gotoTwinsScreenScreenNoTransitionImpl()
+void FrontendApplicationBase::gotoGraphScreenScreenNoTransitionImpl()
 {
-    touchgfx::makeTransition<TwinsScreenView, TwinsScreenPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+    touchgfx::makeTransition<GraphScreenView, GraphScreenPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }

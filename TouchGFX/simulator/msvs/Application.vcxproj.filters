@@ -199,6 +199,18 @@
     <Filter Include="Header Files\generated\gui_generated\twinsscreen_screen">
       <UniqueIdentifier>21937D1C-AE69-E684-B52B-A7A1655A13F0</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\gui\graphscreen_screen">
+      <UniqueIdentifier>B8BCAE0E-C360-D5AD-1A58-FC6E684E06E4</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gui\graphscreen_screen">
+      <UniqueIdentifier>FE74EF8B-0738-D9EC-A05B-F63DEC22F141</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\generated\gui_generated\graphscreen_screen">
+      <UniqueIdentifier>2B265679-2212-F224-D86A-4FD1ECFFD3E4</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\generated\gui_generated\graphscreen_screen">
+      <UniqueIdentifier>833739DD-3FAD-DEA2-710C-81252913CFDA</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(TouchGFXReleasePath)\framework\source\platform\driver\touch\SDL2TouchController.cpp">
@@ -245,6 +257,21 @@
     </ClCompile>
     <ClCompile Include="..\..\generated\gui_generated\src\twinsscreen_screen\TwinsScreenViewBase.cpp">
       <Filter>Source Files\generated\gui_generated\twinsscreen_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\containers\Graph.cpp">
+      <Filter>Source Files\gui\containers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\GraphBase.cpp">
+      <Filter>Source Files\generated\gui_generated\containers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\graphscreen_screen\GraphScreenPresenter.cpp">
+      <Filter>Source Files\gui\graphscreen_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\graphscreen_screen\GraphScreenView.cpp">
+      <Filter>Source Files\gui\graphscreen_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\graphscreen_screen\GraphScreenViewBase.cpp">
+      <Filter>Source Files\generated\gui_generated\graphscreen_screen</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -708,6 +735,21 @@
     </ClInclude>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\twinsscreen_screen\TwinsScreenViewBase.hpp">
       <Filter>Header Files\generated\gui_generated\twinsscreen_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\containers\Graph.hpp">
+      <Filter>Header Files\gui\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\GraphBase.hpp">
+      <Filter>Header Files\generated\gui_generated\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\graphscreen_screen\GraphScreenPresenter.hpp">
+      <Filter>Header Files\gui\graphscreen_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\graphscreen_screen\GraphScreenView.hpp">
+      <Filter>Header Files\gui\graphscreen_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\graphscreen_screen\GraphScreenViewBase.hpp">
+      <Filter>Header Files\generated\gui_generated\graphscreen_screen</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

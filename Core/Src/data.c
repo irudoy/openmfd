@@ -9,7 +9,7 @@ MFD_AppStateTypeDef MFD_AppState = {
   .twinsGauge1 = 0,
   .twinsGauge2 = 1,
 
-  .graphGauge = MFD_Gauge_BoostPressure,
+  .graphGauge = 0,
 };
 
 void MFD_DataInit(void) {
@@ -95,23 +95,23 @@ void MFD_DataInit(void) {
   };
 
   MFD_GaugesAll[MFD_Gauge_BoostPressure] = (MFD_GaugeDataTypeDef) {
-    .scaler = 10.0f,
-    .min = -6,
-    .max = 12,
-    .redZoneFrom = 9,
-    .redZoneTo = 12,
+    .scaler = 100.0f,
+    .min = -60,
+    .max = 120,
+    .redZoneFrom = 90,
+    .redZoneTo = 120,
     .name = "BOOST",
     .unitsLabel = "[x100 kPa]",
     .scaleType = MFD_GaugeScaleType_SPEC_1,
-    .scaleValues = { -5, 0, 2, 4, 6, 8, 10, 12 },
+    .scaleValues = { -50, 0, 20, 40, 60, 80, 100, 120 },
   };
 
   MFD_GaugesAll[MFD_Gauge_AFR] = (MFD_GaugeDataTypeDef) {
-    .scaler = 10.0f,
-    .min = 80,
-    .max = 160,
-    .redZoneFrom = 145,
-    .redZoneTo = 160,
+    .scaler = 100.0f,
+    .min = 800,
+    .max = 1600,
+    .redZoneFrom = 1450,
+    .redZoneTo = 1600,
     .name = "AFR",
     .unitsLabel = "[ A:F ]",
     .scaleType = MFD_GaugeScaleType_9_17,

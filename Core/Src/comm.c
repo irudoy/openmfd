@@ -60,6 +60,7 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan) {
         } else {
           MFD_AppState.twinsGauge2--;
         }
+        MFD_AppState.graphGauge = MFD_AppState.twinsGauge2;
         break;
       case CBUS_CMD_RIGHT:
         MFD_AppState.twinsGauge1++;
@@ -70,6 +71,7 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan) {
         if (MFD_AppState.twinsGauge2 >= MFD_Gauge__SIZE) {
           MFD_AppState.twinsGauge2 = 0;
         }
+        MFD_AppState.graphGauge = MFD_AppState.twinsGauge2;
         break;
       case CBUS_CMD_UP:
         DBGD_stubIncDecAll(true);

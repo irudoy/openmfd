@@ -26,6 +26,11 @@
     <ClCompile Include="..\..\gui\src\twinsscreen_screen\TwinsScreenPresenter.cpp"/>
     <ClCompile Include="..\..\gui\src\twinsscreen_screen\TwinsScreenView.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\twinsscreen_screen\TwinsScreenViewBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\containers\Graph.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\GraphBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\graphscreen_screen\GraphScreenPresenter.cpp"/>
+    <ClCompile Include="..\..\gui\src\graphscreen_screen\GraphScreenView.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\graphscreen_screen\GraphScreenViewBase.cpp"/>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(ApplicationRoot)\assets\texts\texts.xml"/>
@@ -183,6 +188,11 @@
     <ClInclude Include="..\..\gui\include\gui\twinsscreen_screen\TwinsScreenPresenter.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\twinsscreen_screen\TwinsScreenView.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\twinsscreen_screen\TwinsScreenViewBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\containers\Graph.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\GraphBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\graphscreen_screen\GraphScreenPresenter.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\graphscreen_screen\GraphScreenView.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\graphscreen_screen\GraphScreenViewBase.hpp"/>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="$(ApplicationRoot)\generated\simulator\touchgfx.rc"/>

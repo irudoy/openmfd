@@ -36,6 +36,31 @@
             }
           }
         ]
+      },
+      {
+        "Name": "GraphScreen",
+        "CanvasBufferSize": 4800,
+        "Components": [
+          {
+            "Type": "CustomContainerInstance",
+            "Name": "gauge1",
+            "X": 160,
+            "Y": 42,
+            "Width": 160,
+            "Height": 173,
+            "CustomContainerDefinitionName": "SingleGauge"
+          },
+          {
+            "Type": "CustomContainerInstance",
+            "Name": "graph1",
+            "X": -4,
+            "Y": 18,
+            "Width": 155,
+            "Height": 190,
+            "CustomContainerDefinitionName": "Graph"
+          }
+        ],
+        "Interactions": []
       }
     ],
     "CustomContainerDefinitions": [
@@ -1104,6 +1129,103 @@
           }
         ],
         "Interactions": []
+      },
+      {
+        "Name": "Graph",
+        "Width": 155,
+        "Height": 190,
+        "Components": [
+          {
+            "Type": "DynamicGraph",
+            "Name": "dynamicGraph1",
+            "X": 10,
+            "Y": 15,
+            "Width": 145,
+            "Height": 174,
+            "DataSeed": -1595606021,
+            "NumberOfValues": 30,
+            "MaxY": 200.0,
+            "MinY": -50.0,
+            "Precision": "1",
+            "LastIndex": 29,
+            "XAxisScale": 1.0,
+            "InsertRandomValues": true,
+            "LabelSizeTop": 10,
+            "LabelSizeBottom": 15,
+            "LabelSizeLeft": 25,
+            "PaddingBottom": 2,
+            "PaddingLeft": 5,
+            "GraphType": "GraphScroll",
+            "GraphDrawers": [
+              {
+                "Type": "LineDrawer",
+                "LineWidth": 2,
+                "Color": {
+                  "Red": 97,
+                  "Green": 177,
+                  "Blue": 81
+                }
+              }
+            ],
+            "XAxisGrid": {
+              "Type": "GraphGrid",
+              "Color": {
+                "Red": 168,
+                "Green": 168,
+                "Blue": 168
+              },
+              "Interval": 10.0,
+              "LineWidth": 1
+            },
+            "YAxisGrid": {
+              "Type": "GraphGrid",
+              "Color": {
+                "Red": 168,
+                "Green": 168,
+                "Blue": 168
+              },
+              "Interval": 50.0,
+              "LineWidth": 2
+            },
+            "MinorYAxisGrid": {
+              "Type": "GraphGrid",
+              "Color": {
+                "Red": 168,
+                "Green": 168,
+                "Blue": 168
+              },
+              "Interval": 10.0,
+              "LineWidth": 1
+            },
+            "XAxisLabel": {
+              "Type": "GraphLabel",
+              "Interval": 10.0,
+              "DecimalSeparator": "Point",
+              "TextColor": {
+                "Red": 255,
+                "Green": 255,
+                "Blue": 255
+              },
+              "TextId": "__SingleUse_WZVA",
+              "TextRotation": "0",
+              "Position": "Bottom"
+            },
+            "YAxisLabel": {
+              "Type": "GraphLabel",
+              "Interval": 50.0,
+              "DecimalSeparator": "Point",
+              "TextColor": {
+                "Red": 255,
+                "Green": 255,
+                "Blue": 255
+              },
+              "TextId": "__SingleUse_HNSD",
+              "TextRotation": "0",
+              "Position": "Left"
+            }
+          }
+        ],
+        "Interactions": []
       }
     ],
     "Name": "MyApplication",
@@ -1112,7 +1234,7 @@
       "Height": 240
     },
     "SelectedColorDepth": 16,
-    "StartupScreenName": "TwinsScreen",
+    "StartupScreenName": "GraphScreen",
     "SelectedStartupLanguage": "GB",
     "Skin": "Blue",
     "TouchGfxPath": "../Middlewares/ST/touchgfx",

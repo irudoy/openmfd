@@ -14,6 +14,8 @@
 
 #include <gui/twinsscreen_screen/TwinsScreenView.hpp>
 #include <gui/twinsscreen_screen/TwinsScreenPresenter.hpp>
+#include <gui/graphscreen_screen/GraphScreenView.hpp>
+#include <gui/graphscreen_screen/GraphScreenPresenter.hpp>
 
 
 /**
@@ -37,7 +39,8 @@ public:
      * @note All view types used in the application MUST be added to this list!
      */
     typedef touchgfx::meta::TypeList< TwinsScreenView,
-            touchgfx::meta::Nil
+            touchgfx::meta::TypeList< GraphScreenView,
+            touchgfx::meta::Nil >
             > GeneratedViewTypes;
 
     /**
@@ -50,7 +53,8 @@ public:
      * @note All presenter types used in the application MUST be added to this list!
      */
     typedef touchgfx::meta::TypeList< TwinsScreenPresenter,
-            touchgfx::meta::Nil
+            touchgfx::meta::TypeList< GraphScreenPresenter,
+            touchgfx::meta::Nil >
             > GeneratedPresenterTypes;
 
     /**
@@ -73,7 +77,7 @@ public:
 
     virtual void gotoStartScreen(FrontendApplication& app)
     {
-        app.gotoTwinsScreenScreenNoTransition();
+        app.gotoGraphScreenScreenNoTransition();
     }
 protected:
     FrontendHeapBase(touchgfx::AbstractPartition& presenters, touchgfx::AbstractPartition& views, touchgfx::AbstractPartition& transitions, FrontendApplication& app)

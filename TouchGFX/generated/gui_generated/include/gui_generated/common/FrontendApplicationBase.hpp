@@ -17,19 +17,19 @@ public:
 
     virtual void changeToStartScreen()
     {
-        gotoTwinsScreenScreenNoTransition();
+        gotoGraphScreenScreenNoTransition();
     }
 
-    // TwinsScreen
-    void gotoTwinsScreenScreenNoTransition();
+    // GraphScreen
+    void gotoGraphScreenScreenNoTransition();
 
 protected:
     touchgfx::Callback<FrontendApplicationBase> transitionCallback;
     FrontendHeap& frontendHeap;
     Model& model;
 
-    // TwinsScreen
-    void gotoTwinsScreenScreenNoTransitionImpl();
+    // GraphScreen
+    void gotoGraphScreenScreenNoTransitionImpl();
 };
 
 #endif // FRONTENDAPPLICATIONBASE_HPP

@@ -205,7 +205,7 @@ void SingleGauge::update(bool instant)
 
     if (!shouldShowPeak) {
       if (data->scaler > 0) {
-        Unicode::snprintfFloat(current_valueBuffer, CURRENT_VALUE_SIZE, "%2.1f", data->value / data->scaler);
+        Unicode::snprintfFloat(current_valueBuffer, CURRENT_VALUE_SIZE, "%2.2f", data->value / data->scaler);
       } else {
         Unicode::snprintf(current_valueBuffer, CURRENT_VALUE_SIZE, "%d", data->value);
       }
@@ -220,7 +220,7 @@ void SingleGauge::update(bool instant)
 
     if (shouldShowPeak) {
       if (data->scaler > 0) {
-        Unicode::snprintfFloat(peak_valueBuffer, PEAK_VALUE_SIZE, "%2.1f", data->peakValue / data->scaler);
+        Unicode::snprintfFloat(peak_valueBuffer, PEAK_VALUE_SIZE, "%2.2f", data->peakValue / data->scaler);
       } else {
         Unicode::snprintf(peak_valueBuffer, PEAK_VALUE_SIZE, "%d", data->peakValue);
       }
