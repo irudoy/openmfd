@@ -9,6 +9,7 @@ GraphScreenView::GraphScreenView()
 void GraphScreenView::setupScreen()
 {
   gauge1.setConfig(gaugeData);
+  graph1.setConfig(gaugeData);
 
   GraphScreenViewBase::setupScreen();
 }
@@ -25,6 +26,8 @@ void GraphScreenView::handleTickEvent()
     gaugeData = MFD_GetGauge(gaugeType);
     gauge1.setConfig(gaugeData);
     gauge1.update(true);
+
+    graph1.setConfig(gaugeData);
   }
 
   if (peakCurState != MFD_AppState.peakCurState) {

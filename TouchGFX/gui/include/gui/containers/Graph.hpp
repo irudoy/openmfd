@@ -3,6 +3,8 @@
 
 #include <gui_generated/containers/GraphBase.hpp>
 
+#include "data.h"
+
 class Graph : public GraphBase
 {
 public:
@@ -12,7 +14,10 @@ public:
     virtual void initialize();
 
     void addPoint(int);
+
+    void setConfig(MFD_GaugeDataTypeDef *config);
 protected:
+    MFD_GaugeDataTypeDef *data;
 };
 
 #endif // GRAPH_HPP
