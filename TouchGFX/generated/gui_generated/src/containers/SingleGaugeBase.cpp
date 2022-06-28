@@ -442,6 +442,11 @@ SingleGaugeBase::SingleGaugeBase()
     add(name);
 }
 
+SingleGaugeBase::~SingleGaugeBase()
+{
+
+}
+
 void SingleGaugeBase::initialize()
 {
 

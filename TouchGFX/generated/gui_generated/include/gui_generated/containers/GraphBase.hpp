@@ -17,7 +17,7 @@ class GraphBase : public touchgfx::Container
 {
 public:
     GraphBase();
-    virtual ~GraphBase() {}
+    virtual ~GraphBase();
     virtual void initialize();
 
 protected:

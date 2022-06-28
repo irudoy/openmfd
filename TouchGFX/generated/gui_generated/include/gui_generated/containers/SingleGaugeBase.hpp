@@ -18,7 +18,7 @@ class SingleGaugeBase : public touchgfx::Container
 {
 public:
     SingleGaugeBase();
-    virtual ~SingleGaugeBase() {}
+    virtual ~SingleGaugeBase();
     virtual void initialize();
 
 protected:
