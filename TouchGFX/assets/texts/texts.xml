@@ -5,10 +5,19 @@
   </Languages>
   <Texts>
     <TextGroup Id="Unsorted">
-      <Text Id="__SingleUse_HNSD" Alignment="Right" TypographyId="Default">
-        <Translation Language="GB">&lt;&gt;</Translation>
+      <Text Id="__SingleUse_RAI8" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">0</Translation>
       </Text>
-      <Text Id="__SingleUse_WZVA" Alignment="Left" TypographyId="Default">
+      <Text Id="__SingleUse_IRVL" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">10</Translation>
+      </Text>
+      <Text Id="__SingleUse_T3EE" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">20</Translation>
+      </Text>
+      <Text Id="__SingleUse_RDJE" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">30</Translation>
+      </Text>
+      <Text Id="__SingleUse_HNSD" Alignment="Right" TypographyId="Default">
         <Translation Language="GB">&lt;&gt;</Translation>
       </Text>
       <Text Id="__SingleUse_6TVI" Alignment="Center" TypographyId="Big">

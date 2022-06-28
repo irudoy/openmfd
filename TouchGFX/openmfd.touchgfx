@@ -44,7 +44,7 @@
           {
             "Type": "CustomContainerInstance",
             "Name": "gauge1",
-            "X": 160,
+            "X": 170,
             "Y": 42,
             "Width": 160,
             "Height": 173,
@@ -53,7 +53,7 @@
           {
             "Type": "CustomContainerInstance",
             "Name": "graph1",
-            "X": -4,
+            "X": 9,
             "Y": 18,
             "Width": 155,
             "Height": 190,
@@ -1138,7 +1138,6 @@
           {
             "Type": "DynamicGraph",
             "Name": "dynamicGraph1",
-            "X": 10,
             "Y": 15,
             "Width": 145,
             "Height": 174,
@@ -1170,19 +1169,19 @@
             "XAxisGrid": {
               "Type": "GraphGrid",
               "Color": {
-                "Red": 168,
-                "Green": 168,
-                "Blue": 168
+                "Red": 79,
+                "Green": 79,
+                "Blue": 79
               },
               "Interval": 10.0,
-              "LineWidth": 1
+              "LineWidth": 2
             },
             "YAxisGrid": {
               "Type": "GraphGrid",
               "Color": {
-                "Red": 168,
-                "Green": 168,
-                "Blue": 168
+                "Red": 117,
+                "Green": 117,
+                "Blue": 117
               },
               "Interval": 50.0,
               "LineWidth": 2
@@ -1190,25 +1189,12 @@
             "MinorYAxisGrid": {
               "Type": "GraphGrid",
               "Color": {
-                "Red": 168,
-                "Green": 168,
-                "Blue": 168
+                "Red": 148,
+                "Green": 148,
+                "Blue": 148
               },
               "Interval": 10.0,
               "LineWidth": 1
-            },
-            "XAxisLabel": {
-              "Type": "GraphLabel",
-              "Interval": 10.0,
-              "DecimalSeparator": "Point",
-              "TextColor": {
-                "Red": 255,
-                "Green": 255,
-                "Blue": 255
-              },
-              "TextId": "__SingleUse_WZVA",
-              "TextRotation": "0",
-              "Position": "Bottom"
             },
             "YAxisLabel": {
               "Type": "GraphLabel",
@@ -1223,6 +1209,75 @@
               "TextRotation": "0",
               "Position": "Left"
             }
+          },
+          {
+            "Type": "Container",
+            "Name": "x_labels",
+            "X": 21,
+            "Y": 176,
+            "Width": 147,
+            "Height": 15,
+            "Components": [
+              {
+                "Type": "TextArea",
+                "Name": "lx0",
+                "X": 120,
+                "Width": 8,
+                "Height": 14,
+                "TextId": "__SingleUse_RAI8",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "AutoSize": true
+              },
+              {
+                "Type": "TextArea",
+                "Name": "lx10",
+                "X": 80,
+                "Width": 14,
+                "Height": 14,
+                "TextId": "__SingleUse_IRVL",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "AutoSize": true
+              },
+              {
+                "Type": "TextArea",
+                "Name": "lx20",
+                "X": 40,
+                "Width": 16,
+                "Height": 14,
+                "TextId": "__SingleUse_T3EE",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "AutoSize": true
+              },
+              {
+                "Type": "TextArea",
+                "Name": "lx30",
+                "Width": 16,
+                "Height": 14,
+                "TextId": "__SingleUse_RDJE",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "AutoSize": true
+              }
+            ]
           }
         ],
         "Interactions": []

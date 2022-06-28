@@ -10,6 +10,8 @@
 #include <touchgfx/widgets/graph/GraphElements.hpp>
 #include <touchgfx/widgets/canvas/PainterRGB565.hpp>
 #include <touchgfx/widgets/graph/GraphLabels.hpp>
+#include <touchgfx/containers/Container.hpp>
+#include <touchgfx/widgets/TextArea.hpp>
 
 class GraphBase : public touchgfx::Container
 {
@@ -32,8 +34,12 @@ protected:
     touchgfx::GraphElementGridY dynamicGraph1MinorYAxisGrid;
     touchgfx::GraphElementGridX dynamicGraph1MajorXAxisGrid;
     touchgfx::GraphElementGridY dynamicGraph1MajorYAxisGrid;
-    touchgfx::GraphLabelsX dynamicGraph1MajorXAxisLabel;
     touchgfx::GraphLabelsY dynamicGraph1MajorYAxisLabel;
+    touchgfx::Container x_labels;
+    touchgfx::TextArea lx0;
+    touchgfx::TextArea lx10;
+    touchgfx::TextArea lx20;
+    touchgfx::TextArea lx30;
 
 private:
 
