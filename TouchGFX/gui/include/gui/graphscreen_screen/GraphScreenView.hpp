@@ -18,6 +18,8 @@ protected:
     MFD_PeakCurType peakCurState;
     MFD_GaugeType gaugeType;
     MFD_GaugeDataTypeDef *gaugeData;
+
+    int tickCount;
 };
 
 #endif // GRAPHSCREENVIEW_HPP

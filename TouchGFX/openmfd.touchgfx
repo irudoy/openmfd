@@ -44,7 +44,7 @@
           {
             "Type": "CustomContainerInstance",
             "Name": "gauge1",
-            "X": 170,
+            "X": 165,
             "Y": 42,
             "Width": 160,
             "Height": 173,
@@ -1142,11 +1142,11 @@
             "Width": 145,
             "Height": 174,
             "DataSeed": -1595606021,
-            "NumberOfValues": 30,
+            "NumberOfValues": 540,
             "MaxY": 200.0,
             "MinY": -50.0,
             "Precision": "1",
-            "LastIndex": 29,
+            "LastIndex": 539,
             "XAxisScale": 1.0,
             "InsertRandomValues": true,
             "LabelSizeTop": 10,
@@ -1154,7 +1154,7 @@
             "LabelSizeLeft": 25,
             "PaddingBottom": 2,
             "PaddingLeft": 5,
-            "GraphType": "GraphScroll",
+            "GraphType": "GraphWrapClear",
             "GraphDrawers": [
               {
                 "Type": "LineDrawer",
@@ -1173,7 +1173,7 @@
                 "Green": 79,
                 "Blue": 79
               },
-              "Interval": 10.0,
+              "Interval": 180.0,
               "LineWidth": 2
             },
             "YAxisGrid": {

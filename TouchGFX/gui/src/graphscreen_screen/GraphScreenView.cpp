@@ -38,5 +38,9 @@ void GraphScreenView::handleTickEvent()
 
   gauge1.update(false);
 
-  graph1.addPoint(gaugeData->value);
+  tickCount++;
+  if (tickCount >= 2) {
+    tickCount = 0;
+    graph1.addPoint(gaugeData->value);
+  }
 }
