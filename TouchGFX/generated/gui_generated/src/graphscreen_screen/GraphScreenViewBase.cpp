@@ -16,7 +16,7 @@ GraphScreenViewBase::GraphScreenViewBase()
 
     gauge1.setXY(165, 42);
 
-    graph1.setXY(9, 18);
+    graph1.setXY(4, 18);
 
     add(__background);
     add(gauge1);

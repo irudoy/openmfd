@@ -24,6 +24,8 @@ void Graph::setConfig(MFD_GaugeDataTypeDef *conf)
 
   dynamicGraph1.setGraphRange(dynamicGraph1.getGraphRangeXMin(), dynamicGraph1.getGraphRangeXMax(), data->min, data->max);
 
+  Unicode::strncpy(units_labelBuffer, data->unitsLabel, UNITS_LABEL_SIZE);
+
   dynamicGraph1.clear();
 
   dynamicGraph1.invalidate();

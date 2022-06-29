@@ -5,6 +5,9 @@
   </Languages>
   <Texts>
     <TextGroup Id="Unsorted">
+      <Text Id="__SingleUse_M45T" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
       <Text Id="__SingleUse_RAI8" Alignment="Center" TypographyId="Default">
         <Translation Language="GB">0</Translation>
       </Text>
@@ -126,7 +129,7 @@
         <Translation Language="GB">&lt;value&gt;</Translation>
       </Text>
       <Text Id="__SingleUse_P8PJ" Alignment="Left" TypographyId="Big">
-        <Translation Language="GB">&lt;value&gt;</Translation>
+        <Translation Language="GB">[&lt;value&gt;]</Translation>
       </Text>
       <Text Id="__SingleUse_Y1Y9" Alignment="Left" TypographyId="Big">
         <Translation Language="GB">&lt;value&gt;</Translation>
@@ -150,7 +153,7 @@
         <Translation Language="GB">9.99</Translation>
       </Text>
       <Text Id="units_label" Alignment="Left" TypographyId="Big">
-        <Translation Language="GB">[ XXX ]</Translation>
+        <Translation Language="GB">XXX</Translation>
       </Text>
       <Text Id="peak_val" Alignment="Right" TypographyId="Default">
         <Translation Language="GB">99</Translation>

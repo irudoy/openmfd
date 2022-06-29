@@ -13,6 +13,8 @@
 #include <gui/twinsscreen_screen/TwinsScreenPresenter.hpp>
 #include <gui/graphscreen_screen/GraphScreenView.hpp>
 #include <gui/graphscreen_screen/GraphScreenPresenter.hpp>
+#include <gui/test_screen/TestView.hpp>
+#include <gui/test_screen/TestPresenter.hpp>
 
 using namespace touchgfx;
 
@@ -31,15 +33,15 @@ FrontendApplicationBase::FrontendApplicationBase(Model& m, FrontendHeap& heap)
  * Screen Transition Declarations
  */
 
-// GraphScreen
+// Test
 
-void FrontendApplicationBase::gotoGraphScreenScreenNoTransition()
+void FrontendApplicationBase::gotoTestScreenNoTransition()
 {
-    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoGraphScreenScreenNoTransitionImpl);
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoTestScreenNoTransitionImpl);
     pendingScreenTransitionCallback = &transitionCallback;
 }
 
-void FrontendApplicationBase::gotoGraphScreenScreenNoTransitionImpl()
+void FrontendApplicationBase::gotoTestScreenNoTransitionImpl()
 {
-    touchgfx::makeTransition<GraphScreenView, GraphScreenPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+    touchgfx::makeTransition<TestView, TestPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }
