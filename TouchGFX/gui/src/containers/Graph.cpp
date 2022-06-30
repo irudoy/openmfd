@@ -18,10 +18,6 @@ void Graph::setConfig(MFD_GaugeDataTypeDef *conf)
 {
   data = conf;
 
-  dynamicGraph1MajorYAxisLabel.setInterval((data->max - data->min) / 5);
-  dynamicGraph1MajorYAxisGrid.setInterval((data->max - data->min) / 5);
-  dynamicGraph1MinorYAxisGrid.setInterval((data->max - data->min) / 25);
-
   dynamicGraph1.setGraphRange(dynamicGraph1.getGraphRangeXMin(), dynamicGraph1.getGraphRangeXMax(), data->min, data->max);
 
   Unicode::strncpy(units_labelBuffer, data->unitsLabel, UNITS_LABEL_SIZE);

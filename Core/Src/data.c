@@ -20,7 +20,7 @@ void MFD_DataInit(void) {
     .redZoneFrom = 80,
     .redZoneTo = 110,
     .name = "BATT",
-    .unitsLabel = "[ V ]",
+    .unitsLabel = "V",
     .scaleType = MFD_GaugeScaleType_9_17,
     .scaleValues = { 8, 9, 10, 11, 12, 13, 14, 15, 16 },
   };
@@ -31,7 +31,7 @@ void MFD_DataInit(void) {
     .redZoneFrom = 120,
     .redZoneTo = 150,
     .name = "CLT",
-    .unitsLabel = "[ °C ]",
+    .unitsLabel = "°C",
     .scaleType = MFD_GaugeScaleType_11_21,
     .scaleValues = { 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150 },
   };
@@ -40,7 +40,7 @@ void MFD_DataInit(void) {
     .min = 0,
     .max = 50,
     .name = "IGN",
-    .unitsLabel = "[ DEG ]",
+    .unitsLabel = "DEG",
     .scaleType = MFD_GaugeScaleType_6_11,
     .scaleValues = { 0, 10, 20, 30, 40, 50 },
   };
@@ -49,7 +49,7 @@ void MFD_DataInit(void) {
     .min = 0,
     .max = 100,
     .name = "AAC",
-    .unitsLabel = "[ % ]",
+    .unitsLabel = "%",
     .scaleType = MFD_GaugeScaleType_6_11,
     .scaleValues = { 0, 20, 40, 60, 80, 100 },
   };
@@ -58,7 +58,7 @@ void MFD_DataInit(void) {
     .min = 0,
     .max = 100,
     .name = "AF L",
-    .unitsLabel = "[ % ]",
+    .unitsLabel = "%",
     .scaleType = MFD_GaugeScaleType_6_11,
     .scaleValues = { 0, 20, 40, 60, 80, 100 },
   };
@@ -67,7 +67,7 @@ void MFD_DataInit(void) {
     .min = 0,
     .max = 100,
     .name = "AF L SL",
-    .unitsLabel = "[ % ]",
+    .unitsLabel = "%",
     .scaleType = MFD_GaugeScaleType_6_11,
     .scaleValues = { 0, 20, 40, 60, 80, 100 },
   };
@@ -76,7 +76,7 @@ void MFD_DataInit(void) {
     .min = 0,
     .max = 200,
     .name = "SPEED",
-    .unitsLabel = "[ km/h ]",
+    .unitsLabel = "km/h",
     .scaleType = MFD_GaugeScaleType_11_21,
     .scaleValues = { 0, 20, 40, 60, 80, 100, 120, 140, 160, 180, 200 },
   };
@@ -89,7 +89,7 @@ void MFD_DataInit(void) {
     .redZoneFrom = 6500,
     .redZoneTo = 8000,
     .name = "RPM",
-    .unitsLabel = "[x1000 RPM]",
+    .unitsLabel = "x1000 RPM",
     .scaleType = MFD_GaugeScaleType_9_17,
     .scaleValues = { 0, 1, 2, 3, 4, 5, 6, 7, 8 },
   };
@@ -101,7 +101,7 @@ void MFD_DataInit(void) {
     .redZoneFrom = 90,
     .redZoneTo = 120,
     .name = "BOOST",
-    .unitsLabel = "[x100 kPa]",
+    .unitsLabel = "x100 kPa",
     .scaleType = MFD_GaugeScaleType_SPEC_1,
     .scaleValues = { -50, 0, 20, 40, 60, 80, 100, 120 },
   };
@@ -113,7 +113,7 @@ void MFD_DataInit(void) {
     .redZoneFrom = 1450,
     .redZoneTo = 1600,
     .name = "AFR",
-    .unitsLabel = "[ A:F ]",
+    .unitsLabel = "A:F",
     .scaleType = MFD_GaugeScaleType_9_17,
     .scaleValues = { 8, 9, 10, 11, 12, 13, 14, 15, 16 },
   };

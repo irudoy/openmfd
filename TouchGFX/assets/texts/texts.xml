@@ -5,6 +5,9 @@
   </Languages>
   <Texts>
     <TextGroup Id="Unsorted">
+      <Text Id="__SingleUse_YR87" Alignment="Right" TypographyId="Default">
+        <Translation Language="GB">sec</Translation>
+      </Text>
       <Text Id="__SingleUse_M45T" Alignment="Left" TypographyId="Default">
         <Translation Language="GB">&lt;value&gt;</Translation>
       </Text>
@@ -19,9 +22,6 @@
       </Text>
       <Text Id="__SingleUse_RDJE" Alignment="Center" TypographyId="Default">
         <Translation Language="GB">30</Translation>
-      </Text>
-      <Text Id="__SingleUse_HNSD" Alignment="Right" TypographyId="Default">
-        <Translation Language="GB">&lt;&gt;</Translation>
       </Text>
       <Text Id="__SingleUse_6TVI" Alignment="Center" TypographyId="Big">
         <Translation Language="GB">&lt;value&gt;</Translation>
@@ -161,7 +161,7 @@
     </TextGroup>
   </Texts>
   <Typographies>
-    <Typography Id="Default" Font="Inter-SemiBoldItalic.ttf" Size="12" Bpp="4" Direction="LTR" FallbackCharacter="skip" WildcardCharacters="- .[]/%°:" WidgetWildcardCharacters="-., 0123456789" WildcardCharacterRanges="0-9,A-Z,a-z" />
+    <Typography Id="Default" Font="Inter-SemiBoldItalic.ttf" Size="12" Bpp="4" Direction="LTR" FallbackCharacter="skip" WildcardCharacters="- .[]/%°:" WildcardCharacterRanges="0-9,A-Z,a-z" />
     <Typography Id="Big" Font="Inter-SemiBoldItalic.ttf" Size="14" Bpp="4" Direction="LTR" FallbackCharacter="skip" WildcardCharacters="- .[]/%°:" WildcardCharacterRanges="0-9,A-Z,a-z" />
   </Typographies>
 </TextDatabase>

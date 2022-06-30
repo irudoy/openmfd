@@ -56,7 +56,7 @@
             "X": 4,
             "Y": 18,
             "Width": 160,
-            "Height": 190,
+            "Height": 200,
             "CustomContainerDefinitionName": "Graph"
           }
         ],
@@ -1153,8 +1153,24 @@
       {
         "Name": "Graph",
         "Width": 160,
-        "Height": 190,
+        "Height": 200,
         "Components": [
+          {
+            "Type": "TextArea",
+            "Name": "x_label",
+            "X": 135,
+            "Y": 185,
+            "Width": 20,
+            "Height": 14,
+            "TextId": "__SingleUse_YR87",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "AutoSize": true
+          },
           {
             "Type": "TextArea",
             "Name": "units_label",
@@ -1181,14 +1197,40 @@
             "Name": "graph",
             "Width": 158,
             "Height": 191,
+            "LockPosition": true,
             "Components": [
+              {
+                "Type": "Container",
+                "Name": "bg",
+                "X": 26,
+                "Y": 25,
+                "Width": 127,
+                "Height": 153,
+                "Components": [
+                  {
+                    "Type": "Image",
+                    "Name": "bg_9_17",
+                    "Width": 127,
+                    "Height": 153,
+                    "Visible": false,
+                    "RelativeFilename": "graph-bg-9-17.png"
+                  },
+                  {
+                    "Type": "Image",
+                    "Name": "bg_spec_1",
+                    "Width": 127,
+                    "Height": 153,
+                    "RelativeFilename": "graph-bg-spec-1.png"
+                  }
+                ]
+              },
               {
                 "Type": "DynamicGraph",
                 "Name": "dynamicGraph1",
-                "X": -2,
-                "Y": 19,
-                "Width": 156,
-                "Height": 168,
+                "X": 32,
+                "Y": 25,
+                "Width": 120,
+                "Height": 145,
                 "DataSeed": -1595606021,
                 "NumberOfValues": 540,
                 "MaxY": 200.0,
@@ -1197,75 +1239,18 @@
                 "LastIndex": 539,
                 "XAxisScale": 1.0,
                 "InsertRandomValues": true,
-                "LabelSizeTop": 10,
-                "LabelSizeBottom": 15,
-                "LabelSizeLeft": 25,
-                "PaddingBottom": 2,
-                "PaddingLeft": 10,
                 "GraphType": "GraphWrapClear",
                 "GraphDrawers": [
                   {
                     "Type": "LineDrawer",
-                    "LineWidth": 2,
+                    "LineWidth": 1,
                     "Color": {
                       "Red": 97,
                       "Green": 177,
                       "Blue": 81
                     }
                   }
-                ],
-                "XAxisGrid": {
-                  "Type": "GraphGrid",
-                  "Color": {
-                    "Red": 79,
-                    "Green": 79,
-                    "Blue": 79
-                  },
-                  "Interval": 180.0,
-                  "LineWidth": 2
-                },
-                "YAxisGrid": {
-                  "Type": "GraphGrid",
-                  "Color": {
-                    "Red": 117,
-                    "Green": 117,
-                    "Blue": 117
-                  },
-                  "Interval": 50.0,
-                  "LineWidth": 2
-                },
-                "MinorYAxisGrid": {
-                  "Type": "GraphGrid",
-                  "Color": {
-                    "Red": 148,
-                    "Green": 148,
-                    "Blue": 148
-                  },
-                  "Interval": 10.0,
-                  "LineWidth": 1
-                },
-                "YAxisLabel": {
-                  "Type": "GraphLabel",
-                  "Interval": 50.0,
-                  "DecimalSeparator": "Point",
-                  "TextColor": {
-                    "Red": 255,
-                    "Green": 255,
-                    "Blue": 255
-                  },
-                  "TextId": "__SingleUse_HNSD",
-                  "TextRotation": "0",
-                  "Position": "Left"
-                }
-              },
-              {
-                "Type": "Image",
-                "Name": "bg",
-                "X": 26,
-                "Y": 25,
-                "Width": 128,
-                "Height": 151,
-                "RelativeFilename": "graph-bg.png"
+                ]
               },
               {
                 "Type": "Container",
@@ -1348,7 +1333,7 @@
       "Height": 240
     },
     "SelectedColorDepth": 16,
-    "StartupScreenName": "Test",
+    "StartupScreenName": "GraphScreen",
     "SelectedStartupLanguage": "GB",
     "Skin": "Blue",
     "TouchGfxPath": "../Middlewares/ST/touchgfx",
