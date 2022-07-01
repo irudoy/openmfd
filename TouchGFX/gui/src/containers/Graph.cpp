@@ -1,8 +1,11 @@
 #include <gui/containers/Graph.hpp>
 
+#define GRAPH_OFFSET 5
+
 Graph::Graph()
 {
-
+  graphHeight = dynamicGraph1.getHeight();
+  graphPosY = dynamicGraph1.getY();
 }
 
 void Graph::initialize()
@@ -29,10 +32,16 @@ void Graph::setConfig(MFD_GaugeDataTypeDef *conf)
   values_9_17.setVisible(false);
   values_spec_1.setVisible(false);
 
+  dynamicGraph1.setHeight(graphHeight);
+  dynamicGraph1.setY(graphPosY);
+
   switch (data->scaleType) {
     case MFD_GaugeScaleType_6_11: {
       bg_6_11.setVisible(true);
       values_6_11.setVisible(true);
+
+      dynamicGraph1.setHeight(graphHeight - GRAPH_OFFSET);
+      dynamicGraph1.setY(graphPosY + GRAPH_OFFSET);
 
       Unicode::snprintf(value_6_11_0Buffer, VALUE_6_11_0_SIZE, "%d", data->scaleValues[0]);
       Unicode::snprintf(value_6_11_1Buffer, VALUE_6_11_1_SIZE, "%d", data->scaleValues[1]);
@@ -46,6 +55,9 @@ void Graph::setConfig(MFD_GaugeDataTypeDef *conf)
     case MFD_GaugeScaleType_11_21: {
       bg_11_21.setVisible(true);
       values_11_21.setVisible(true);
+
+      dynamicGraph1.setHeight(graphHeight - GRAPH_OFFSET);
+      dynamicGraph1.setY(graphPosY + GRAPH_OFFSET);
 
       Unicode::snprintf(value_11_21_0Buffer, VALUE_11_21_0_SIZE, "%d", data->scaleValues[0]);
       Unicode::snprintf(value_11_21_1Buffer, VALUE_11_21_1_SIZE, "%d", data->scaleValues[1]);

@@ -18,6 +18,8 @@ public:
     void setConfig(MFD_GaugeDataTypeDef *config);
 protected:
     MFD_GaugeDataTypeDef *data;
+    int graphHeight;
+    int graphPosY;
 };
 
 #endif // GRAPH_HPP
