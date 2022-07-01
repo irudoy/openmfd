@@ -10,6 +10,24 @@ KEEP extern const uint32_t indicesGb[] TEXT_LOCATION_FLASH_ATTRIBUTE;
 // Remap all strings
 TEXT_LOCATION_FLASH_PRAGMA
 KEEP extern const uint32_t indicesGb[] TEXT_LOCATION_FLASH_ATTRIBUTE = {
+    4,  // T___SINGLEUSE_TKQ7: "<>"
+    4,  // T___SINGLEUSE_14TF: "<>"
+    4,  // T___SINGLEUSE_PL52: "<>"
+    4,  // T___SINGLEUSE_QIXA: "<>"
+    4,  // T___SINGLEUSE_WO02: "<>"
+    4,  // T___SINGLEUSE_VS3H: "<>"
+    4,  // T___SINGLEUSE_Q98N: "<>"
+    4,  // T___SINGLEUSE_IY9W: "<>"
+    4,  // T___SINGLEUSE_0MUO: "<>"
+    4,  // T___SINGLEUSE_GJHQ: "<>"
+    4,  // T___SINGLEUSE_HANL: "<>"
+    4,  // T___SINGLEUSE_W4YI: "<>"
+    4,  // T___SINGLEUSE_HHLH: "<>"
+    4,  // T___SINGLEUSE_KBCR: "<>"
+    4,  // T___SINGLEUSE_O01G: "<>"
+    4,  // T___SINGLEUSE_2FF0: "<>"
+    6,  // T_SCALE_VAL_GRAPH: "9.99"
+    4,  // T___SINGLEUSE_4DTD: "<>"
     24, // T___SINGLEUSE_YR87: "sec"
     4,  // T___SINGLEUSE_M45T: "<>"
     29, // T___SINGLEUSE_RAI8: "0"
@@ -58,7 +76,7 @@ KEEP extern const uint32_t indicesGb[] TEXT_LOCATION_FLASH_ATTRIBUTE = {
     4,  // T___SINGLEUSE_7E1I: "<>"
     4,  // T___SINGLEUSE_M1TV: "<>"
     4,  // T___SINGLEUSE_WX44: "<>"
-    6,  // T_SCALE_VAL: "9.99"
+    37, // T_SCALE_VAL: "70"
     20, // T_UNITS_LABEL: "XXX"
     8   // T_PEAK_VAL: "99"
 };

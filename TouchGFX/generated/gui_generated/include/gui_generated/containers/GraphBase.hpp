@@ -6,10 +6,10 @@
 
 #include <gui/common/FrontendApplication.hpp>
 #include <touchgfx/containers/Container.hpp>
+#include <touchgfx/widgets/Image.hpp>
 #include <touchgfx/widgets/TextArea.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 #include <touchgfx/containers/Container.hpp>
-#include <touchgfx/widgets/Image.hpp>
 #include <touchgfx/widgets/graph/GraphWrapAndClear.hpp>
 #include <touchgfx/widgets/graph/GraphElements.hpp>
 #include <touchgfx/widgets/canvas/PainterRGB565.hpp>
@@ -29,6 +29,7 @@ protected:
     /*
      * Member Declarations
      */
+    touchgfx::Image image1;
     touchgfx::TextArea x_label;
     touchgfx::TextAreaWithOneWildcard units_label;
     touchgfx::Container graph;
@@ -43,12 +44,66 @@ protected:
     touchgfx::TextArea lx10;
     touchgfx::TextArea lx20;
     touchgfx::TextArea lx30;
+    touchgfx::Container values;
+    touchgfx::Container values_9_17;
+    touchgfx::TextAreaWithOneWildcard value_9_17_0;
+    touchgfx::TextAreaWithOneWildcard value_9_17_1;
+    touchgfx::TextAreaWithOneWildcard value_9_17_2;
+    touchgfx::TextAreaWithOneWildcard value_9_17_3;
+    touchgfx::TextAreaWithOneWildcard value_9_17_4;
+    touchgfx::TextAreaWithOneWildcard value_9_17_5;
+    touchgfx::TextAreaWithOneWildcard value_9_17_6;
+    touchgfx::TextAreaWithOneWildcard value_9_17_7;
+    touchgfx::TextAreaWithOneWildcard value_9_17_8;
+    touchgfx::Container values_spec_1;
+    touchgfx::TextAreaWithOneWildcard value_spec_1_0;
+    touchgfx::TextAreaWithOneWildcard value_spec_1_1;
+    touchgfx::TextAreaWithOneWildcard value_spec_1_2;
+    touchgfx::TextAreaWithOneWildcard value_spec_1_3;
+    touchgfx::TextAreaWithOneWildcard value_spec_1_4;
+    touchgfx::TextAreaWithOneWildcard value_spec_1_5;
+    touchgfx::TextAreaWithOneWildcard value_spec_1_6;
+    touchgfx::TextAreaWithOneWildcard value_spec_1_7;
 
     /*
      * Wildcard Buffers
      */
     static const uint16_t UNITS_LABEL_SIZE = 12;
     touchgfx::Unicode::UnicodeChar units_labelBuffer[UNITS_LABEL_SIZE];
+    static const uint16_t VALUE_9_17_0_SIZE = 5;
+    touchgfx::Unicode::UnicodeChar value_9_17_0Buffer[VALUE_9_17_0_SIZE];
+    static const uint16_t VALUE_9_17_1_SIZE = 5;
+    touchgfx::Unicode::UnicodeChar value_9_17_1Buffer[VALUE_9_17_1_SIZE];
+    static const uint16_t VALUE_9_17_2_SIZE = 5;
+    touchgfx::Unicode::UnicodeChar value_9_17_2Buffer[VALUE_9_17_2_SIZE];
+    static const uint16_t VALUE_9_17_3_SIZE = 5;
+    touchgfx::Unicode::UnicodeChar value_9_17_3Buffer[VALUE_9_17_3_SIZE];
+    static const uint16_t VALUE_9_17_4_SIZE = 5;
+    touchgfx::Unicode::UnicodeChar value_9_17_4Buffer[VALUE_9_17_4_SIZE];
+    static const uint16_t VALUE_9_17_5_SIZE = 5;
+    touchgfx::Unicode::UnicodeChar value_9_17_5Buffer[VALUE_9_17_5_SIZE];
+    static const uint16_t VALUE_9_17_6_SIZE = 5;
+    touchgfx::Unicode::UnicodeChar value_9_17_6Buffer[VALUE_9_17_6_SIZE];
+    static const uint16_t VALUE_9_17_7_SIZE = 5;
+    touchgfx::Unicode::UnicodeChar value_9_17_7Buffer[VALUE_9_17_7_SIZE];
+    static const uint16_t VALUE_9_17_8_SIZE = 5;
+    touchgfx::Unicode::UnicodeChar value_9_17_8Buffer[VALUE_9_17_8_SIZE];
+    static const uint16_t VALUE_SPEC_1_0_SIZE = 5;
+    touchgfx::Unicode::UnicodeChar value_spec_1_0Buffer[VALUE_SPEC_1_0_SIZE];
+    static const uint16_t VALUE_SPEC_1_1_SIZE = 5;
+    touchgfx::Unicode::UnicodeChar value_spec_1_1Buffer[VALUE_SPEC_1_1_SIZE];
+    static const uint16_t VALUE_SPEC_1_2_SIZE = 5;
+    touchgfx::Unicode::UnicodeChar value_spec_1_2Buffer[VALUE_SPEC_1_2_SIZE];
+    static const uint16_t VALUE_SPEC_1_3_SIZE = 5;
+    touchgfx::Unicode::UnicodeChar value_spec_1_3Buffer[VALUE_SPEC_1_3_SIZE];
+    static const uint16_t VALUE_SPEC_1_4_SIZE = 5;
+    touchgfx::Unicode::UnicodeChar value_spec_1_4Buffer[VALUE_SPEC_1_4_SIZE];
+    static const uint16_t VALUE_SPEC_1_5_SIZE = 5;
+    touchgfx::Unicode::UnicodeChar value_spec_1_5Buffer[VALUE_SPEC_1_5_SIZE];
+    static const uint16_t VALUE_SPEC_1_6_SIZE = 5;
+    touchgfx::Unicode::UnicodeChar value_spec_1_6Buffer[VALUE_SPEC_1_6_SIZE];
+    static const uint16_t VALUE_SPEC_1_7_SIZE = 5;
+    touchgfx::Unicode::UnicodeChar value_spec_1_7Buffer[VALUE_SPEC_1_7_SIZE];
 
 private:
 

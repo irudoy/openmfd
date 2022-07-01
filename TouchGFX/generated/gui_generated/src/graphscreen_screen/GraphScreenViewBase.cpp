@@ -14,9 +14,9 @@ GraphScreenViewBase::GraphScreenViewBase()
     __background.setPosition(0, 0, 320, 240);
     __background.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
 
-    gauge1.setXY(165, 42);
+    gauge1.setXY(167, 42);
 
-    graph1.setXY(4, 18);
+    graph1.setXY(1, 18);
 
     add(__background);
     add(gauge1);
