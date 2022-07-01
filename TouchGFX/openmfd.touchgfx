@@ -33,13 +33,26 @@
         ],
         "Interactions": [
           {
-            "InteractionName": "Interaction1",
+            "InteractionName": "PrevScreen",
             "Trigger": {
-              "Type": "TriggerClicked"
+              "Type": "TriggerPhysicalButtonClicked"
             },
             "Action": {
-              "Type": "ActionCustom",
-              "FunctionName": "handleBtnClick"
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Test"
+            }
+          },
+          {
+            "InteractionName": "NextScreen",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked",
+              "ButtonKey": 1
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "GraphScreen"
             }
           }
         ]
@@ -74,7 +87,31 @@
             "CustomContainerDefinitionName": "Graph"
           }
         ],
-        "Interactions": []
+        "Interactions": [
+          {
+            "InteractionName": "PrevScreen",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "TwinsScreen"
+            }
+          },
+          {
+            "InteractionName": "NextScreen",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked",
+              "ButtonKey": 1
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Test"
+            }
+          }
+        ]
       },
       {
         "Name": "Test",
@@ -94,7 +131,31 @@
             "BorderSize": 5
           }
         ],
-        "Interactions": []
+        "Interactions": [
+          {
+            "InteractionName": "PrevScreen",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "GraphScreen"
+            }
+          },
+          {
+            "InteractionName": "NextScreen",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked",
+              "ButtonKey": 1
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "TwinsScreen"
+            }
+          }
+        ]
       }
     ],
     "CustomContainerDefinitions": [

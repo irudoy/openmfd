@@ -1,8 +1,7 @@
 #include <gui/model/Model.hpp>
 #include <gui/model/ModelListener.hpp>
 #include <cstdint>
-
-#include "cmsis_os.h"
+#include <cmsis_os.h>
 
 extern osMessageQueueId_t DataQueueHandle;
 

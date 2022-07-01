@@ -23,3 +23,22 @@ void TestViewBase::setupScreen()
 {
 
 }
+
+//Handles when a key is pressed
+void TestViewBase::handleKeyEvent(uint8_t key)
+{
+    if(0 == key)
+    {
+        //PrevScreen
+        //When hardware button 0 clicked change screen to GraphScreen
+        //Go to GraphScreen with no screen transition
+        application().gotoGraphScreenScreenNoTransition();
+    }
+    if(1 == key)
+    {
+        //NextScreen
+        //When hardware button 1 clicked change screen to TwinsScreen
+        //Go to TwinsScreen with no screen transition
+        application().gotoTwinsScreenScreenNoTransition();
+    }
+}

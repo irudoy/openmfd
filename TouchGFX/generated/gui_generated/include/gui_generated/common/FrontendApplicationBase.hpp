@@ -20,16 +20,28 @@ public:
         gotoGraphScreenScreenNoTransition();
     }
 
+    // TwinsScreen
+    void gotoTwinsScreenScreenNoTransition();
+
     // GraphScreen
     void gotoGraphScreenScreenNoTransition();
+
+    // Test
+    void gotoTestScreenNoTransition();
 
 protected:
     touchgfx::Callback<FrontendApplicationBase> transitionCallback;
     FrontendHeap& frontendHeap;
     Model& model;
 
+    // TwinsScreen
+    void gotoTwinsScreenScreenNoTransitionImpl();
+
     // GraphScreen
     void gotoGraphScreenScreenNoTransitionImpl();
+
+    // Test
+    void gotoTestScreenNoTransitionImpl();
 };
 
 #endif // FRONTENDAPPLICATIONBASE_HPP

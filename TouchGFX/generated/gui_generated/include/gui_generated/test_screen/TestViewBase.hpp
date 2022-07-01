@@ -16,6 +16,7 @@ public:
     TestViewBase();
     virtual ~TestViewBase() {}
     virtual void setupScreen();
+    virtual void handleKeyEvent(uint8_t key);
 
 protected:
     FrontendApplication& application() {

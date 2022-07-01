@@ -32,3 +32,22 @@ void GraphScreenViewBase::setupScreen()
     gauge1.initialize();
     graph1.initialize();
 }
+
+//Handles when a key is pressed
+void GraphScreenViewBase::handleKeyEvent(uint8_t key)
+{
+    if(0 == key)
+    {
+        //PrevScreen
+        //When hardware button 0 clicked change screen to TwinsScreen
+        //Go to TwinsScreen with no screen transition
+        application().gotoTwinsScreenScreenNoTransition();
+    }
+    if(1 == key)
+    {
+        //NextScreen
+        //When hardware button 1 clicked change screen to Test
+        //Go to Test with no screen transition
+        application().gotoTestScreenNoTransition();
+    }
+}

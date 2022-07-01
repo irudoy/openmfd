@@ -1,4 +1,4 @@
-#include "comm.h"
+#include <comm.h>
 
 extern CAN_HandleTypeDef hcan2;
 
@@ -9,6 +9,8 @@ uint8_t CANTxData[8];
 uint8_t CANRxData[8];
 
 uint32_t CANTxMailbox;
+
+uint8_t commState = 0;
 
 //TxData[0] = 0x02;
 //TxData[1] = 0x04;
@@ -74,10 +76,12 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan) {
         MFD_AppState.graphGauge = MFD_AppState.twinsGauge2;
         break;
       case CBUS_CMD_UP:
-        DBGD_stubIncDecAll(true);
+        commState = 1;
+//        DBGD_stubIncDecAll(true);
         break;
       case CBUS_CMD_DOWN:
-        DBGD_stubIncDecAll(false);
+        commState = 2;
+//        DBGD_stubIncDecAll(false);
         break;
       case CBUS_CMD_PLAY_PAUSE:
         DBGD_resetPeak();

@@ -33,6 +33,19 @@ FrontendApplicationBase::FrontendApplicationBase(Model& m, FrontendHeap& heap)
  * Screen Transition Declarations
  */
 
+// TwinsScreen
+
+void FrontendApplicationBase::gotoTwinsScreenScreenNoTransition()
+{
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoTwinsScreenScreenNoTransitionImpl);
+    pendingScreenTransitionCallback = &transitionCallback;
+}
+
+void FrontendApplicationBase::gotoTwinsScreenScreenNoTransitionImpl()
+{
+    touchgfx::makeTransition<TwinsScreenView, TwinsScreenPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}
+
 // GraphScreen
 
 void FrontendApplicationBase::gotoGraphScreenScreenNoTransition()
@@ -44,4 +57,17 @@ void FrontendApplicationBase::gotoGraphScreenScreenNoTransition()
 void FrontendApplicationBase::gotoGraphScreenScreenNoTransitionImpl()
 {
     touchgfx::makeTransition<GraphScreenView, GraphScreenPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}
+
+// Test
+
+void FrontendApplicationBase::gotoTestScreenNoTransition()
+{
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoTestScreenNoTransitionImpl);
+    pendingScreenTransitionCallback = &transitionCallback;
+}
+
+void FrontendApplicationBase::gotoTestScreenNoTransitionImpl()
+{
+    touchgfx::makeTransition<TestView, TestPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }
