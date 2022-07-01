@@ -184,8 +184,6 @@
     <ClInclude Include="..\..\gui\include\gui\model\ModelListener.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\common\SimConstants.hpp"/>
     <ClInclude Include="..\..\generated\simulator\include\simulator\video\SoftwareMJPEGDecoder.hpp"/>
-    <ClInclude Include="..\..\gui\include\gui\screen1_screen\Screen1Presenter.hpp"/>
-    <ClInclude Include="..\..\gui\include\gui\screen1_screen\Screen1View.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\containers\SingleGauge.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\SingleGaugeBase.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\twinsscreen_screen\TwinsScreenPresenter.hpp"/>

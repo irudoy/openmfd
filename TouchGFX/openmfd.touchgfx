@@ -378,7 +378,7 @@
             "Wildcard1": {
               "TextId": "curr_val",
               "UseBuffer": true,
-              "BufferSize": 5
+              "BufferSize": 6
             }
           },
           {
