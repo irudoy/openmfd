@@ -26,8 +26,6 @@ GraphBase::GraphBase()
     units_label.setWildcard(units_labelBuffer);
     units_label.setTypedText(touchgfx::TypedText(T___SINGLEUSE_M45T));
 
-    graph.setPosition(0, 0, 158, 191);
-
     bg.setPosition(26, 25, 127, 153);
 
     bg_9_17.setXY(0, 0);
@@ -38,7 +36,6 @@ GraphBase::GraphBase()
     bg_spec_1.setVisible(false);
     bg_spec_1.setBitmap(touchgfx::Bitmap(BITMAP_GRAPH_BG_SPEC_1_ID));
     bg.add(bg_spec_1);
-    graph.add(bg);
 
     dynamicGraph1.setScale(1);
     dynamicGraph1.setPosition(32, 25, 120, 145);
@@ -591,7 +588,6 @@ GraphBase::GraphBase()
     dynamicGraph1.addDataPoint(74.84036f);
     dynamicGraph1.addDataPoint(82.93392f);
     dynamicGraph1.addDataPoint(90.97584f);
-    graph.add(dynamicGraph1);
 
     x_labels.setPosition(23, 177, 147, 15);
 
@@ -618,7 +614,6 @@ GraphBase::GraphBase()
     lx30.setLinespacing(0);
     lx30.setTypedText(touchgfx::TypedText(T___SINGLEUSE_RDJE));
     x_labels.add(lx30);
-    graph.add(x_labels);
 
     values.setPosition(0, 0, 32, 201);
 
@@ -768,7 +763,9 @@ GraphBase::GraphBase()
     add(image1);
     add(x_label);
     add(units_label);
-    add(graph);
+    add(bg);
+    add(dynamicGraph1);
+    add(x_labels);
     add(values);
 }
 

@@ -44,7 +44,7 @@
           {
             "Type": "CustomContainerInstance",
             "Name": "gauge1",
-            "X": 167,
+            "X": 163,
             "Y": 42,
             "Width": 160,
             "Height": 173,
@@ -53,7 +53,7 @@
           {
             "Type": "CustomContainerInstance",
             "Name": "graph1",
-            "X": 1,
+            "X": -1,
             "Y": 18,
             "Width": 160,
             "Height": 200,
@@ -1206,135 +1206,126 @@
           },
           {
             "Type": "Container",
-            "Name": "graph",
-            "Width": 158,
-            "Height": 191,
+            "Name": "bg",
+            "X": 26,
+            "Y": 25,
+            "Width": 127,
+            "Height": 153,
             "LockPosition": true,
             "Components": [
               {
-                "Type": "Container",
-                "Name": "bg",
-                "X": 26,
-                "Y": 25,
+                "Type": "Image",
+                "Name": "bg_9_17",
                 "Width": 127,
                 "Height": 153,
-                "LockPosition": true,
-                "Components": [
-                  {
-                    "Type": "Image",
-                    "Name": "bg_9_17",
-                    "Width": 127,
-                    "Height": 153,
-                    "RelativeFilename": "graph-bg-9-17.png"
-                  },
-                  {
-                    "Type": "Image",
-                    "Name": "bg_spec_1",
-                    "Width": 127,
-                    "Height": 153,
-                    "Visible": false,
-                    "RelativeFilename": "graph-bg-spec-1.png"
-                  }
-                ]
+                "RelativeFilename": "graph-bg-9-17.png"
               },
               {
-                "Type": "DynamicGraph",
-                "Name": "dynamicGraph1",
-                "X": 32,
-                "Y": 25,
-                "Width": 120,
-                "Height": 145,
-                "LockPosition": true,
-                "DataSeed": -1595606021,
-                "NumberOfValues": 540,
-                "MaxY": 200.0,
-                "MinY": -50.0,
-                "Precision": "1",
-                "LastIndex": 539,
-                "XAxisScale": 1.0,
-                "InsertRandomValues": true,
-                "GraphType": "GraphWrapClear",
-                "GraphDrawers": [
-                  {
-                    "Type": "LineDrawer",
-                    "LineWidth": 1,
-                    "Color": {
-                      "Red": 97,
-                      "Green": 177,
-                      "Blue": 81
-                    }
-                  }
-                ]
+                "Type": "Image",
+                "Name": "bg_spec_1",
+                "Width": 127,
+                "Height": 153,
+                "Visible": false,
+                "RelativeFilename": "graph-bg-spec-1.png"
+              }
+            ]
+          },
+          {
+            "Type": "DynamicGraph",
+            "Name": "dynamicGraph1",
+            "X": 32,
+            "Y": 25,
+            "Width": 120,
+            "Height": 145,
+            "LockPosition": true,
+            "DataSeed": -1595606021,
+            "NumberOfValues": 540,
+            "MaxY": 200.0,
+            "MinY": -50.0,
+            "Precision": "1",
+            "LastIndex": 539,
+            "XAxisScale": 1.0,
+            "InsertRandomValues": true,
+            "GraphType": "GraphWrapClear",
+            "GraphDrawers": [
+              {
+                "Type": "LineDrawer",
+                "LineWidth": 1,
+                "Color": {
+                  "Red": 97,
+                  "Green": 177,
+                  "Blue": 81
+                }
+              }
+            ]
+          },
+          {
+            "Type": "Container",
+            "Name": "x_labels",
+            "X": 23,
+            "Y": 177,
+            "Width": 147,
+            "Height": 15,
+            "LockPosition": true,
+            "Components": [
+              {
+                "Type": "TextArea",
+                "Name": "lx0",
+                "X": 124,
+                "Width": 8,
+                "Height": 14,
+                "TextId": "__SingleUse_RAI8",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "AutoSize": true
               },
               {
-                "Type": "Container",
-                "Name": "x_labels",
-                "X": 23,
-                "Y": 177,
-                "Width": 147,
-                "Height": 15,
-                "LockPosition": true,
-                "Components": [
-                  {
-                    "Type": "TextArea",
-                    "Name": "lx0",
-                    "X": 124,
-                    "Width": 8,
-                    "Height": 14,
-                    "TextId": "__SingleUse_RAI8",
-                    "TextRotation": "0",
-                    "Color": {
-                      "Red": 255,
-                      "Green": 255,
-                      "Blue": 255
-                    },
-                    "AutoSize": true
-                  },
-                  {
-                    "Type": "TextArea",
-                    "Name": "lx10",
-                    "X": 81,
-                    "Width": 14,
-                    "Height": 14,
-                    "TextId": "__SingleUse_IRVL",
-                    "TextRotation": "0",
-                    "Color": {
-                      "Red": 255,
-                      "Green": 255,
-                      "Blue": 255
-                    },
-                    "AutoSize": true
-                  },
-                  {
-                    "Type": "TextArea",
-                    "Name": "lx20",
-                    "X": 41,
-                    "Width": 16,
-                    "Height": 14,
-                    "TextId": "__SingleUse_T3EE",
-                    "TextRotation": "0",
-                    "Color": {
-                      "Red": 255,
-                      "Green": 255,
-                      "Blue": 255
-                    },
-                    "AutoSize": true
-                  },
-                  {
-                    "Type": "TextArea",
-                    "Name": "lx30",
-                    "Width": 16,
-                    "Height": 14,
-                    "TextId": "__SingleUse_RDJE",
-                    "TextRotation": "0",
-                    "Color": {
-                      "Red": 255,
-                      "Green": 255,
-                      "Blue": 255
-                    },
-                    "AutoSize": true
-                  }
-                ]
+                "Type": "TextArea",
+                "Name": "lx10",
+                "X": 81,
+                "Width": 14,
+                "Height": 14,
+                "TextId": "__SingleUse_IRVL",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "AutoSize": true
+              },
+              {
+                "Type": "TextArea",
+                "Name": "lx20",
+                "X": 41,
+                "Width": 16,
+                "Height": 14,
+                "TextId": "__SingleUse_T3EE",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "AutoSize": true
+              },
+              {
+                "Type": "TextArea",
+                "Name": "lx30",
+                "Width": 16,
+                "Height": 14,
+                "TextId": "__SingleUse_RDJE",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "AutoSize": true
               }
             ]
           },

@@ -32,7 +32,6 @@ protected:
     touchgfx::Image image1;
     touchgfx::TextArea x_label;
     touchgfx::TextAreaWithOneWildcard units_label;
-    touchgfx::Container graph;
     touchgfx::Container bg;
     touchgfx::Image bg_9_17;
     touchgfx::Image bg_spec_1;
