@@ -4,7 +4,7 @@
 #include <gui_generated/graphscreen_screen/GraphScreenViewBase.hpp>
 #include <gui/graphscreen_screen/GraphScreenPresenter.hpp>
 
-#include "data.h"
+#include <data.h>
 
 class GraphScreenView : public GraphScreenViewBase
 {

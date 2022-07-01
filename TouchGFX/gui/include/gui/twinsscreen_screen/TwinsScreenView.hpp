@@ -4,7 +4,7 @@
 #include <gui_generated/twinsscreen_screen/TwinsScreenViewBase.hpp>
 #include <gui/twinsscreen_screen/TwinsScreenPresenter.hpp>
 
-#include "data.h"
+#include <data.h>
 
 class TwinsScreenView : public TwinsScreenViewBase
 {

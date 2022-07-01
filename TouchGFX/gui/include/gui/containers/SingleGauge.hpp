@@ -3,7 +3,7 @@
 
 #include <gui_generated/containers/SingleGaugeBase.hpp>
 
-#include "data.h"
+#include <data.h>
 
 class SingleGauge : public SingleGaugeBase
 {

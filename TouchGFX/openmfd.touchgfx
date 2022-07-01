@@ -6,6 +6,13 @@
         "CanvasBufferSize": 4800,
         "Components": [
           {
+            "Type": "Box",
+            "Name": "bg",
+            "Width": 320,
+            "Height": 240,
+            "LockPosition": true
+          },
+          {
             "Type": "CustomContainerInstance",
             "Name": "gauge2",
             "X": 164,
@@ -41,6 +48,13 @@
         "Name": "GraphScreen",
         "CanvasBufferSize": 4800,
         "Components": [
+          {
+            "Type": "Box",
+            "Name": "bg",
+            "Width": 320,
+            "Height": 240,
+            "LockPosition": true
+          },
           {
             "Type": "CustomContainerInstance",
             "Name": "gauge1",

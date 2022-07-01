@@ -27,6 +27,7 @@ protected:
      * Member Declarations
      */
     touchgfx::Box __background;
+    touchgfx::Box bg;
     SingleGauge gauge1;
     Graph graph1;
 

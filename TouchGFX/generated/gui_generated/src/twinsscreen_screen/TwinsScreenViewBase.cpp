@@ -14,11 +14,15 @@ TwinsScreenViewBase::TwinsScreenViewBase()
     __background.setPosition(0, 0, 320, 240);
     __background.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
 
+    bg.setPosition(0, 0, 320, 240);
+    bg.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+
     gauge2.setXY(164, 42);
 
     gauge1.setXY(5, 42);
 
     add(__background);
+    add(bg);
     add(gauge2);
     add(gauge1);
 }

@@ -3,7 +3,7 @@
 
 #include <gui_generated/containers/GraphBase.hpp>
 
-#include "data.h"
+#include <data.h>
 
 class Graph : public GraphBase
 {
