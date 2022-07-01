@@ -1156,16 +1156,6 @@
         "Height": 200,
         "Components": [
           {
-            "Type": "Image",
-            "Name": "image1",
-            "Y": 9,
-            "Width": 2,
-            "Height": 56,
-            "Visible": false,
-            "LockPosition": true,
-            "RelativeFilename": "arrow-peak.png"
-          },
-          {
             "Type": "TextArea",
             "Name": "x_label",
             "X": 135,
@@ -1203,61 +1193,6 @@
               "UseBuffer": true,
               "BufferSize": 12
             }
-          },
-          {
-            "Type": "Container",
-            "Name": "bg",
-            "X": 26,
-            "Y": 25,
-            "Width": 127,
-            "Height": 153,
-            "LockPosition": true,
-            "Components": [
-              {
-                "Type": "Image",
-                "Name": "bg_9_17",
-                "Width": 127,
-                "Height": 153,
-                "RelativeFilename": "graph-bg-9-17.png"
-              },
-              {
-                "Type": "Image",
-                "Name": "bg_spec_1",
-                "Width": 127,
-                "Height": 153,
-                "Visible": false,
-                "RelativeFilename": "graph-bg-spec-1.png"
-              }
-            ]
-          },
-          {
-            "Type": "DynamicGraph",
-            "Name": "dynamicGraph1",
-            "X": 32,
-            "Y": 25,
-            "Width": 120,
-            "Height": 145,
-            "LockPosition": true,
-            "DataSeed": -1595606021,
-            "NumberOfValues": 540,
-            "MaxY": 200.0,
-            "MinY": -50.0,
-            "Precision": "1",
-            "LastIndex": 539,
-            "XAxisScale": 1.0,
-            "InsertRandomValues": true,
-            "GraphType": "GraphWrapClear",
-            "GraphDrawers": [
-              {
-                "Type": "LineDrawer",
-                "LineWidth": 1,
-                "Color": {
-                  "Red": 97,
-                  "Green": 177,
-                  "Blue": 81
-                }
-              }
-            ]
           },
           {
             "Type": "Container",
@@ -1331,10 +1266,610 @@
           },
           {
             "Type": "Container",
+            "Name": "bg",
+            "X": 26,
+            "Y": 25,
+            "Width": 127,
+            "Height": 153,
+            "LockPosition": true,
+            "Components": [
+              {
+                "Type": "Image",
+                "Name": "bg_11_21",
+                "Y": 1,
+                "Width": 127,
+                "Height": 152,
+                "Visible": false,
+                "RelativeFilename": "graph-bg-11-21.png"
+              },
+              {
+                "Type": "Image",
+                "Name": "bg_6_11",
+                "Y": 2,
+                "Width": 127,
+                "Height": 152,
+                "Visible": false,
+                "RelativeFilename": "graph-bg-6-11.png"
+              },
+              {
+                "Type": "Image",
+                "Name": "bg_spec_1",
+                "Width": 127,
+                "Height": 153,
+                "Visible": false,
+                "RelativeFilename": "graph-bg-spec-1.png"
+              },
+              {
+                "Type": "Image",
+                "Name": "bg_9_17",
+                "Width": 127,
+                "Height": 153,
+                "RelativeFilename": "graph-bg-9-17.png"
+              }
+            ]
+          },
+          {
+            "Type": "DynamicGraph",
+            "Name": "dynamicGraph1",
+            "X": 32,
+            "Y": 25,
+            "Width": 120,
+            "Height": 145,
+            "LockPosition": true,
+            "DataSeed": -1595606021,
+            "NumberOfValues": 540,
+            "MaxY": 200.0,
+            "MinY": -50.0,
+            "Precision": "1",
+            "LastIndex": 539,
+            "XAxisScale": 1.0,
+            "InsertRandomValues": true,
+            "GraphType": "GraphWrapClear",
+            "GraphDrawers": [
+              {
+                "Type": "LineDrawer",
+                "LineWidth": 1,
+                "Color": {
+                  "Red": 97,
+                  "Green": 177,
+                  "Blue": 81
+                }
+              }
+            ]
+          },
+          {
+            "Type": "Container",
             "Name": "values",
             "Width": 32,
             "Height": 201,
             "Components": [
+              {
+                "Type": "Container",
+                "Name": "values_11_21",
+                "Width": 32,
+                "Height": 200,
+                "Visible": false,
+                "Components": [
+                  {
+                    "Type": "TextArea",
+                    "Name": "value_11_21_0",
+                    "X": -18,
+                    "Y": 162,
+                    "Width": 43,
+                    "Height": 15,
+                    "TextId": "__SingleUse_SBFE",
+                    "TextRotation": "0",
+                    "Color": {
+                      "Red": 255,
+                      "Green": 255,
+                      "Blue": 255
+                    },
+                    "Wildcard1": {
+                      "TextId": "scale_val_graph",
+                      "UseBuffer": true,
+                      "BufferSize": 5
+                    }
+                  },
+                  {
+                    "Type": "TextArea",
+                    "Name": "value_11_21_1",
+                    "X": -18,
+                    "Y": 148,
+                    "Width": 43,
+                    "Height": 15,
+                    "TextId": "__SingleUse_YGVV",
+                    "TextRotation": "0",
+                    "Color": {
+                      "Red": 255,
+                      "Green": 255,
+                      "Blue": 255
+                    },
+                    "Wildcard1": {
+                      "TextId": "scale_val_graph",
+                      "UseBuffer": true,
+                      "BufferSize": 5
+                    }
+                  },
+                  {
+                    "Type": "TextArea",
+                    "Name": "value_11_21_2",
+                    "X": -18,
+                    "Y": 134,
+                    "Width": 43,
+                    "Height": 15,
+                    "TextId": "__SingleUse_E0WE",
+                    "TextRotation": "0",
+                    "Color": {
+                      "Red": 255,
+                      "Green": 255,
+                      "Blue": 255
+                    },
+                    "Wildcard1": {
+                      "TextId": "scale_val_graph",
+                      "UseBuffer": true,
+                      "BufferSize": 5
+                    }
+                  },
+                  {
+                    "Type": "TextArea",
+                    "Name": "value_11_21_3",
+                    "X": -18,
+                    "Y": 121,
+                    "Width": 43,
+                    "Height": 15,
+                    "TextId": "__SingleUse_K8J6",
+                    "TextRotation": "0",
+                    "Color": {
+                      "Red": 255,
+                      "Green": 255,
+                      "Blue": 255
+                    },
+                    "Wildcard1": {
+                      "TextId": "scale_val_graph",
+                      "UseBuffer": true,
+                      "BufferSize": 5
+                    }
+                  },
+                  {
+                    "Type": "TextArea",
+                    "Name": "value_11_21_4",
+                    "X": -18,
+                    "Y": 106,
+                    "Width": 43,
+                    "Height": 15,
+                    "TextId": "__SingleUse_ZLZA",
+                    "TextRotation": "0",
+                    "Color": {
+                      "Red": 255,
+                      "Green": 255,
+                      "Blue": 255
+                    },
+                    "Wildcard1": {
+                      "TextId": "scale_val_graph",
+                      "UseBuffer": true,
+                      "BufferSize": 5
+                    }
+                  },
+                  {
+                    "Type": "TextArea",
+                    "Name": "value_11_21_5",
+                    "X": -18,
+                    "Y": 92,
+                    "Width": 43,
+                    "Height": 15,
+                    "TextId": "__SingleUse_4EGC",
+                    "TextRotation": "0",
+                    "Color": {
+                      "Red": 255,
+                      "Green": 255,
+                      "Blue": 255
+                    },
+                    "Wildcard1": {
+                      "TextId": "scale_val_graph",
+                      "UseBuffer": true,
+                      "BufferSize": 5
+                    }
+                  },
+                  {
+                    "Type": "TextArea",
+                    "Name": "value_11_21_6",
+                    "X": -18,
+                    "Y": 78,
+                    "Width": 43,
+                    "Height": 15,
+                    "TextId": "__SingleUse_QMXM",
+                    "TextRotation": "0",
+                    "Color": {
+                      "Red": 255,
+                      "Green": 255,
+                      "Blue": 255
+                    },
+                    "Wildcard1": {
+                      "TextId": "scale_val_graph",
+                      "UseBuffer": true,
+                      "BufferSize": 5
+                    }
+                  },
+                  {
+                    "Type": "TextArea",
+                    "Name": "value_11_21_7",
+                    "X": -18,
+                    "Y": 64,
+                    "Width": 43,
+                    "Height": 15,
+                    "TextId": "__SingleUse_P1XL",
+                    "TextRotation": "0",
+                    "Color": {
+                      "Red": 255,
+                      "Green": 255,
+                      "Blue": 255
+                    },
+                    "Wildcard1": {
+                      "TextId": "scale_val_graph",
+                      "UseBuffer": true,
+                      "BufferSize": 5
+                    }
+                  },
+                  {
+                    "Type": "TextArea",
+                    "Name": "value_11_21_8",
+                    "X": -18,
+                    "Y": 50,
+                    "Width": 43,
+                    "Height": 15,
+                    "TextId": "__SingleUse_4I9X",
+                    "TextRotation": "0",
+                    "Color": {
+                      "Red": 255,
+                      "Green": 255,
+                      "Blue": 255
+                    },
+                    "Wildcard1": {
+                      "TextId": "scale_val_graph",
+                      "UseBuffer": true,
+                      "BufferSize": 5
+                    }
+                  },
+                  {
+                    "Type": "TextArea",
+                    "Name": "value_11_21_9",
+                    "X": -18,
+                    "Y": 36,
+                    "Width": 43,
+                    "Height": 15,
+                    "TextId": "__SingleUse_O4JV",
+                    "TextRotation": "0",
+                    "Color": {
+                      "Red": 255,
+                      "Green": 255,
+                      "Blue": 255
+                    },
+                    "Wildcard1": {
+                      "TextId": "scale_val_graph",
+                      "UseBuffer": true,
+                      "BufferSize": 5
+                    }
+                  },
+                  {
+                    "Type": "TextArea",
+                    "Name": "value_11_21_10",
+                    "X": -18,
+                    "Y": 22,
+                    "Width": 43,
+                    "Height": 15,
+                    "TextId": "__SingleUse_WISZ",
+                    "TextRotation": "0",
+                    "Color": {
+                      "Red": 255,
+                      "Green": 255,
+                      "Blue": 255
+                    },
+                    "Wildcard1": {
+                      "TextId": "scale_val_graph",
+                      "UseBuffer": true,
+                      "BufferSize": 5
+                    }
+                  }
+                ]
+              },
+              {
+                "Type": "Container",
+                "Name": "values_6_11",
+                "Width": 32,
+                "Height": 200,
+                "Visible": false,
+                "Components": [
+                  {
+                    "Type": "TextArea",
+                    "Name": "value_6_11_0",
+                    "X": -18,
+                    "Y": 162,
+                    "Width": 43,
+                    "Height": 15,
+                    "TextId": "__SingleUse_HZ0W",
+                    "TextRotation": "0",
+                    "Color": {
+                      "Red": 255,
+                      "Green": 255,
+                      "Blue": 255
+                    },
+                    "Wildcard1": {
+                      "TextId": "scale_val_graph",
+                      "UseBuffer": true,
+                      "BufferSize": 5
+                    }
+                  },
+                  {
+                    "Type": "TextArea",
+                    "Name": "value_6_11_1",
+                    "X": -18,
+                    "Y": 134,
+                    "Width": 43,
+                    "Height": 15,
+                    "TextId": "__SingleUse_5KWZ",
+                    "TextRotation": "0",
+                    "Color": {
+                      "Red": 255,
+                      "Green": 255,
+                      "Blue": 255
+                    },
+                    "Wildcard1": {
+                      "TextId": "scale_val_graph",
+                      "UseBuffer": true,
+                      "BufferSize": 5
+                    }
+                  },
+                  {
+                    "Type": "TextArea",
+                    "Name": "value_6_11_2",
+                    "X": -18,
+                    "Y": 106,
+                    "Width": 43,
+                    "Height": 15,
+                    "TextId": "__SingleUse_HGZ2",
+                    "TextRotation": "0",
+                    "Color": {
+                      "Red": 255,
+                      "Green": 255,
+                      "Blue": 255
+                    },
+                    "Wildcard1": {
+                      "TextId": "scale_val_graph",
+                      "UseBuffer": true,
+                      "BufferSize": 5
+                    }
+                  },
+                  {
+                    "Type": "TextArea",
+                    "Name": "value_6_11_3",
+                    "X": -18,
+                    "Y": 79,
+                    "Width": 43,
+                    "Height": 15,
+                    "TextId": "__SingleUse_TOAR",
+                    "TextRotation": "0",
+                    "Color": {
+                      "Red": 255,
+                      "Green": 255,
+                      "Blue": 255
+                    },
+                    "Wildcard1": {
+                      "TextId": "scale_val_graph",
+                      "UseBuffer": true,
+                      "BufferSize": 5
+                    }
+                  },
+                  {
+                    "Type": "TextArea",
+                    "Name": "value_6_11_4",
+                    "X": -18,
+                    "Y": 51,
+                    "Width": 43,
+                    "Height": 15,
+                    "TextId": "__SingleUse_YU87",
+                    "TextRotation": "0",
+                    "Color": {
+                      "Red": 255,
+                      "Green": 255,
+                      "Blue": 255
+                    },
+                    "Wildcard1": {
+                      "TextId": "scale_val_graph",
+                      "UseBuffer": true,
+                      "BufferSize": 5
+                    }
+                  },
+                  {
+                    "Type": "TextArea",
+                    "Name": "value_6_11_5",
+                    "X": -18,
+                    "Y": 23,
+                    "Width": 43,
+                    "Height": 15,
+                    "TextId": "__SingleUse_2H4W",
+                    "TextRotation": "0",
+                    "Color": {
+                      "Red": 255,
+                      "Green": 255,
+                      "Blue": 255
+                    },
+                    "Wildcard1": {
+                      "TextId": "scale_val_graph",
+                      "UseBuffer": true,
+                      "BufferSize": 5
+                    }
+                  }
+                ]
+              },
+              {
+                "Type": "Container",
+                "Name": "values_spec_1",
+                "Width": 32,
+                "Height": 200,
+                "Visible": false,
+                "Components": [
+                  {
+                    "Type": "TextArea",
+                    "Name": "value_spec_1_0",
+                    "X": -18,
+                    "Y": 155,
+                    "Width": 43,
+                    "Height": 15,
+                    "TextId": "__SingleUse_IY9W",
+                    "TextRotation": "0",
+                    "Color": {
+                      "Red": 255,
+                      "Green": 255,
+                      "Blue": 255
+                    },
+                    "Wildcard1": {
+                      "TextId": "scale_val_graph",
+                      "UseBuffer": true,
+                      "BufferSize": 5
+                    }
+                  },
+                  {
+                    "Type": "TextArea",
+                    "Name": "value_spec_1_1",
+                    "X": -18,
+                    "Y": 115,
+                    "Width": 43,
+                    "Height": 15,
+                    "TextId": "__SingleUse_Q98N",
+                    "TextRotation": "0",
+                    "Color": {
+                      "Red": 255,
+                      "Green": 255,
+                      "Blue": 255
+                    },
+                    "Wildcard1": {
+                      "TextId": "scale_val_graph",
+                      "UseBuffer": true,
+                      "BufferSize": 5
+                    }
+                  },
+                  {
+                    "Type": "TextArea",
+                    "Name": "value_spec_1_2",
+                    "X": -18,
+                    "Y": 99,
+                    "Width": 43,
+                    "Height": 15,
+                    "TextId": "__SingleUse_VS3H",
+                    "TextRotation": "0",
+                    "Color": {
+                      "Red": 255,
+                      "Green": 255,
+                      "Blue": 255
+                    },
+                    "Wildcard1": {
+                      "TextId": "scale_val_graph",
+                      "UseBuffer": true,
+                      "BufferSize": 5
+                    }
+                  },
+                  {
+                    "Type": "TextArea",
+                    "Name": "value_spec_1_3",
+                    "X": -18,
+                    "Y": 83,
+                    "Width": 43,
+                    "Height": 15,
+                    "TextId": "__SingleUse_WO02",
+                    "TextRotation": "0",
+                    "Color": {
+                      "Red": 255,
+                      "Green": 255,
+                      "Blue": 255
+                    },
+                    "Wildcard1": {
+                      "TextId": "scale_val_graph",
+                      "UseBuffer": true,
+                      "BufferSize": 5
+                    }
+                  },
+                  {
+                    "Type": "TextArea",
+                    "Name": "value_spec_1_4",
+                    "X": -18,
+                    "Y": 67,
+                    "Width": 43,
+                    "Height": 15,
+                    "TextId": "__SingleUse_QIXA",
+                    "TextRotation": "0",
+                    "Color": {
+                      "Red": 255,
+                      "Green": 255,
+                      "Blue": 255
+                    },
+                    "Wildcard1": {
+                      "TextId": "scale_val_graph",
+                      "UseBuffer": true,
+                      "BufferSize": 5
+                    }
+                  },
+                  {
+                    "Type": "TextArea",
+                    "Name": "value_spec_1_5",
+                    "X": -18,
+                    "Y": 51,
+                    "Width": 43,
+                    "Height": 15,
+                    "TextId": "__SingleUse_PL52",
+                    "TextRotation": "0",
+                    "Color": {
+                      "Red": 255,
+                      "Green": 255,
+                      "Blue": 255
+                    },
+                    "Wildcard1": {
+                      "TextId": "scale_val_graph",
+                      "UseBuffer": true,
+                      "BufferSize": 5
+                    }
+                  },
+                  {
+                    "Type": "TextArea",
+                    "Name": "value_spec_1_6",
+                    "X": -18,
+                    "Y": 35,
+                    "Width": 43,
+                    "Height": 15,
+                    "TextId": "__SingleUse_14TF",
+                    "TextRotation": "0",
+                    "Color": {
+                      "Red": 255,
+                      "Green": 255,
+                      "Blue": 255
+                    },
+                    "Wildcard1": {
+                      "TextId": "scale_val_graph",
+                      "UseBuffer": true,
+                      "BufferSize": 5
+                    }
+                  },
+                  {
+                    "Type": "TextArea",
+                    "Name": "value_spec_1_7",
+                    "X": -18,
+                    "Y": 19,
+                    "Width": 43,
+                    "Height": 15,
+                    "TextId": "__SingleUse_TKQ7",
+                    "TextRotation": "0",
+                    "Color": {
+                      "Red": 255,
+                      "Green": 255,
+                      "Blue": 255
+                    },
+                    "Wildcard1": {
+                      "TextId": "scale_val_graph",
+                      "UseBuffer": true,
+                      "BufferSize": 5
+                    }
+                  }
+                ]
+              },
               {
                 "Type": "Container",
                 "Name": "values_9_17",
@@ -1509,175 +2044,6 @@
                     "Width": 43,
                     "Height": 15,
                     "TextId": "__SingleUse_0MUO",
-                    "TextRotation": "0",
-                    "Color": {
-                      "Red": 255,
-                      "Green": 255,
-                      "Blue": 255
-                    },
-                    "Wildcard1": {
-                      "TextId": "scale_val_graph",
-                      "UseBuffer": true,
-                      "BufferSize": 5
-                    }
-                  }
-                ]
-              },
-              {
-                "Type": "Container",
-                "Name": "values_spec_1",
-                "Width": 32,
-                "Height": 200,
-                "Visible": false,
-                "Components": [
-                  {
-                    "Type": "TextArea",
-                    "Name": "value_spec_1_0",
-                    "X": -18,
-                    "Y": 155,
-                    "Width": 43,
-                    "Height": 15,
-                    "TextId": "__SingleUse_IY9W",
-                    "TextRotation": "0",
-                    "Color": {
-                      "Red": 255,
-                      "Green": 255,
-                      "Blue": 255
-                    },
-                    "Wildcard1": {
-                      "TextId": "scale_val_graph",
-                      "UseBuffer": true,
-                      "BufferSize": 5
-                    }
-                  },
-                  {
-                    "Type": "TextArea",
-                    "Name": "value_spec_1_1",
-                    "X": -18,
-                    "Y": 115,
-                    "Width": 43,
-                    "Height": 15,
-                    "TextId": "__SingleUse_Q98N",
-                    "TextRotation": "0",
-                    "Color": {
-                      "Red": 255,
-                      "Green": 255,
-                      "Blue": 255
-                    },
-                    "Wildcard1": {
-                      "TextId": "scale_val_graph",
-                      "UseBuffer": true,
-                      "BufferSize": 5
-                    }
-                  },
-                  {
-                    "Type": "TextArea",
-                    "Name": "value_spec_1_2",
-                    "X": -18,
-                    "Y": 99,
-                    "Width": 43,
-                    "Height": 15,
-                    "TextId": "__SingleUse_VS3H",
-                    "TextRotation": "0",
-                    "Color": {
-                      "Red": 255,
-                      "Green": 255,
-                      "Blue": 255
-                    },
-                    "Wildcard1": {
-                      "TextId": "scale_val_graph",
-                      "UseBuffer": true,
-                      "BufferSize": 5
-                    }
-                  },
-                  {
-                    "Type": "TextArea",
-                    "Name": "value_spec_1_3",
-                    "X": -18,
-                    "Y": 83,
-                    "Width": 43,
-                    "Height": 15,
-                    "TextId": "__SingleUse_WO02",
-                    "TextRotation": "0",
-                    "Color": {
-                      "Red": 255,
-                      "Green": 255,
-                      "Blue": 255
-                    },
-                    "Wildcard1": {
-                      "TextId": "scale_val_graph",
-                      "UseBuffer": true,
-                      "BufferSize": 5
-                    }
-                  },
-                  {
-                    "Type": "TextArea",
-                    "Name": "value_spec_1_4",
-                    "X": -18,
-                    "Y": 67,
-                    "Width": 43,
-                    "Height": 15,
-                    "TextId": "__SingleUse_QIXA",
-                    "TextRotation": "0",
-                    "Color": {
-                      "Red": 255,
-                      "Green": 255,
-                      "Blue": 255
-                    },
-                    "Wildcard1": {
-                      "TextId": "scale_val_graph",
-                      "UseBuffer": true,
-                      "BufferSize": 5
-                    }
-                  },
-                  {
-                    "Type": "TextArea",
-                    "Name": "value_spec_1_5",
-                    "X": -18,
-                    "Y": 51,
-                    "Width": 43,
-                    "Height": 15,
-                    "TextId": "__SingleUse_PL52",
-                    "TextRotation": "0",
-                    "Color": {
-                      "Red": 255,
-                      "Green": 255,
-                      "Blue": 255
-                    },
-                    "Wildcard1": {
-                      "TextId": "scale_val_graph",
-                      "UseBuffer": true,
-                      "BufferSize": 5
-                    }
-                  },
-                  {
-                    "Type": "TextArea",
-                    "Name": "value_spec_1_6",
-                    "X": -18,
-                    "Y": 35,
-                    "Width": 43,
-                    "Height": 15,
-                    "TextId": "__SingleUse_14TF",
-                    "TextRotation": "0",
-                    "Color": {
-                      "Red": 255,
-                      "Green": 255,
-                      "Blue": 255
-                    },
-                    "Wildcard1": {
-                      "TextId": "scale_val_graph",
-                      "UseBuffer": true,
-                      "BufferSize": 5
-                    }
-                  },
-                  {
-                    "Type": "TextArea",
-                    "Name": "value_spec_1_7",
-                    "X": -18,
-                    "Y": 19,
-                    "Width": 43,
-                    "Height": 15,
-                    "TextId": "__SingleUse_TKQ7",
                     "TextRotation": "0",
                     "Color": {
                       "Red": 255,

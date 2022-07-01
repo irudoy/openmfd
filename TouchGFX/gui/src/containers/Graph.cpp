@@ -19,15 +19,48 @@ void Graph::setConfig(MFD_GaugeDataTypeDef *conf)
   data = conf;
 
   // reset all
+  bg_6_11.setVisible(false);
+  bg_11_21.setVisible(false);
   bg_9_17.setVisible(false);
   bg_spec_1.setVisible(false);
 
+  values_6_11.setVisible(false);
+  values_11_21.setVisible(false);
   values_9_17.setVisible(false);
   values_spec_1.setVisible(false);
 
   switch (data->scaleType) {
-    case MFD_GaugeScaleType_6_11:
-    case MFD_GaugeScaleType_11_21:
+    case MFD_GaugeScaleType_6_11: {
+      bg_6_11.setVisible(true);
+      values_6_11.setVisible(true);
+
+      Unicode::snprintf(value_6_11_0Buffer, VALUE_6_11_0_SIZE, "%d", data->scaleValues[0]);
+      Unicode::snprintf(value_6_11_1Buffer, VALUE_6_11_1_SIZE, "%d", data->scaleValues[1]);
+      Unicode::snprintf(value_6_11_2Buffer, VALUE_6_11_2_SIZE, "%d", data->scaleValues[2]);
+      Unicode::snprintf(value_6_11_3Buffer, VALUE_6_11_3_SIZE, "%d", data->scaleValues[3]);
+      Unicode::snprintf(value_6_11_4Buffer, VALUE_6_11_4_SIZE, "%d", data->scaleValues[4]);
+      Unicode::snprintf(value_6_11_5Buffer, VALUE_6_11_5_SIZE, "%d", data->scaleValues[5]);
+
+      break;
+    }
+    case MFD_GaugeScaleType_11_21: {
+      bg_11_21.setVisible(true);
+      values_11_21.setVisible(true);
+
+      Unicode::snprintf(value_11_21_0Buffer, VALUE_11_21_0_SIZE, "%d", data->scaleValues[0]);
+      Unicode::snprintf(value_11_21_1Buffer, VALUE_11_21_1_SIZE, "%d", data->scaleValues[1]);
+      Unicode::snprintf(value_11_21_2Buffer, VALUE_11_21_2_SIZE, "%d", data->scaleValues[2]);
+      Unicode::snprintf(value_11_21_3Buffer, VALUE_11_21_3_SIZE, "%d", data->scaleValues[3]);
+      Unicode::snprintf(value_11_21_4Buffer, VALUE_11_21_4_SIZE, "%d", data->scaleValues[4]);
+      Unicode::snprintf(value_11_21_5Buffer, VALUE_11_21_5_SIZE, "%d", data->scaleValues[5]);
+      Unicode::snprintf(value_11_21_6Buffer, VALUE_11_21_6_SIZE, "%d", data->scaleValues[6]);
+      Unicode::snprintf(value_11_21_7Buffer, VALUE_11_21_7_SIZE, "%d", data->scaleValues[7]);
+      Unicode::snprintf(value_11_21_8Buffer, VALUE_11_21_8_SIZE, "%d", data->scaleValues[8]);
+      Unicode::snprintf(value_11_21_9Buffer, VALUE_11_21_9_SIZE, "%d", data->scaleValues[9]);
+      Unicode::snprintf(value_11_21_10Buffer, VALUE_11_21_10_SIZE, "%d", data->scaleValues[10]);
+
+      break;
+    }
     case MFD_GaugeScaleType_9_17: {
       bg_9_17.setVisible(true);
       values_9_17.setVisible(true);
