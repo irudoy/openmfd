@@ -46,34 +46,42 @@ void COMM_setupCANFilter(void) {
   }
 }
 
+static void nextPage() {
+  MFD_AppState.twinsGauge1++;
+  MFD_AppState.twinsGauge2++;
+  if (MFD_AppState.twinsGauge1 >= MFD_Gauge__SIZE) {
+    MFD_AppState.twinsGauge1 = 0;
+  }
+  if (MFD_AppState.twinsGauge2 >= MFD_Gauge__SIZE) {
+    MFD_AppState.twinsGauge2 = 0;
+  }
+  MFD_AppState.graphGauge = MFD_AppState.twinsGauge2;
+}
+
+static void prevPage() {
+  if (MFD_AppState.twinsGauge1 == 0) {
+    MFD_AppState.twinsGauge1 = MFD_Gauge__SIZE - 1;
+  } else {
+    MFD_AppState.twinsGauge1--;
+  }
+  if (MFD_AppState.twinsGauge2 == 0) {
+    MFD_AppState.twinsGauge2 = MFD_Gauge__SIZE - 1;
+  } else {
+    MFD_AppState.twinsGauge2--;
+  }
+  MFD_AppState.graphGauge = MFD_AppState.twinsGauge2;
+}
+
 void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan) {
   HAL_CAN_GetRxMessage(hcan, CAN_RX_FIFO0, &CANRxHeader, CANRxData);
 
   if (CANRxHeader.StdId == CBUS_ID) {
     switch(CANRxData[0]) {
       case CBUS_CMD_LEFT:
-        if (MFD_AppState.twinsGauge1 == 0) {
-          MFD_AppState.twinsGauge1 = MFD_Gauge__SIZE - 1;
-        } else {
-          MFD_AppState.twinsGauge1--;
-        }
-        if (MFD_AppState.twinsGauge2 == 0) {
-          MFD_AppState.twinsGauge2 = MFD_Gauge__SIZE - 1;
-        } else {
-          MFD_AppState.twinsGauge2--;
-        }
-        MFD_AppState.graphGauge = MFD_AppState.twinsGauge2;
+        prevPage();
         break;
       case CBUS_CMD_RIGHT:
-        MFD_AppState.twinsGauge1++;
-        MFD_AppState.twinsGauge2++;
-        if (MFD_AppState.twinsGauge1 >= MFD_Gauge__SIZE) {
-          MFD_AppState.twinsGauge1 = 0;
-        }
-        if (MFD_AppState.twinsGauge2 >= MFD_Gauge__SIZE) {
-          MFD_AppState.twinsGauge2 = 0;
-        }
-        MFD_AppState.graphGauge = MFD_AppState.twinsGauge2;
+        nextPage();
         break;
       case CBUS_CMD_UP:
         commState = 1;
@@ -130,11 +138,11 @@ void DBGS_handleClick_DOWN(void) {
 }
 
 void DBGS_handleClick_LEFT(void) {
-
+  prevPage();
 }
 
 void DBGS_handleClick_RIGHT(void) {
-
+  nextPage();
 }
 
 void DBGS_handleClick_CENTER(void) {

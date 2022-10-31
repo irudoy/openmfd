@@ -26,7 +26,6 @@
 #include <TouchGFXHAL.hpp>
 #include <STM32TouchController.hpp>
 #include <stm32f4xx_hal.h>
-#include <HWButtonController.hpp>
 
 extern "C" void touchgfx_init();
 extern "C" void touchgfx_taskEntry();
@@ -38,8 +37,6 @@ static LCD16bpp display;
 static ApplicationFontProvider fontProvider;
 static Texts texts;
 static TouchGFXHAL hal(dma, display, tc, 320, 240);
-
-static HWButtonController bc;
 
 void touchgfx_init()
 {
@@ -59,8 +56,6 @@ void touchgfx_init()
      * Initialize TouchGFX
      */
     hal.initialize();
-
-    hal.setButtonController(&bc);
 }
 
 void touchgfx_components_init()
