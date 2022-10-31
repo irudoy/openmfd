@@ -22,7 +22,11 @@
 
 /* USER CODE BEGIN TouchGFXHAL.cpp */
 
+#include <HWButtonController.hpp>
+
 using namespace touchgfx;
+
+static HWButtonController bc;
 
 void TouchGFXHAL::initialize()
 {
@@ -33,6 +37,7 @@ void TouchGFXHAL::initialize()
     // Please note, HAL::initialize() must be called to initialize the framework.
 
     TouchGFXGeneratedHAL::initialize();
+    TouchGFXGeneratedHAL::setButtonController(&bc);
 }
 
 /**

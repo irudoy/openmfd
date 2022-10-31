@@ -220,6 +220,9 @@
     <Filter Include="Header Files\generated\gui_generated\test_screen">
       <UniqueIdentifier>DD7833BB-E04A-54BF-6AB1-290DAAE3936D</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\gui\include">
+      <UniqueIdentifier>EEE8C4F1-B9C5-D509-CF8E-B62989437797</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(TouchGFXReleasePath)\framework\source\platform\driver\touch\SDL2TouchController.cpp">
@@ -290,6 +293,9 @@
     </ClCompile>
     <ClCompile Include="..\..\generated\gui_generated\src\test_screen\TestViewBase.cpp">
       <Filter>Source Files\generated\gui_generated\test_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\HWButtonController.cpp">
+      <Filter>Source Files\gui</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -771,6 +777,9 @@
     </ClInclude>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\test_screen\TestViewBase.hpp">
       <Filter>Header Files\generated\gui_generated\test_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\HWButtonController.hpp">
+      <Filter>Header Files\gui\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

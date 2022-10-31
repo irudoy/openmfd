@@ -46,19 +46,7 @@ void COMM_setupCANFilter(void) {
   }
 }
 
-static void nextPage() {
-  MFD_AppState.twinsGauge1++;
-  MFD_AppState.twinsGauge2++;
-  if (MFD_AppState.twinsGauge1 >= MFD_Gauge__SIZE) {
-    MFD_AppState.twinsGauge1 = 0;
-  }
-  if (MFD_AppState.twinsGauge2 >= MFD_Gauge__SIZE) {
-    MFD_AppState.twinsGauge2 = 0;
-  }
-  MFD_AppState.graphGauge = MFD_AppState.twinsGauge2;
-}
-
-static void prevPage() {
+static void handleLeft() {
   if (MFD_AppState.twinsGauge1 == 0) {
     MFD_AppState.twinsGauge1 = MFD_Gauge__SIZE - 1;
   } else {
@@ -72,36 +60,72 @@ static void prevPage() {
   MFD_AppState.graphGauge = MFD_AppState.twinsGauge2;
 }
 
+static void handleRight() {
+  MFD_AppState.twinsGauge1++;
+  MFD_AppState.twinsGauge2++;
+  if (MFD_AppState.twinsGauge1 >= MFD_Gauge__SIZE) {
+    MFD_AppState.twinsGauge1 = 0;
+  }
+  if (MFD_AppState.twinsGauge2 >= MFD_Gauge__SIZE) {
+    MFD_AppState.twinsGauge2 = 0;
+  }
+  MFD_AppState.graphGauge = MFD_AppState.twinsGauge2;
+}
+
+static void handleUp() {
+  commState = 1;
+  // DBGD_stubIncDecAll(true);
+}
+
+static void handleDown() {
+  commState = 2;
+  // DBGD_stubIncDecAll(false);
+}
+
+static void handleCenter() {
+  DBGD_resetPeak();
+}
+
+static void handleCMD1() {
+  DBGD_toggleEnable();
+}
+
+static void handleCMD3() {
+  DBGD_toggleRandom();
+}
+
+static void handleCMD4() {
+  MFD_AppState.peakCurState = MFD_AppState.peakCurState == MFD_PeakCur_Peak ? MFD_PeakCur_Current : MFD_PeakCur_Peak;
+}
+
 void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan) {
   HAL_CAN_GetRxMessage(hcan, CAN_RX_FIFO0, &CANRxHeader, CANRxData);
 
   if (CANRxHeader.StdId == CBUS_ID) {
     switch(CANRxData[0]) {
       case CBUS_CMD_LEFT:
-        prevPage();
+        handleLeft();
         break;
       case CBUS_CMD_RIGHT:
-        nextPage();
+        handleRight();
         break;
       case CBUS_CMD_UP:
-        commState = 1;
-//        DBGD_stubIncDecAll(true);
+        handleUp();
         break;
       case CBUS_CMD_DOWN:
-        commState = 2;
-//        DBGD_stubIncDecAll(false);
+        handleDown();
         break;
       case CBUS_CMD_PLAY_PAUSE:
-        DBGD_resetPeak();
+        handleCenter();
         break;
       case CBUS_CMD_1:
-        DBGD_toggleEnable();
+        handleCMD1();
         break;
       case CBUS_CMD_3:
-        DBGD_toggleRandom();
+        handleCMD3();
         break;
       case CBUS_CMD_4:
-        MFD_AppState.peakCurState = MFD_AppState.peakCurState == MFD_PeakCur_Peak ? MFD_PeakCur_Current : MFD_PeakCur_Peak;
+        handleCMD4();
         break;
       default:
         break;
@@ -110,7 +134,7 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan) {
 }
 
 void DBGS_handleClick_DISP(void) {
-
+  handleCMD1();
 }
 
 void DBGS_handleClick_RETURN(void) {
@@ -118,11 +142,11 @@ void DBGS_handleClick_RETURN(void) {
 }
 
 void DBGS_handleClick_MENU(void) {
-
+  handleCMD3();
 }
 
 void DBGS_handleClick_MODE(void) {
-  DBGD_toggleRandom();
+  handleCMD4();
   //  uint8_t val = 0b10000001;
   //  if (osMessageQueueGetCount(DataQueueHandle) == 0) {
   //    osMessageQueuePut(DataQueueHandle, &val, 0U, 0);
@@ -130,23 +154,23 @@ void DBGS_handleClick_MODE(void) {
 }
 
 void DBGS_handleClick_UP(void) {
-  DBGD_stubIncDecAll(true);
+  handleUp();
 }
 
 void DBGS_handleClick_DOWN(void) {
-  DBGD_stubIncDecAll(false);
+  handleDown();
 }
 
 void DBGS_handleClick_LEFT(void) {
-  prevPage();
+  handleLeft();
 }
 
 void DBGS_handleClick_RIGHT(void) {
-  nextPage();
+  handleRight();
 }
 
 void DBGS_handleClick_CENTER(void) {
-  DBGD_resetPeak();
+  handleCenter();
 }
 
 /**
