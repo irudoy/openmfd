@@ -65,7 +65,7 @@
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
- CAN_HandleTypeDef hcan2;
+CAN_HandleTypeDef hcan2;
 
 CRC_HandleTypeDef hcrc;
 
@@ -188,6 +188,8 @@ int main(void)
   MX_CAN2_Init();
   MX_RNG_Init();
   MX_TouchGFX_Init();
+  /* Call PreOsInit function */
+  MX_TouchGFX_PreOSInit();
   /* USER CODE BEGIN 2 */
   MFD_DataInit();
 
