@@ -9,7 +9,7 @@
             "Type": "Box",
             "Name": "bg",
             "Width": 320,
-            "Height": 240,
+            "Height": 234,
             "LockPosition": true
           },
           {
@@ -65,7 +65,7 @@
             "Type": "Box",
             "Name": "bg",
             "Width": 320,
-            "Height": 240,
+            "Height": 234,
             "LockPosition": true
           },
           {
@@ -120,7 +120,7 @@
             "Type": "BoxWithBorder",
             "Name": "boxWithBorder1",
             "Width": 320,
-            "Height": 240,
+            "Height": 234,
             "Color": {
               "Red": 255
             },
@@ -2142,7 +2142,7 @@
     "Name": "MyApplication",
     "Resolution": {
       "Width": 320,
-      "Height": 240
+      "Height": 234
     },
     "SelectedColorDepth": 16,
     "StartupScreenName": "GraphScreen",
@@ -2163,7 +2163,7 @@
     "AvailableResolutions": [
       {
         "Width": 320,
-        "Height": 240
+        "Height": 234
       }
     ],
     "PhysicalButtons": [],

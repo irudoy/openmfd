@@ -7,10 +7,10 @@
 TestViewBase::TestViewBase()
 {
 
-    __background.setPosition(0, 0, 320, 240);
+    __background.setPosition(0, 0, 320, 234);
     __background.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
 
-    boxWithBorder1.setPosition(0, 0, 320, 240);
+    boxWithBorder1.setPosition(0, 0, 320, 234);
     boxWithBorder1.setColor(touchgfx::Color::getColorFromRGB(255, 0, 0));
     boxWithBorder1.setBorderColor(touchgfx::Color::getColorFromRGB(0, 255, 21));
     boxWithBorder1.setBorderSize(5);

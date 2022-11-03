@@ -486,9 +486,9 @@ static void MX_LTDC_Init(void)
   hltdc.Init.AccumulatedHBP = 68;
   hltdc.Init.AccumulatedVBP = 17;
   hltdc.Init.AccumulatedActiveW = 388;
-  hltdc.Init.AccumulatedActiveH = 257;
+  hltdc.Init.AccumulatedActiveH = 251;
   hltdc.Init.TotalWidth = 404;
-  hltdc.Init.TotalHeigh = 261;
+  hltdc.Init.TotalHeigh = 255;
   hltdc.Init.Backcolor.Blue = 0;
   hltdc.Init.Backcolor.Green = 0;
   hltdc.Init.Backcolor.Red = 0;
@@ -499,7 +499,7 @@ static void MX_LTDC_Init(void)
   pLayerCfg.WindowX0 = 0;
   pLayerCfg.WindowX1 = 320;
   pLayerCfg.WindowY0 = 0;
-  pLayerCfg.WindowY1 = 240;
+  pLayerCfg.WindowY1 = 234;
   pLayerCfg.PixelFormat = LTDC_PIXEL_FORMAT_RGB565;
   pLayerCfg.Alpha = 255;
   pLayerCfg.Alpha0 = 0;
@@ -507,7 +507,7 @@ static void MX_LTDC_Init(void)
   pLayerCfg.BlendingFactor2 = LTDC_BLENDING_FACTOR2_CA;
   pLayerCfg.FBStartAdress = 0xD0000000;
   pLayerCfg.ImageWidth = 320;
-  pLayerCfg.ImageHeight = 240;
+  pLayerCfg.ImageHeight = 234;
   pLayerCfg.Backcolor.Blue = 0;
   pLayerCfg.Backcolor.Green = 0;
   pLayerCfg.Backcolor.Red = 0;

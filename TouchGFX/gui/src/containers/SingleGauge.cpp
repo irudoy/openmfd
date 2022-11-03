@@ -1,7 +1,7 @@
 #include <gui/containers/SingleGauge.hpp>
 
 static const uint16_t MFD_GAUGE_FULL_6_11 = 225;
-static const uint16_t MFD_GAUGE_FULL_9_17 = 240;
+static const uint16_t MFD_GAUGE_FULL_9_17 = 234;
 static const uint16_t MFD_GAUGE_FULL_11_21 = 270;
 
 SingleGauge::SingleGauge()

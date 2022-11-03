@@ -11,10 +11,10 @@ GraphScreenViewBase::GraphScreenViewBase()
 
     touchgfx::CanvasWidgetRenderer::setupBuffer(canvasBuffer, CANVAS_BUFFER_SIZE);
 
-    __background.setPosition(0, 0, 320, 240);
+    __background.setPosition(0, 0, 320, 234);
     __background.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
 
-    bg.setPosition(0, 0, 320, 240);
+    bg.setPosition(0, 0, 320, 234);
     bg.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
 
     gauge1.setXY(163, 42);
