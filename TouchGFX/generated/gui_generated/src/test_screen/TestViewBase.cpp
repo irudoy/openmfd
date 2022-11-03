@@ -10,13 +10,31 @@ TestViewBase::TestViewBase()
     __background.setPosition(0, 0, 320, 234);
     __background.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
 
-    boxWithBorder1.setPosition(0, 0, 320, 234);
+    boxWithBorder1_1.setPosition(0, 0, 320, 234);
+    boxWithBorder1_1.setColor(touchgfx::Color::getColorFromRGB(255, 0, 221));
+    boxWithBorder1_1.setBorderColor(touchgfx::Color::getColorFromRGB(255, 0, 221));
+    boxWithBorder1_1.setBorderSize(1);
+
+    boxWithBorder1.setPosition(1, 1, 318, 232);
     boxWithBorder1.setColor(touchgfx::Color::getColorFromRGB(255, 0, 0));
-    boxWithBorder1.setBorderColor(touchgfx::Color::getColorFromRGB(0, 255, 21));
-    boxWithBorder1.setBorderSize(5);
+    boxWithBorder1.setBorderColor(touchgfx::Color::getColorFromRGB(17, 0, 255));
+    boxWithBorder1.setBorderSize(1);
+
+    boxWithBorder1_2.setPosition(2, 2, 316, 230);
+    boxWithBorder1_2.setColor(touchgfx::Color::getColorFromRGB(255, 0, 0));
+    boxWithBorder1_2.setBorderColor(touchgfx::Color::getColorFromRGB(255, 0, 0));
+    boxWithBorder1_2.setBorderSize(1);
+
+    boxWithBorder1_2_1.setPosition(3, 3, 314, 228);
+    boxWithBorder1_2_1.setColor(touchgfx::Color::getColorFromRGB(255, 0, 0));
+    boxWithBorder1_2_1.setBorderColor(touchgfx::Color::getColorFromRGB(55, 255, 0));
+    boxWithBorder1_2_1.setBorderSize(1);
 
     add(__background);
+    add(boxWithBorder1_1);
     add(boxWithBorder1);
+    add(boxWithBorder1_2);
+    add(boxWithBorder1_2_1);
 }
 
 void TestViewBase::setupScreen()

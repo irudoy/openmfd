@@ -27,7 +27,10 @@ protected:
      * Member Declarations
      */
     touchgfx::Box __background;
+    touchgfx::BoxWithBorder boxWithBorder1_1;
     touchgfx::BoxWithBorder boxWithBorder1;
+    touchgfx::BoxWithBorder boxWithBorder1_2;
+    touchgfx::BoxWithBorder boxWithBorder1_2_1;
 
 private:
 

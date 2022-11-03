@@ -118,17 +118,65 @@
         "Components": [
           {
             "Type": "BoxWithBorder",
-            "Name": "boxWithBorder1",
+            "Name": "boxWithBorder1_1",
             "Width": 320,
             "Height": 234,
+            "Color": {
+              "Red": 255,
+              "Blue": 221
+            },
+            "BorderColor": {
+              "Red": 255,
+              "Blue": 221
+            },
+            "BorderSize": 1
+          },
+          {
+            "Type": "BoxWithBorder",
+            "Name": "boxWithBorder1",
+            "X": 1,
+            "Y": 1,
+            "Width": 318,
+            "Height": 232,
             "Color": {
               "Red": 255
             },
             "BorderColor": {
-              "Green": 255,
-              "Blue": 21
+              "Red": 17,
+              "Blue": 255
             },
-            "BorderSize": 5
+            "BorderSize": 1
+          },
+          {
+            "Type": "BoxWithBorder",
+            "Name": "boxWithBorder1_2",
+            "X": 2,
+            "Y": 2,
+            "Width": 316,
+            "Height": 230,
+            "Color": {
+              "Red": 255
+            },
+            "BorderColor": {
+              "Red": 255
+            },
+            "BorderSize": 1
+          },
+          {
+            "Type": "BoxWithBorder",
+            "Name": "boxWithBorder1_2_1",
+            "X": 3,
+            "Y": 3,
+            "Width": 314,
+            "Height": 228,
+            "Color": {
+              "Red": 255
+            },
+            "BorderColor": {
+              "Red": 55,
+              "Green": 255
+            },
+            "BorderSize": 1
           }
         ],
         "Interactions": [
