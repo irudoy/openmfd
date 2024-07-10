@@ -1,0 +1,9 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "ADV7393BCPZ")(type "KiCad")(uri "${KIPRJMOD}/lib/ADV7393BCPZ")(options "")(descr ""))
+  (lib (name "CDCE913PW")(type "KiCad")(uri "${KIPRJMOD}/lib/CDCE913PW")(options "")(descr ""))
+  (lib (name "RCA")(type "KiCad")(uri "${KIPRJMOD}/lib/RCA")(options "")(descr ""))
+  (lib (name "NFE61PT472C1H9L")(type "KiCad")(uri "${KIPRJMOD}/lib/NFE61PT472C1H9L")(options "")(descr ""))
+  (lib (name "KEYSTONE5015")(type "KiCad")(uri "${KIPRJMOD}/lib/KEYSTONE5015")(options "")(descr ""))
+  (lib (name "ADV7125KSTZ140")(type "KiCad")(uri "${KIPRJMOD}/lib/ADV7125KSTZ140")(options "")(descr ""))
+)
