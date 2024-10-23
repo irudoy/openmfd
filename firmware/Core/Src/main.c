@@ -200,6 +200,26 @@ int main(void)
 
   COMM_init();
 
+  // SW RST
+  I2C3_WriteData(0x54, 0x17, 0b00000010);
+
+  // SD
+  I2C3_WriteData(0x54, 0x87, 0x80); // 0b10100000 0xA0 (autodetect) // 0b10000000 0x80 (def)
+  I2C3_WriteData(0x54, 0x88, 0x12); // 0b00010010 0x12 (non-interlaced) // 0b00010000 0x10 (interlaced)
+  I2C3_WriteData(0x54, 0x8A, 0b00001100); // Mode 2 — Slave Option (Subaddress 0x8A = X X X X X 1 0 0)
+
+  // Color bars
+//  I2C3_WriteData(0x54, 0x00, 0b00010010);
+//  I2C3_WriteData(0x54, 0x82, 0b11001011); // 0b00001011 (reset) // 0b11001011 (bars)
+//  I2C3_WriteData(0x54, 0x84, 0b01000000); // 0b00000000 (reset) // 0b01000000 (bars)
+
+//  I2C3_WriteData(0x54, 0x87, 0x80);
+//  I2C3_WriteData(0x54, 0x88, 0x12);
+//  volatile uint8_t b1r = I2C3_ReadData(0x55, 0x87);
+//  volatile uint8_t b2r = I2C3_ReadData(0x55, 0x88);
+
+//  HAL_Delay(1);
+
   /* USER CODE END 2 */
 
   /* Init scheduler */
@@ -483,14 +503,14 @@ static void MX_LTDC_Init(void)
   hltdc.Init.VSPolarity = LTDC_VSPOLARITY_AL;
   hltdc.Init.DEPolarity = LTDC_DEPOLARITY_AL;
   hltdc.Init.PCPolarity = LTDC_PCPOLARITY_IPC;
-  hltdc.Init.HorizontalSync = 30;
+  hltdc.Init.HorizontalSync = 63;
   hltdc.Init.VerticalSync = 2;
-  hltdc.Init.AccumulatedHBP = 68;
-  hltdc.Init.AccumulatedVBP = 19;
-  hltdc.Init.AccumulatedActiveW = 388;
-  hltdc.Init.AccumulatedActiveH = 253;
-  hltdc.Init.TotalWidth = 404;
-  hltdc.Init.TotalHeigh = 254;
+  hltdc.Init.AccumulatedHBP = 127;
+  hltdc.Init.AccumulatedVBP = 14;
+  hltdc.Init.AccumulatedActiveW = 447;
+  hltdc.Init.AccumulatedActiveH = 254;
+  hltdc.Init.TotalWidth = 463;
+  hltdc.Init.TotalHeigh = 264;
   hltdc.Init.Backcolor.Blue = 0;
   hltdc.Init.Backcolor.Green = 0;
   hltdc.Init.Backcolor.Red = 0;
