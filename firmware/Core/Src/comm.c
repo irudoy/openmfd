@@ -25,7 +25,7 @@ void COMM_init(void) {
   CANTxHeader.DLC = 8;
   CANTxHeader.IDE = CAN_ID_STD;
   CANTxHeader.RTR = CAN_RTR_DATA;
-  CANTxHeader.StdId = 0x666;
+  CANTxHeader.StdId = 0x669;
 }
 
 void COMM_setupCANFilter(void) {
