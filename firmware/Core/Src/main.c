@@ -203,22 +203,65 @@ int main(void)
   // SW RST
   I2C3_WriteData(0x54, 0x17, 0b00000010);
 
-  // SD
+  // SD Mode Register 1
+  I2C3_WriteData(0x54, 0x80, 0x10); // 0b00010000
+  // SD standard - NTSC
+  // SD luma filter - Luma SSAF
+  // SD chroma filter - 1.3 MHz
+
+  // SD Mode Register 2 (0x0B 0b00001011)
+  I2C3_WriteData(0x54, 0x82, 0b01001011);
+  // SD PrPb SSAF filter - Enabled
+  // SD DAC Output 1 - 1
+  // SD pedestal - Enabled
+  // SD square pixel mode - Disabled
+  // SD VCR FF/RW sync - Disabled
+  // SD pixel data valid - Disabled
+  // SD active video edge control - Disabled
+
+  // SD Mode Register 3
+  I2C3_WriteData(0x54, 0x83, 0x04); // 0b00000100
+  // SD pedestal YPrPb output - No pedestal on YPrPb
+  // SD Output Levels Y - Y = 700 mV/300 mV
+  // SD Output Levels PrPb - 700 mV p-p
+  // SD vertical blanking interval (VBI) open - Disabled
+  // SD closed captioning field control - Closed captioning disabled
+
+  // SD Mode Register 4
+  I2C3_WriteData(0x54, 0x84, 0x00); // 0b00000000
+  // SD SFL/SCR/TR mode select - Disabled
+  // SD active video length - 720 pixels
+  // SD chroma - Chroma enabled
+  // SD burst - Enabled
+  // SD color bars - Disabled
+  // SD luma/chroma swap - DAC 2 = luma, DAC 3 = chroma
+
+  // SD Mode Register 5 (0x02 0b00000010)
+  I2C3_WriteData(0x54, 0x86, 0b00000010);
+  // NTSC color subcarrier adjust - 5.59 μs (must be set for Macrovision compliance)
+  // SD EIA/CEA-861B synchronization compliance - Disabled
+  // SD horizontal/vertical counter mode (1) - Update field/line counter
+  // SD RGB color swap - Normal
+
+  /* (1) When set to 0, the horizontal/vertical counters automatically wrap around at the end of the line/field/frame of the selected standard. When set to 1, the
+horizontal/vertical counters are free running and wrap around when external sync signals indicate to do so. */
+
+  // SD Mode Register 6
   I2C3_WriteData(0x54, 0x87, 0x80); // 0b10100000 0xA0 (autodetect) // 0b10000000 0x80 (def)
+  // SD Mode Register 7
   I2C3_WriteData(0x54, 0x88, 0x12); // 0b00010010 0x12 (non-interlaced) // 0b00010000 0x10 (interlaced)
+  // SD Mode Register 8
   I2C3_WriteData(0x54, 0x8A, 0b00001100); // Mode 2 — Slave Option (Subaddress 0x8A = X X X X X 1 0 0)
 
   // Color bars
-//  I2C3_WriteData(0x54, 0x00, 0b00010010);
-//  I2C3_WriteData(0x54, 0x82, 0b11001011); // 0b00001011 (reset) // 0b11001011 (bars)
-//  I2C3_WriteData(0x54, 0x84, 0b01000000); // 0b00000000 (reset) // 0b01000000 (bars)
+//    I2C3_WriteData(0x54, 0x00, 0b00010010);
+//    I2C3_WriteData(0x54, 0x82, 0b11001011); // 0b00001011 (reset) // 0b11001011 (bars)
+//    I2C3_WriteData(0x54, 0x84, 0b01000000); // 0b00000000 (reset) // 0b01000000 (bars)
 
-//  I2C3_WriteData(0x54, 0x87, 0x80);
-//  I2C3_WriteData(0x54, 0x88, 0x12);
-//  volatile uint8_t b1r = I2C3_ReadData(0x55, 0x87);
-//  volatile uint8_t b2r = I2C3_ReadData(0x55, 0x88);
-
-//  HAL_Delay(1);
+  //  I2C3_WriteData(0x54, 0x87, 0x80);
+  //  I2C3_WriteData(0x54, 0x88, 0x12);
+  //  volatile uint8_t b1r = I2C3_ReadData(0x55, 0x87);
+  //  volatile uint8_t b2r = I2C3_ReadData(0x55, 0x88);
 
   /* USER CODE END 2 */
 
@@ -503,14 +546,14 @@ static void MX_LTDC_Init(void)
   hltdc.Init.VSPolarity = LTDC_VSPOLARITY_AL;
   hltdc.Init.DEPolarity = LTDC_DEPOLARITY_AL;
   hltdc.Init.PCPolarity = LTDC_PCPOLARITY_IPC;
-  hltdc.Init.HorizontalSync = 63;
+  hltdc.Init.HorizontalSync = 30;
   hltdc.Init.VerticalSync = 2;
-  hltdc.Init.AccumulatedHBP = 127;
-  hltdc.Init.AccumulatedVBP = 14;
-  hltdc.Init.AccumulatedActiveW = 447;
-  hltdc.Init.AccumulatedActiveH = 254;
-  hltdc.Init.TotalWidth = 463;
-  hltdc.Init.TotalHeigh = 264;
+  hltdc.Init.AccumulatedHBP = 89;
+  hltdc.Init.AccumulatedVBP = 17;
+  hltdc.Init.AccumulatedActiveW = 409;
+  hltdc.Init.AccumulatedActiveH = 257;
+  hltdc.Init.TotalWidth = 425;
+  hltdc.Init.TotalHeigh = 261;
   hltdc.Init.Backcolor.Blue = 0;
   hltdc.Init.Backcolor.Green = 0;
   hltdc.Init.Backcolor.Red = 0;
@@ -805,7 +848,7 @@ static void MX_GPIO_Init(void)
   */
 static void BSP_SDRAM_Initialization_Sequence(SDRAM_HandleTypeDef *hsdram, FMC_SDRAM_CommandTypeDef *Command)
 {
- __IO uint32_t tmpmrd =0;
+  __IO uint32_t tmpmrd =0;
 
   /* Step 1:  Configure a clock configuration enable command */
   Command->CommandMode             = FMC_SDRAM_CMD_CLK_ENABLE;
@@ -840,10 +883,10 @@ static void BSP_SDRAM_Initialization_Sequence(SDRAM_HandleTypeDef *hsdram, FMC_S
 
   /* Step 5: Program the external memory mode register */
   tmpmrd = (uint32_t)SDRAM_MODEREG_BURST_LENGTH_1          |
-                     SDRAM_MODEREG_BURST_TYPE_SEQUENTIAL   |
-                     SDRAM_MODEREG_CAS_LATENCY_3           |
-                     SDRAM_MODEREG_OPERATING_MODE_STANDARD |
-                     SDRAM_MODEREG_WRITEBURST_MODE_SINGLE;
+           SDRAM_MODEREG_BURST_TYPE_SEQUENTIAL   |
+           SDRAM_MODEREG_CAS_LATENCY_3           |
+           SDRAM_MODEREG_OPERATING_MODE_STANDARD |
+           SDRAM_MODEREG_WRITEBURST_MODE_SINGLE;
 
   Command->CommandMode             = FMC_SDRAM_CMD_LOAD_MODE;
   Command->CommandTarget           = FMC_SDRAM_CMD_TARGET_BANK2;
@@ -908,7 +951,7 @@ uint8_t IOE_Read(uint8_t Addr, uint8_t Reg)
   */
 uint16_t IOE_ReadMultiple(uint8_t Addr, uint8_t Reg, uint8_t *pBuffer, uint16_t Length)
 {
- return I2C3_ReadBuffer(Addr, Reg, pBuffer, Length);
+  return I2C3_ReadBuffer(Addr, Reg, pBuffer, Length);
 }
 
 /**
