@@ -1,3 +1,4 @@
+.idea
 .vscode
 .osx.project
 .mxproject
@@ -12,3 +13,8 @@
 TouchGFX/build
 
 Thumbs.db
+
+scripts/fonts/out/**/*
+!scripts/fonts/out/.gitkeep
+
+cmake-build-*/
