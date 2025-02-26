@@ -3193,7 +3193,7 @@
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 4ddd7f72-0c96-4f0b-868a-42ed86375d98)
   )
-  (text "I2C ADDR 0x65" (at 113.03 194.31 0)
+  (text "I2C ADDR 0xCA" (at 113.03 194.31 0)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 64ee21d2-8f8d-4e3b-a3f3-3be03589aa15)
   )
